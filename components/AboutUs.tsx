@@ -43,7 +43,7 @@ export default function AboutUs() {
                         <h2 className="text-[10px] font-black text-[#2D3E33]/40 uppercase tracking-[0.2em] mb-4">
                             About Us
                         </h2>
-                        <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
+                        <h2 className="text-3xl md:text-[30px] lg:text-5xl font-black mb-6 leading-tight uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
                             Dream Vacations Into Reality
                         </h2>
                         <p className="text-sm md:text-lg text-[#2D3E33]/60 mb-8 leading-relaxed font-black uppercase tracking-tight">

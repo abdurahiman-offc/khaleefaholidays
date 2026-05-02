@@ -76,7 +76,7 @@ export default function Navbar() {
                 <Link href="/" className="flex items-center gap-2">
                     <div className="relative w-[180px] h-[50px]">
                         <Image
-                            src="/images/mainlogo-1"
+                            src="/images/mainlogo.png"
                             alt="Khaleefa Holidays Logo"
                             fill
                             sizes="(max-width: 768px) 180px, 180px"

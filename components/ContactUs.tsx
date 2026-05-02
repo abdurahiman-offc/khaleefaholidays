@@ -70,7 +70,7 @@ export default function ContactUs() {
                     className="max-w-5xl mx-auto"
                 >
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-black tracking-[0.2em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">Contact Us</h2>
+                        <h2 className="text-3xl md:text-[30px] lg:text-4xl font-black tracking-[0.2em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">Contact Us</h2>
                     </div>
 
                     {/* Flight Ticket Container */}

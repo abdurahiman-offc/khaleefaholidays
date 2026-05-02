@@ -74,7 +74,7 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                         sizes="(max-width: 768px) 100vw, 40vw"
                     />
                     <div className="absolute inset-0 bg-black/40 group-hover:opacity-0 transition-opacity duration-500" />
-                    
+
                     {item.popularDestination && (
                         <div className="absolute top-4 left-4 bg-[#FF85A1] text-white px-3 py-1 rounded-full text-[10px] font-bold shadow-md uppercase tracking-wider">
                             POPULAR
@@ -105,7 +105,7 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                                 {item.price || item.cost}
                             </p>
                         </div>
-                        <button 
+                        <button
                             onClick={(e) => { e.stopPropagation(); onClick(); }}
                             className="bg-[#18189C] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:bg-black transition-colors flex items-center gap-2"
                         >
@@ -125,7 +125,7 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
             whileHover={{ y: -10, transition: { duration: 0.3, ease: "easeOut" } }}
             transition={{ duration: 0.5, delay: index * 0.05 }}
             onClick={onClick}
-            className="flex flex-col bg-[#F5F5F5] rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[10px] border-white cursor-pointer group w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1.5rem)] xl:w-[calc(25%-1.75rem)] flex-shrink-0 overflow-hidden"
+            className="flex flex-col bg-[#F5F5F5] rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[10px] border-white cursor-pointer group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.33rem)] xl:w-[calc(25%-1.5rem)] flex-shrink-0 overflow-hidden"
         >
             <div className="relative aspect-[16/9] rounded-[32px] overflow-hidden">
                 <Image
@@ -133,7 +133,7 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                     alt={`${item.name || item.country} - Khaleefa Holidays`}
                     fill
                     className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-black/55 group-hover:opacity-0 transition-opacity duration-500 shadow-[inset_0_8px_18px_rgba(255,255,255,0.75)]" />
 
@@ -183,12 +183,12 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                         )}
                     </div>
                 </div>
-                
+
                 <div className="flex items-end justify-between mt-auto pt-4 border-t border-slate-100">
                     <p className="text-lg font-black text-[#18189C] leading-none">
                         {type === "visa" ? `₹ ${item.cost}` : (item.price || item.cost)}
                     </p>
-                    <button className="text-[10px] font-black uppercase tracking-[0.2em] text-[#18189C] border-b-2 border-[#18189C]/20 hover:border-[#18189C] transition-all pb-1 leading-none">
+                    <button className="text-[10px] md:text-[8.5px] lg:text-[10px] font-black uppercase tracking-[0.1em] md:tracking-normal lg:tracking-[0.2em] text-[#18189C] border-b-2 border-[#18189C]/20 hover:border-[#18189C] transition-all pb-1 leading-none">
                         More Info
                     </button>
                 </div>
@@ -268,16 +268,16 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                 </div>
 
                 <div className="relative rounded-[32px] overflow-hidden aspect-[16/9] mb-8 group shrink-0 border border-[#18189C]/5">
-                    <Image 
-                        src={item.image} 
-                        alt={`${title} - Service Gallery`} 
+                    <Image
+                        src={item.image}
+                        alt={`${title} - Service Gallery`}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110" 
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                         sizes="(max-width: 768px) 100vw, 66vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#18189C]/20 via-transparent to-transparent" />
                 </div>
- 
+
                 {/* Overview for Destinations, Rooms, Cabs */}
                 {(isDestination || isRoom || isCab) && (
                     <div className="mb-8 bg-white/40 p-6 rounded-2xl border border-[#18189C]/5">
@@ -287,7 +287,7 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                         </p>
                     </div>
                 )}
- 
+
                 {/* Contact Section - MOVED FROM RIGHT, Hidden on Mobile */}
                 {!isDestination && (
                     <div className="hidden md:block mb-8 space-y-4">

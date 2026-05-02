@@ -38,7 +38,27 @@ export default function Services() {
     const [cabData, setCabData] = useState<Cab[]>([]);
 
     const [visaCategories, setVisaCategories] = useState<string[]>(defaultVisaCategories);
-    const [visibleCards, setVisibleCards] = useState(6); // Default 3 rows * 2 cards = 6
+    const [visibleCards, setVisibleCards] = useState(8); // Default 4 rows * 2 cards = 8 or 2 rows * 4 cards = 8
+    const [incrementBy, setIncrementBy] = useState(8);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 1280) { // xl desktop
+                setVisibleCards(8);
+                setIncrementBy(8);
+            } else if (window.innerWidth >= 1024) { // lg desktop
+                setVisibleCards(6);
+                setIncrementBy(6);
+            } else { // md tablet and below
+                setVisibleCards(6);
+                setIncrementBy(6);
+            }
+        };
+        
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     const [loading, setLoading] = useState(true);
 
@@ -140,7 +160,7 @@ export default function Services() {
                         {/* Visa Content */}
                         {activeTab === "visa" && (
                             <>
-                                <div className="mb-10 flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-8 bg-white/30 backdrop-blur-md p-6 rounded-[32px] border border-black/5 shadow-sm">
+                                <div className="mb-10 flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-8">
                                     {/* Search Box */}
                                     <div className="relative w-full max-w-sm lg:w-[300px]">
                                         <input
@@ -151,7 +171,7 @@ export default function Services() {
                                                 setSearchTerm(e.target.value);
                                                 setVisibleCards(6);
                                             }}
-                                            className="w-full bg-white border-2 border-black/10 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest focus:ring-2 focus:ring-[#18189C]/20 focus:border-[#18189C] outline-none transition-all placeholder:text-slate-300 shadow-sm"
+                                            className="w-full bg-white/50 border-2 border-black/5 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest focus:ring-2 focus:ring-[#18189C]/20 focus:border-[#18189C] outline-none transition-all placeholder:text-slate-300"
                                         />
                                         <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -169,9 +189,9 @@ export default function Services() {
                                                     setActiveVisaCategory(category);
                                                     setVisibleCards(6);
                                                 }}
-                                                className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border-2 ${activeVisaCategory === category
-                                                    ? "bg-[#18189C] border-[#18189C] text-white shadow-md scale-105"
-                                                    : "bg-white border-black/5 text-[#18189C] hover:border-black/20 hover:bg-slate-50"
+                                                className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activeVisaCategory === category
+                                                    ? "bg-[#18189C] text-white shadow-sm scale-105"
+                                                    : "text-[#18189C]/60 hover:text-[#18189C] hover:bg-black/5"
                                                     }`}
                                             >
                                                 {category}
@@ -187,7 +207,7 @@ export default function Services() {
                                                 setActiveVisaType(e.target.value);
                                                 setVisibleCards(6);
                                             }}
-                                            className="w-full bg-white border-2 border-black/10 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-black/20 hover:bg-slate-50 transition-all text-[#18189C] shadow-sm"
+                                            className="w-full bg-white/50 border-2 border-black/5 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-black/20 hover:bg-slate-50 transition-all text-[#18189C]"
                                             style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2318189C'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '0.9rem' }}
                                         >
                                             <option value="All Types">All Types</option>
@@ -200,7 +220,7 @@ export default function Services() {
                                     </div>
                                 </div>
 
-                                <div className="flex flex-wrap justify-center gap-3 md:gap-8">
+                                <div className="flex flex-wrap justify-center gap-3 md:gap-8 max-w-[1400px] mx-auto">
                                     <AnimatePresence mode="popLayout">
                                         {filteredVisaData.slice(0, visibleCards).map((item, index) => (
                                             <ServiceCard
@@ -218,18 +238,18 @@ export default function Services() {
                                         <div className="relative group">
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
-                                                onClick={() => setVisibleCards(prev => prev + 6)}
+                                                onClick={() => setVisibleCards(prev => prev + incrementBy)}
                                                 className="relative bg-white text-[#18189C] px-8 py-3 md:px-10 md:py-4 rounded-full border-2 border-black text-xs md:text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show More Results
                                             </button>
                                         </div>
                                     )}
-                                    {visibleCards > 6 && (
+                                    {visibleCards > incrementBy && (
                                         <div className="relative group">
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
-                                                onClick={() => setVisibleCards(6)}
+                                                onClick={() => setVisibleCards(incrementBy)}
                                                 className="relative bg-white text-[#18189C] px-8 py-3 md:px-10 md:py-4 rounded-full border-2 border-black text-xs md:text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show Less
@@ -245,7 +265,7 @@ export default function Services() {
                         {/* Destinations Content */}
                         {activeTab === "destinations" && (
                             <div className="w-full">
-                                <div className="flex flex-wrap justify-center gap-3 md:gap-8">
+                                <div className="flex flex-wrap justify-center gap-3 md:gap-8 max-w-[1400px] mx-auto">
                                     <AnimatePresence mode="popLayout">
                                         {destinationData.slice(0, visibleCards).map((item, index) => (
                                             <ServiceCard
@@ -263,18 +283,18 @@ export default function Services() {
                                         <div className="relative group">
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
-                                                onClick={() => setVisibleCards(prev => prev + 6)}
+                                                onClick={() => setVisibleCards(prev => prev + incrementBy)}
                                                 className="relative bg-white text-[#18189C] px-8 py-3 md:px-10 md:py-4 rounded-full border-2 border-black text-xs md:text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show More Results
                                             </button>
                                         </div>
                                     )}
-                                    {visibleCards > 6 && (
+                                    {visibleCards > incrementBy && (
                                         <div className="relative group">
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
-                                                onClick={() => setVisibleCards(6)}
+                                                onClick={() => setVisibleCards(incrementBy)}
                                                 className="relative bg-white text-[#18189C] px-8 py-3 md:px-10 md:py-4 rounded-full border-2 border-black text-xs md:text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show Less
@@ -289,7 +309,7 @@ export default function Services() {
                         {/* Rooms Content */}
                         {activeTab === "rooms" && (
                             <div className="w-full">
-                                <div className="flex flex-wrap justify-center gap-3 md:gap-8">
+                                <div className="flex flex-wrap justify-center gap-3 md:gap-8 max-w-[1400px] mx-auto">
                                     <AnimatePresence mode="popLayout">
                                         {roomData.slice(0, visibleCards).map((item, index) => (
                                             <ServiceCard
@@ -307,18 +327,18 @@ export default function Services() {
                                         <div className="relative group">
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
-                                                onClick={() => setVisibleCards(prev => prev + 6)}
+                                                onClick={() => setVisibleCards(prev => prev + incrementBy)}
                                                 className="relative bg-white text-[#18189C] px-8 py-3 md:px-10 md:py-4 rounded-full border-2 border-black text-xs md:text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show More Results
                                             </button>
                                         </div>
                                     )}
-                                    {visibleCards > 6 && (
+                                    {visibleCards > incrementBy && (
                                         <div className="relative group">
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
-                                                onClick={() => setVisibleCards(6)}
+                                                onClick={() => setVisibleCards(incrementBy)}
                                                 className="relative bg-white text-[#18189C] px-8 py-3 md:px-10 md:py-4 rounded-full border-2 border-black text-xs md:text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show Less
@@ -333,7 +353,7 @@ export default function Services() {
                         {/* Cabs Content */}
                         {activeTab === "cab" && (
                             <div className="w-full">
-                                <div className="flex flex-wrap justify-center gap-3 md:gap-8">
+                                <div className="flex flex-wrap justify-center gap-3 md:gap-8 max-w-[1400px] mx-auto">
                                     <AnimatePresence mode="popLayout">
                                         {cabData.slice(0, visibleCards).map((item, index) => (
                                             <ServiceCard
@@ -351,18 +371,18 @@ export default function Services() {
                                         <div className="relative group">
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
-                                                onClick={() => setVisibleCards(prev => prev + 6)}
+                                                onClick={() => setVisibleCards(prev => prev + incrementBy)}
                                                 className="relative bg-white text-[#18189C] px-8 py-3 md:px-10 md:py-4 rounded-full border-2 border-black text-xs md:text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show More Results
                                             </button>
                                         </div>
                                     )}
-                                    {visibleCards > 6 && (
+                                    {visibleCards > incrementBy && (
                                         <div className="relative group">
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
-                                                onClick={() => setVisibleCards(6)}
+                                                onClick={() => setVisibleCards(incrementBy)}
                                                 className="relative bg-white text-[#18189C] px-8 py-3 md:px-10 md:py-4 rounded-full border-2 border-black text-xs md:text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show Less
@@ -376,11 +396,11 @@ export default function Services() {
                     </div>
                 )}
 
-                <ServiceModal 
-                    isOpen={!!selectedId} 
-                    item={activeItem} 
-                    type={activeTab} 
-                    onClose={() => setSelectedId(null)} 
+                <ServiceModal
+                    isOpen={!!selectedId}
+                    item={activeItem}
+                    type={activeTab}
+                    onClose={() => setSelectedId(null)}
                 />
 
             </div>

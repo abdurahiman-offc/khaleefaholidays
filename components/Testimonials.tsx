@@ -125,7 +125,7 @@ export default function Testimonials() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12 px-6"
                 >
-                    <h2 className="text-2xl md:text-4xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
+                    <h2 className="text-2xl md:text-[30px] lg:text-4xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
                         Trusted Stories
                     </h2>
                 </motion.div>
