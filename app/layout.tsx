@@ -11,6 +11,7 @@ import { Playfair_Display, Roboto, Yomogi } from "next/font/google";
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 const roboto = Roboto({
@@ -89,38 +90,39 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${playfair.variable} ${roboto.variable} ${yomogi.variable} font-sans antialiased`}
+        suppressHydrationWarning
       >
         <SmoothScroll>
           <Navbar />
           {children}
           <WhatsAppWidget />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "TravelAgency",
-                "name": "Khaleefa Holidays",
-                "description": "Premium travel agency in Kerala providing visa services and holiday packages.",
-                "url": "https://khaleefaholidays.com",
-                "telephone": "9999999999",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "123 Travel Lane",
-                  "addressLocality": "Metropolis",
-                  "addressRegion": "Kerala",
-                  "postalCode": "682001",
-                  "addressCountry": "IN"
-                },
-                "image": "https://khaleefaholidays.com/images/desktopnav2.png",
-                "sameAs": [
-                  "https://facebook.com/khaleefaholidays",
-                  "https://instagram.com/khaleefaholidays"
-                ]
-              })
-            }}
-          />
         </SmoothScroll>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "TravelAgency",
+              "name": "Khaleefa Holidays",
+              "description": "Premium travel agency in Kerala providing visa services and holiday packages.",
+              "url": "https://khaleefaholidays.com",
+              "telephone": "9999999999",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "123 Travel Lane",
+                "addressLocality": "Metropolis",
+                "addressRegion": "Kerala",
+                "postalCode": "682001",
+                "addressCountry": "IN"
+              },
+              "image": "https://khaleefaholidays.com/images/desktopnav2.png",
+              "sameAs": [
+                "https://facebook.com/khaleefaholidays",
+                "https://instagram.com/khaleefaholidays"
+              ]
+            })
+          }}
+        />
       </body>
     </html>
   );

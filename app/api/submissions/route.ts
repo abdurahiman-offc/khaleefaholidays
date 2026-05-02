@@ -1,3 +1,4 @@
+
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/db";
 import Submission from "@/models/Submission";
@@ -22,6 +23,7 @@ export async function GET() {
         return NextResponse.json({ success: false, error: error.message }, { status: 400 });
     }
 }
+
 export async function DELETE(req: Request) {
     await dbConnect();
     try {
