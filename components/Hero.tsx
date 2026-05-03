@@ -11,7 +11,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-[#F5F5F5] -z-20" />
 
             {/* Tablet Background Image */}
-            <div className="absolute inset-0 hidden md:block xl:hidden -z-10 pointer-events-none overflow-hidden">
+            <div className="absolute inset-0 block xl:hidden -z-10 pointer-events-none overflow-hidden">
                 <motion.div
                     initial={{ filter: "blur(0px)", opacity: 0 }}
                     animate={{ filter: "blur(0px)", opacity: 1 }}
@@ -38,11 +38,11 @@ export default function Hero() {
                             initial={{ opacity: 0, x: -50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="hero-motion-wrapper relative"
+                            className="hero-motion-wrapper relative w-full"
                         >
-                            {/* Tablet Centralized Layout (Visible ONLY on Tablet) */}
-                            <div className="hidden md:block xl:hidden w-full py-12">
-                                <div className="hero-tablet-central-box relative mx-auto overflow-hidden rounded-[48px] shadow-2xl p-12 flex flex-col items-center gap-10 max-w-[700px] bg-[#F5F5F5]">
+                            {/* Tablet/Mobile Centralized Layout */}
+                            <div className="block xl:hidden w-full py-6 md:py-12">
+                                <div className="hero-tablet-central-box relative mx-auto overflow-hidden rounded-[32px] md:rounded-[48px] shadow-2xl p-6 sm:p-8 md:p-12 flex flex-col items-center gap-8 md:gap-10 max-w-[700px] bg-[#F5F5F5]">
 
                                     {/* Background Image for the Box */}
                                     <div className="absolute inset-0 z-0">
@@ -105,8 +105,8 @@ export default function Hero() {
                                 </div>
                             </div>
 
-                            {/* Desktop/Mobile Content (Hidden on Tablet) */}
-                            <div className="md:hidden xl:block block">
+                            {/* Desktop Content (Hidden on Mobile/Tablet) */}
+                            <div className="hidden xl:block">
                                 {/* Heading */}
                                 <div className="hero-tablet-heading-row">
                                     <h1 className="hero-heading text-[50px] md:text-[80px] lg:text-[90px] font-black leading-[1.05] tracking-tight mb-8 uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
