@@ -2,92 +2,91 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Plane, Map, Camera, Compass, Ticket, Luggage, Umbrella, Globe, Sun, Ship, MapPin, Backpack } from "lucide-react";
 
-const ICONS = [
-    { Icon: Plane, color: "text-[#18189C]" },
-    { Icon: Map, color: "text-[#6A9BFF]" },
-    { Icon: Camera, color: "text-[#FFA726]" },
-    { Icon: Compass, color: "text-[#B388FF]" },
-    { Icon: Ticket, color: "text-[#FF5252]" },
-    { Icon: Luggage, color: "text-[#4CAF50]" },
-    { Icon: Umbrella, color: "text-[#FF4081]" },
-    { Icon: Globe, color: "text-[#00BCD4]" },
-    { Icon: Sun, color: "text-[#FFD740]" },
-    { Icon: Ship, color: "text-[#795548]" },
-    { Icon: MapPin, color: "text-[#FF9800]" },
-    { Icon: Backpack, color: "text-[#8BC34A]" }
+const SVGS = [
+    "https://api.iconify.design/fluent-emoji/airplane.svg",
+    "https://api.iconify.design/fluent-emoji/luggage.svg",
+    "https://api.iconify.design/fluent-emoji/camera-with-flash.svg",
+    "https://api.iconify.design/fluent-emoji/world-map.svg",
+    "https://api.iconify.design/fluent-emoji/ticket.svg",
+    "https://api.iconify.design/fluent-emoji/umbrella-on-ground.svg",
+    "https://api.iconify.design/fluent-emoji/globe-showing-europe-africa.svg",
+    "https://api.iconify.design/fluent-emoji/passenger-ship.svg",
+    "https://api.iconify.design/fluent-emoji/compass.svg",
+    "https://api.iconify.design/fluent-emoji/tent.svg",
+    "https://api.iconify.design/fluent-emoji/desert-island.svg",
+    "https://api.iconify.design/fluent-emoji/sun-with-face.svg",
+    "https://api.iconify.design/fluent-emoji/backpack.svg",
+    "https://api.iconify.design/fluent-emoji/automobile.svg",
+    "https://api.iconify.design/fluent-emoji/hotel.svg",
 ];
 
 export default function FloatingTravelIcons() {
     const [icons, setIcons] = useState<any[]>([]);
 
     useEffect(() => {
-        // Generate random icons on client to avoid hydration mismatch
-        const generated = ICONS.map((item, i) => ({
-            id: i,
-            Icon: item.Icon,
-            color: item.color,
-            top: `${Math.floor(Math.random() * 90) + 5}%`,
-            left: `${Math.floor(Math.random() * 90) + 5}%`,
-            size: Math.floor(Math.random() * 20) + 24, // 24px to 44px
-            opacity: Math.random() * 0.15 + 0.1, // 0.10 to 0.25 opacity
-            delay: Math.random() * 5,
-            duration: Math.random() * 20 + 20, // 20s to 40s duration
-        }));
+        // Uniform distribution: Create a grid
+        const cols = 4;
+        const rows = 12; // Spread across a long scrollable page
+        const total = cols * rows;
+
+        const generated = Array.from({ length: total }).map((_, i) => {
+            const col = i % cols;
+            const row = Math.floor(i / cols);
+
+            // Add random jitter to grid positions (±10%)
+            const jitterX = (Math.random() - 0.5) * 15;
+            const jitterY = (Math.random() - 0.5) * 5;
+
+            const left = `${(col * (100 / cols)) + (100 / cols / 2) + jitterX}%`;
+            const top = `${(row * (100 / rows)) + (100 / rows / 2) + jitterY}%`;
+
+            return {
+                id: i,
+                src: SVGS[Math.floor(Math.random() * SVGS.length)],
+                top: top,
+                left: left,
+                size: Math.floor(Math.random() * 40) + 40, // 40px to 80px
+                opacity: Math.random() * 0.4 + 0.3, // 0.3 to 0.7 for vibrancy
+                delay: Math.random() * 5,
+                duration: Math.random() * 20 + 20,
+            };
+        });
         setIcons(generated);
     }, []);
 
     if (icons.length === 0) return null;
 
     return (
-        <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-            {icons.map((item) => {
-                const IconComponent = item.Icon;
-                return (
-                    <motion.div
-                        key={item.id}
-                        animate={{
-                            y: [0, -40, 0],
-                            x: [0, 30, 0],
-                            rotate: [0, 15, -15, 0]
-                        }}
-                        transition={{
-                            duration: item.duration,
-                            repeat: Infinity,
-                            delay: item.delay,
-                            ease: "easeInOut"
-                        }}
-                        className={`absolute flex items-center justify-center ${item.color}`}
-                        style={{
-                            top: item.top,
-                            left: item.left,
-                            opacity: item.opacity
-                        }}
-                    >
-                        <IconComponent size={item.size} strokeWidth={1.5} />
-                    </motion.div>
-                );
-            })}
-        </div>
-    );
-}
-ease: "easeInOut" 
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+            {icons.map((item) => (
+                <motion.div
+                    key={item.id}
+                    animate={{ 
+                        y: [0, -60, 0], 
+                        x: [0, 40, 0], 
+                        rotate: [0, 20, -20, 0] 
                     }}
-className = "absolute flex items-center justify-center mix-blend-multiply"
-style = {{
-    top: item.top,
-        left: item.left,
-            opacity: item.opacity
-}}
+                    transition={{ 
+                        duration: item.duration, 
+                        repeat: Infinity, 
+                        delay: item.delay, 
+                        ease: "easeInOut" 
+                    }}
+                    className="absolute flex items-center justify-center mix-blend-multiply"
+                    style={{ 
+                        top: item.top, 
+                        left: item.left, 
+                        opacity: item.opacity 
+                    }}
                 >
-    <img
-        src={item.src}
-        alt="Travel icon"
-        style={{ width: item.size, height: item.size }}
-    />
-                </motion.div >
+                    <img 
+                        src={item.src} 
+                        alt="Travel icon" 
+                        style={{ width: item.size, height: item.size }} 
+                    />
+                </motion.div>
             ))}
-        </div >
+        </div>
     );
 }
