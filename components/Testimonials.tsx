@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Star, User, Loader2 } from "lucide-react";
 import SectionBackground from "./SectionBackground";
 
@@ -84,25 +84,13 @@ export default function Testimonials() {
     const displayFeedbacks = feedbacks.length > 0 ? feedbacks : fallbackTestimonials;
     const doubledFeedbacks = [...displayFeedbacks, ...displayFeedbacks];
 
-    // Auto-swipe logic for mobile
+    // Auto-swipe logic for mobile/tablet
     useEffect(() => {
-        if (displayFeedbacks.length === 0) return;
-
         const interval = setInterval(() => {
-            if (scrollRef.current) {
-                const nextIndex = (activeIndex + 1) % displayFeedbacks.length;
-                const scrollAmount = scrollRef.current.offsetWidth * nextIndex;
-
-                scrollRef.current.scrollTo({
-                    left: scrollAmount,
-                    behavior: "smooth"
-                });
-                setActiveIndex(nextIndex);
-            }
-        }, 4000);
-
+            setActiveIndex((current) => (current + 1) % displayFeedbacks.length);
+        }, 5000);
         return () => clearInterval(interval);
-    }, [activeIndex, displayFeedbacks.length]);
+    }, [displayFeedbacks.length]);
 
     if (loading) {
         return (
@@ -113,7 +101,7 @@ export default function Testimonials() {
     }
 
     return (
-        <section id="reviews" className="pt-[100px] pb-7 md:pb-[100px] bg-[#F5F5F5] relative overflow-hidden contain-paint">
+        <section id="reviews" className="pt-[100px] pb-[100px] bg-[#F5F5F5] relative overflow-hidden contain-paint">
             {/* Background Effect */}
             <SectionBackground />
 
@@ -125,15 +113,15 @@ export default function Testimonials() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12 px-6"
                 >
-                    <h2 className="text-2xl md:text-[30px] lg:text-4xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
+                    <h2 className="text-4xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
                         Trusted Stories
                     </h2>
                 </motion.div>
 
                 {/* Desktop: Free Moving Carousel (Marquee) */}
-                <div className="hidden md:block relative overflow-hidden py-10 px-10">
-                    <div className="absolute inset-y-0 left-0 w-20 md:w-40 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
-                    <div className="absolute inset-y-0 right-0 w-20 md:w-40 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
+                <div className="hidden lg:block relative overflow-hidden py-10 px-10">
+                    <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
+                    <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
 
                     <div className="flex justify-center">
                         <motion.div
@@ -155,26 +143,26 @@ export default function Testimonials() {
                     </div>
                 </div>
 
-                {/* Mobile View: Swipeable Carousel */}
-                <div className="md:hidden px-4">
-                    <div
-                        ref={scrollRef}
-                        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 pb-8"
-                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                    >
-                        {displayFeedbacks.map((item, index) => (
-                            <div key={index} className="w-full flex-shrink-0 snap-center">
-                                <FeedbackCard item={item} />
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Dots indicator */}
-                    <div className="flex justify-center gap-2">
+                {/* Mobile/Tablet: Single Card Swipe */}
+                <div className="lg:hidden px-6 pb-20">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeIndex}
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -50 }}
+                            transition={{ duration: 0.5 }}
+                            className="w-full flex justify-center"
+                        >
+                            <FeedbackCard item={displayFeedbacks[activeIndex]} />
+                        </motion.div>
+                    </AnimatePresence>
+                    <div className="flex justify-center gap-2 mt-8">
                         {displayFeedbacks.map((_, i) => (
-                            <div
+                            <button
                                 key={i}
-                                className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === i ? "w-6 bg-[#18189C]" : "w-1.5 bg-[#18189C]/20"
+                                onClick={() => setActiveIndex(i)}
+                                className={`w-2 h-2 rounded-full transition-all ${activeIndex === i ? "w-8 bg-[#18189C]" : "bg-slate-300"
                                     }`}
                             />
                         ))}
@@ -189,10 +177,10 @@ function FeedbackCard({ item }: { item: Feedback }) {
     return (
         <motion.div
             whileHover={{ y: -8 }}
-            className="relative flex flex-col bg-[#F5F5F5] p-8 rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[10px] border-white h-full w-[300px] md:w-[380px] flex-shrink-0"
+            className="relative flex flex-col bg-[#F5F5F5] p-8 rounded-[32px] md:rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[8px] md:border-[10px] border-white h-full w-full sm:w-[380px] flex-shrink-0"
         >
             <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-[#F5F5F5] rounded-2xl flex items-center justify-center text-[#18189C] shrink-0 shadow-sm border border-slate-100">
+                <div className="w-14 h-14 bg-[#F5F5F5] rounded-2xl flex items-center justify-center text-[#18189C] shrink-0 shadow-sm border border-slate-100">
                     <User size={28} />
                 </div>
                 <div>
@@ -211,7 +199,7 @@ function FeedbackCard({ item }: { item: Feedback }) {
                 ))}
             </div>
 
-            <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium italic">
+            <p className="text-base text-slate-600 leading-relaxed font-medium italic">
                 "{item.feedback}"
             </p>
         </motion.div>

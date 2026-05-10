@@ -58,7 +58,7 @@ export default function ContactUs() {
         : "--- --- ---";
 
     return (
-        <section id="contact" className="pt-[100px] pb-[94px] md:pb-[200px] bg-[#F5F5F5] relative overflow-hidden contain-paint">
+        <section id="contact" className="pt-[100px] pb-[200px] bg-[#F5F5F5] relative overflow-hidden contain-paint">
             <SectionBackground />
 
             <div className="container mx-auto px-4 relative z-10">
@@ -70,22 +70,18 @@ export default function ContactUs() {
                     className="max-w-5xl mx-auto"
                 >
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-[30px] lg:text-4xl font-black tracking-[0.2em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">Contact Us</h2>
+                        <h2 className="text-4xl font-black tracking-[0.2em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">Contact Us</h2>
                     </div>
 
                     {/* Flight Ticket Container */}
-                    <div className="flex flex-col lg:flex-row bg-white/60 backdrop-blur-3xl rounded-[40px] shadow-xl relative border border-[#18189C]/5">
-
-                        {/* Cutouts for Mobile */}
-                        <div className="lg:hidden absolute -left-[20px] top-[60%] w-[40px] h-[40px] bg-white rounded-full z-20 pointer-events-none" />
-                        <div className="lg:hidden absolute -right-[20px] top-[60%] w-[40px] h-[40px] bg-white rounded-full z-20 pointer-events-none" />
+                    <div className="flex flex-col lg:flex-row bg-white/60 backdrop-blur-3xl rounded-[32px] md:rounded-[40px] shadow-xl relative border border-[#18189C]/5 overflow-hidden">
 
                         {/* Cutouts for Desktop */}
                         <div className="hidden lg:block absolute left-[70%] -top-[20px] w-[40px] h-[40px] bg-white rounded-full z-20 transform -translate-x-1/2 pointer-events-none" />
                         <div className="hidden lg:block absolute left-[70%] -bottom-[20px] w-[40px] h-[40px] bg-white rounded-full z-20 transform -translate-x-1/2 pointer-events-none" />
 
                         {/* --- LEFT SECTION: MAIN TICKET --- */}
-                        <div className="w-full lg:w-[70%] p-6 md:p-10 border-b-2 lg:border-b-0 lg:border-r-2 border-dashed border-[#18189C]/10 relative bg-transparent lg:rounded-l-[40px] max-lg:rounded-t-[40px]">
+                        <div className="w-full lg:w-[70%] p-6 md:p-10 border-b-2 lg:border-b-0 lg:border-r-2 border-dashed border-[#18189C]/10 relative bg-transparent rounded-t-[32px] md:rounded-t-[40px] lg:rounded-l-[40px] lg:rounded-tr-none">
 
                             {/* Header */}
                             <div className="flex justify-between items-center mb-8 border-b-2 border-[#18189C]/5 pb-6">
@@ -98,7 +94,7 @@ export default function ContactUs() {
                                         <p className="text-[10px] font-black text-[#18189C]/40 tracking-[0.2em] uppercase">First Class Travel</p>
                                     </div>
                                 </div>
-                                <div className="text-right hidden sm:block">
+                                <div className="text-right">
                                     <p className="text-[10px] font-black text-[#18189C]/30 tracking-widest uppercase mb-1">Boarding Status</p>
                                     <span className="px-4 py-1.5 bg-[#FF85A1]/10 text-[#FF85A1] border border-[#FF85A1]/20 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm inline-block">
                                         On Time
@@ -111,9 +107,9 @@ export default function ContactUs() {
                                 {/* Decorative background pattern */}
                                 <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#18189C_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
-                                <div className="text-center relative z-10 w-24">
-                                    <p className="text-4xl md:text-5xl font-black text-[#18189C] tracking-tighter">HME</p>
-                                    <p className="text-[11px] text-[#18189C]/30 font-black tracking-widest uppercase mt-1">Origin</p>
+                                <div className="text-center relative z-10 w-20 md:w-24">
+                                    <p className="text-3xl md:text-5xl font-black text-[#18189C] tracking-tighter">HME</p>
+                                    <p className="text-[10px] md:text-[11px] text-[#18189C]/30 font-black tracking-widest uppercase mt-1">Origin</p>
                                 </div>
 
                                 <div className="flex-1 px-4 md:px-8 flex flex-col items-center justify-center relative z-10">
@@ -132,9 +128,9 @@ export default function ContactUs() {
                                     </div>
                                 </div>
 
-                                <div className="text-center relative z-10 w-24">
-                                    <p className="text-4xl md:text-5xl font-black text-[#18189C] tracking-tighter">KHL</p>
-                                    <p className="text-[11px] text-[#18189C]/30 font-black tracking-widest uppercase mt-1">Destination</p>
+                                <div className="text-center relative z-10 w-20 md:w-24">
+                                    <p className="text-3xl md:text-5xl font-black text-[#18189C] tracking-tighter">KHL</p>
+                                    <p className="text-[10px] md:text-[11px] text-[#18189C]/30 font-black tracking-widest uppercase mt-1">Destination</p>
                                 </div>
                             </div>
 
@@ -196,22 +192,13 @@ export default function ContactUs() {
                                         />
                                     </div>
 
-                                    {/* Mobile Confirm Button */}
-                                    {!submitted && (
-                                        <button
-                                            type="submit"
-                                            className="w-full lg:hidden bg-[#18189C] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all duration-300 flex justify-center items-center gap-2 group mt-6 shadow-lg"
-                                        >
-                                            Confirm <Plane size={16} className="transform group-hover:translate-x-1 transition-transform" />
-                                        </button>
-                                    )}
                                 </form>
                             )}
 
                         </div>
 
                         {/* --- RIGHT SECTION: TICKET STUB --- */}
-                        <div className="w-full lg:w-[30%] bg-[#18189C]/5 p-6 md:p-10 flex flex-col justify-between relative lg:rounded-r-[40px] max-lg:rounded-b-[40px] text-[#18189C]">
+                        <div className="w-full lg:w-[30%] bg-[#18189C]/5 p-6 md:p-10 flex flex-col justify-between relative rounded-b-[32px] md:rounded-b-[40px] lg:rounded-r-[40px] lg:rounded-bl-none text-[#18189C]">
 
                             <div className="space-y-6">
                                 {/* Stub Header */}
@@ -231,11 +218,11 @@ export default function ContactUs() {
                                 <div className="grid grid-cols-2 gap-y-6 gap-x-4">
                                     <div>
                                         <p className="text-[9px] font-black text-[#18189C]/30 uppercase tracking-widest flex items-center gap-1 mb-1"><Calendar size={10} /> Date</p>
-                                        <p className="font-black text-[#18189C]/80 text-xs sm:text-sm truncate uppercase tracking-tight">{today}</p>
+                                        <p className="font-black text-[#18189C]/80 text-sm truncate uppercase tracking-tight">{today}</p>
                                     </div>
                                     <div>
                                         <p className="text-[9px] font-black text-[#18189C]/30 uppercase tracking-widest flex items-center gap-1 mb-1"><Clock size={10} /> Boarding</p>
-                                        <p className="font-black text-[#FF85A1] text-xs sm:text-sm animate-pulse uppercase tracking-tight">NOW</p>
+                                        <p className="font-black text-[#FF85A1] text-sm animate-pulse uppercase tracking-tight">NOW</p>
                                     </div>
                                     <div>
                                         <p className="text-[9px] font-black text-[#18189C]/30 uppercase tracking-widest flex items-center gap-1 mb-1"><MapPin size={10} /> Gate</p>
@@ -275,7 +262,7 @@ export default function ContactUs() {
                                     <button
                                         type="submit"
                                         form="ticket-form"
-                                        className="w-full hidden lg:flex bg-[#18189C] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] hover:shadow-xl active:scale-95 transition-all duration-300 justify-center items-center gap-2 group shadow-lg"
+                                        className="w-full flex bg-[#18189C] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] hover:shadow-xl active:scale-95 transition-all duration-300 justify-center items-center gap-2 group shadow-lg"
                                     >
                                         Confirm <Plane size={16} className="transform group-hover:translate-x-1 transition-transform" />
                                     </button>

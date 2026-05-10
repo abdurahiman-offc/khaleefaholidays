@@ -15,21 +15,21 @@ export default function Destinations() {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth >= 1280) { // xl desktop
+            if (window.innerWidth < 640) {
+                setVisibleCards(4);
+                setIncrementBy(4);
+            } else if (window.innerWidth < 1024) {
+                setVisibleCards(6);
+                setIncrementBy(6);
+            } else {
                 setVisibleCards(8);
                 setIncrementBy(8);
-            } else if (window.innerWidth >= 1024) { // lg desktop
-                setVisibleCards(6);
-                setIncrementBy(6);
-            } else { // md tablet and below
-                setVisibleCards(6);
-                setIncrementBy(6);
             }
         };
-        
+
         handleResize();
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     useEffect(() => {
@@ -63,7 +63,7 @@ export default function Destinations() {
     const activeItem = destinations.find(d => d._id === selectedId);
 
     return (
-        <section id="destinations" className={`pt-[100px] pb-7 md:pb-[100px] bg-[#F5F5F5] relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
+        <section id="destinations" className={`pt-[100px] pb-[100px] bg-[#F5F5F5] relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
             <SectionBackground />
 
             <div className="container mx-auto px-6 relative z-10">
@@ -71,7 +71,7 @@ export default function Destinations() {
                     <h2 className="text-[10px] font-black text-[#2D3E33]/40 uppercase tracking-[0.2em] mb-4">
                         Discover
                     </h2>
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
+                    <h2 className="text-3xl md:text-4xl font-black uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
                         Popular Destinations
                     </h2>
                 </div>
@@ -81,7 +81,7 @@ export default function Destinations() {
                         <div className="w-12 h-12 border-4 border-[#18189C] border-t-transparent rounded-full animate-spin"></div>
                     </div>
                 ) : (
-                    <div className="flex flex-wrap justify-center gap-3 md:gap-8 max-w-[1400px] mx-auto">
+                    <div className="flex flex-wrap justify-center gap-8 max-w-[1400px] mx-auto">
                         {/* DO NOT CHANGE THIS LAYOUT. This is permanent and always fixed. Keep flex flex-wrap. */}
                         <AnimatePresence mode="popLayout">
                             {destinations.slice(0, visibleCards).map((place, index) => (
@@ -98,13 +98,13 @@ export default function Destinations() {
                 )}
 
                 {!loading && destinations.length > 0 && (
-                    <div className="flex justify-center items-center gap-6 mt-8 md:mt-12">
+                    <div className="flex justify-center items-center gap-6 mt-12">
                         {destinations.length > visibleCards && (
                             <div className="relative group">
                                 <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                 <button
                                     onClick={() => setVisibleCards(prev => prev + incrementBy)}
-                                    className="relative bg-white text-[#18189C] px-8 py-3 md:px-10 md:py-4 rounded-full border-2 border-black text-xs md:text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                    className="relative bg-white text-[#18189C] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                 >
                                     Show More Results
                                 </button>
@@ -115,7 +115,7 @@ export default function Destinations() {
                                 <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                 <button
                                     onClick={() => setVisibleCards(incrementBy)}
-                                    className="relative bg-white text-[#18189C] px-8 py-3 md:px-10 md:py-4 rounded-full border-2 border-black text-xs md:text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                    className="relative bg-white text-[#18189C] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                 >
                                     Show Less
                                 </button>

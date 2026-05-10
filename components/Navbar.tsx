@@ -76,7 +76,7 @@ export default function Navbar() {
                 <Link href="/" className="flex items-center gap-2">
                     <div className="relative w-[180px] h-[50px]">
                         <Image
-                            src="/images/mainlogo.png"
+                            src="/images/kh-logo-blue.png"
                             alt="Khaleefa Holidays Logo"
                             fill
                             sizes="(max-width: 768px) 180px, 180px"
@@ -86,7 +86,7 @@ export default function Navbar() {
                     </div>
                 </Link>
 
-                {/* Navigation Menus */}
+                {/* Desktop Menu */}
                 <div className="hidden lg:flex items-center space-x-8 nav-menu-desktop">
                     {navLinks.map((link) => (
                         <button
@@ -105,29 +105,33 @@ export default function Navbar() {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="lg:hidden text-[#18189C] nav-hamburger-btn"
+                    className="lg:hidden text-[#2D3E33] hover:text-[#18189C] transition-colors p-2"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    aria-label="Toggle mobile menu"
                 >
                     {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
             </div>
 
             {/* Mobile Menu Overlay */}
-            {isMobileMenuOpen && (
-                <div className="absolute top-full left-0 right-0 bg-[#F5F5F5] shadow-xl p-8 lg:hidden flex flex-col gap-6 nav-mobile-overlay">
+            <div
+                className={`fixed inset-0 bg-white z-40 lg:hidden transition-transform duration-500 ease-in-out ${isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
+                    }`}
+                style={{ top: "0" }}
+            >
+                <div className="flex flex-col items-center justify-center h-full space-y-8 px-6">
                     {navLinks.map((link) => (
                         <button
                             key={link.name}
-                            type="button"
                             onClick={() => scrollToSection(link.id)}
-                            className={`text-xl font-black uppercase tracking-widest text-left ${activeSection === link.id ? "text-[#18189C] underline" : "text-[#2D3E33]"
+                            className={`text-xl font-black uppercase tracking-[0.2em] transition-colors ${activeSection === link.id ? "text-[#18189C]" : "text-[#2D3E33]"
                                 }`}
                         >
                             {link.name}
                         </button>
                     ))}
                 </div>
-            )}
+            </div>
         </nav>
     );
 }

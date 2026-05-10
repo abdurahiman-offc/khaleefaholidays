@@ -62,10 +62,10 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                 whileHover={{ y: -5, transition: { duration: 0.3 } }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={onClick}
-                className="flex flex-col md:flex-row bg-white rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[10px] border-white cursor-pointer group w-full max-w-[1000px] overflow-hidden"
+                className="flex flex-col md:flex-row bg-white rounded-[32px] md:rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[10px] border-white cursor-pointer group w-full max-w-[1000px] overflow-hidden"
             >
-                {/* Image Section - Left on Desktop */}
-                <div className="relative w-full md:w-2/5 aspect-[16/9] md:aspect-auto rounded-[32px] overflow-hidden">
+                {/* Image Section - Left */}
+                <div className="relative w-full md:w-2/5 h-[240px] md:h-auto rounded-[24px] md:rounded-[32px] overflow-hidden">
                     <Image
                         src={item.image}
                         alt={`${item.name || item.country} - Khaleefa Holidays`}
@@ -82,11 +82,11 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                     )}
                 </div>
 
-                {/* Content Section - Right on Desktop */}
-                <div className="w-full md:w-3/5 p-8 md:p-10 flex flex-col justify-between">
+                {/* Content Section - Right */}
+                <div className="w-full md:w-3/5 p-6 md:p-10 flex flex-col justify-between">
                     <div>
                         <div className="flex flex-col mb-4">
-                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tighter">
+                            <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">
                                 {item.name || item.country}
                             </h3>
                             <div className="mt-2 bg-[#18189C]/5 px-4 py-1.5 rounded-full w-fit">
@@ -125,7 +125,7 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
             whileHover={{ y: -10, transition: { duration: 0.3, ease: "easeOut" } }}
             transition={{ duration: 0.5, delay: index * 0.05 }}
             onClick={onClick}
-            className="flex flex-col bg-[#F5F5F5] rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[10px] border-white cursor-pointer group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.33rem)] xl:w-[calc(25%-1.5rem)] flex-shrink-0 overflow-hidden"
+            className="flex flex-col bg-[#F5F5F5] rounded-[32px] md:rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[8px] md:border-[10px] border-white cursor-pointer group w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] flex-shrink-0 overflow-hidden"
         >
             <div className="relative aspect-[16/9] rounded-[32px] overflow-hidden">
                 <Image
@@ -133,7 +133,7 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                     alt={`${item.name || item.country} - Khaleefa Holidays`}
                     fill
                     className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-black/55 group-hover:opacity-0 transition-opacity duration-500 shadow-[inset_0_8px_18px_rgba(255,255,255,0.75)]" />
 
@@ -148,7 +148,7 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                 <div>
                     <div className="flex justify-between items-start gap-4 mb-4">
                         <div className="flex flex-col flex-1">
-                            <h3 className="text-base md:text-lg font-black text-slate-900 leading-tight uppercase tracking-tight">
+                            <h3 className="text-lg font-black text-slate-900 leading-tight uppercase tracking-tight">
                                 {item.name || item.country}
                             </h3>
                             {type === "visa" && (
@@ -188,7 +188,7 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                     <p className="text-lg font-black text-[#18189C] leading-none">
                         {type === "visa" ? `₹ ${item.cost}` : (item.price || item.cost)}
                     </p>
-                    <button className="text-[10px] md:text-[8.5px] lg:text-[10px] font-black uppercase tracking-[0.1em] md:tracking-normal lg:tracking-[0.2em] text-[#18189C] border-b-2 border-[#18189C]/20 hover:border-[#18189C] transition-all pb-1 leading-none">
+                    <button className="text-[10px] font-black uppercase tracking-[0.2em] text-[#18189C] border-b-2 border-[#18189C]/20 hover:border-[#18189C] transition-all pb-1 leading-none">
                         More Info
                     </button>
                 </div>
@@ -239,7 +239,7 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
     const priceText = isVisa ? `₹ ${item.cost}` : (item.price || item.cost);
 
     return (
-        <div className="flex flex-col md:flex-row w-full relative overflow-y-auto md:overflow-hidden bg-[#F5F5F5] md:rounded-3xl scrollbar-hide text-[#18189C]">
+        <div className="flex flex-col md:flex-row w-full relative overflow-hidden bg-[#F5F5F5] rounded-3xl scrollbar-hide text-[#18189C]">
             <button
                 onClick={onClose}
                 className="sticky top-4 right-4 ml-auto mr-4 -mt-10 md:absolute md:top-8 md:right-8 w-10 h-10 bg-white shadow-xl rounded-full border border-[#18189C]/10 flex items-center justify-center text-[#18189C] hover:text-red-500 transition-all z-[110] group"
@@ -251,7 +251,7 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
             <div className="hidden md:block absolute left-[66%] -bottom-[20px] w-10 h-10 bg-white rounded-full z-20 pointer-events-none" />
 
             {/* Left Section: Main Ticket Body */}
-            <div className="w-full md:w-2/3 p-4 md:p-10 flex flex-col border-b-2 md:border-b-0 md:border-r-2 border-dashed border-[#18189C]/10 md:overflow-y-auto scrollbar-hide h-auto">
+            <div className="w-full md:w-2/3 p-6 md:p-10 flex flex-col border-b-2 md:border-b-0 md:border-r-2 border-dashed border-[#18189C]/10 overflow-y-auto scrollbar-hide h-auto">
                 {/* Header */}
                 <div className="flex justify-between items-start mb-8 border-b-2 border-[#18189C]/5 pb-6 shrink-0">
                     <div className="flex items-center gap-4">
@@ -288,16 +288,16 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                     </div>
                 )}
 
-                {/* Contact Section - MOVED FROM RIGHT, Hidden on Mobile */}
+                {/* Contact Section - MOVED FROM RIGHT */}
                 {!isDestination && (
                     <div className="hidden md:block mb-8 space-y-4">
-                        <div className="flex flex-col sm:flex-row gap-4">
+                        <div className="flex flex-row gap-4">
                             <div className="flex-1 bg-[#18189C]/5 rounded-2xl border border-[#18189C]/5 p-4 flex justify-between items-center">
                                 <div>
                                     <p className="text-[#18189C]/30 text-[9px] font-black uppercase tracking-widest">Support Agent</p>
                                     <p className="font-black text-[#18189C] text-base uppercase">{contactPerson}</p>
                                 </div>
-                                <div className="w-[1px] h-8 bg-[#18189C]/10 mx-4 hidden sm:block" />
+                                <div className="w-[1px] h-8 bg-[#18189C]/10 mx-4" />
                                 <div className="text-right">
                                     <p className="text-[#18189C]/30 text-[9px] font-black uppercase tracking-widest">Mobile No</p>
                                     <p className="font-black text-[#18189C] text-base">{contactNumber}</p>
@@ -305,7 +305,7 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div className="grid grid-cols-2 gap-3">
                             <button
                                 onClick={() => window.open(`https://wa.me/91${contactNumber}?text=${encodeURIComponent(whatsappText)}`, '_blank')}
                                 className="w-full bg-[#25D366] text-white py-3.5 rounded-2xl text-xs font-black uppercase tracking-widest transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl active:scale-95 flex items-center justify-center gap-3"
@@ -313,12 +313,41 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                                 <MessageSquare size={16} />
                                 WhatsApp Us
                             </button>
+                        </div>
+                    </div>
+                )}
+
+
+                {/* Mobile Contact Section - Visible only on Mobile */}
+                {!isDestination && (
+                    <div className="block md:hidden mt-10 space-y-6 pt-10 border-t-2 border-[#2D3E33]/10">
+                        <div className="flex flex-col gap-4">
+                            <div className="bg-[#18189C]/5 rounded-2xl p-4 flex justify-between items-center">
+                                <div>
+                                    <p className="text-[#18189C]/30 text-[9px] font-black uppercase tracking-widest">Support Agent</p>
+                                    <p className="font-black text-[#18189C] text-base uppercase">{contactPerson}</p>
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-[#18189C]/30 text-[9px] font-black uppercase tracking-widest">Mobile No</p>
+                                    <p className="font-black text-[#18189C] text-base">{contactNumber}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-3">
                             <button
-                                onClick={() => window.location.href = `tel:${contactNumber}`}
-                                className="w-full bg-[#18189C] text-white py-3.5 rounded-2xl text-xs font-black uppercase tracking-widest transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl active:scale-95 flex sm:hidden items-center justify-center gap-3"
+                                onClick={() => window.open(`https://wa.me/91${contactNumber}?text=${encodeURIComponent(whatsappText)}`, '_blank')}
+                                className="w-full bg-[#25D366] text-white py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2"
                             >
-                                <Phone size={16} />
-                                Call Direct
+                                <MessageSquare size={14} />
+                                WhatsApp
+                            </button>
+                            <button
+                                onClick={() => window.open(`tel:+91${contactNumber}`)}
+                                className="w-full bg-[#18189C] text-white py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2"
+                            >
+                                <Phone size={14} />
+                                Call Now
                             </button>
                         </div>
                     </div>
@@ -326,7 +355,7 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
             </div>
 
             {/* Right Section: Ticket Stub / Enquiry or Contact Details */}
-            <div className="w-full md:w-1/3 bg-[#18189C]/5 p-6 md:p-10 flex flex-col md:overflow-y-auto scrollbar-hide h-auto text-[#18189C]">
+            <div className="w-full md:w-1/3 bg-[#18189C]/5 p-6 md:p-10 flex flex-col overflow-y-auto scrollbar-hide h-auto text-[#18189C]">
                 <div className="mb-6">
                     <p className="text-[10px] font-black text-[#18189C]/30 tracking-[0.2em] uppercase mb-1">
                         {isVisa ? "Service Type" : "Service Info"}
@@ -447,46 +476,7 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                     )}
                 </div>
 
-                {/* Mobile Contact Section - Visible only on Mobile */}
-                {!isDestination && (
-                    <div className="block md:hidden mt-10 space-y-6 pt-10 border-t-2 border-[#2D3E33]/10">
-                        <div className="flex flex-col gap-4">
-                            <div className="bg-white/40 rounded-3xl border border-[#2D3E33]/5 shadow-sm p-5 flex justify-between items-center">
-                                <div>
-                                    <p className="text-[#2D3E33]/30 text-[10px] font-black uppercase tracking-widest">Support Agent</p>
-                                    <p className="font-black text-[#2D3E33] text-lg uppercase">{contactPerson}</p>
-                                </div>
-                                <div className="text-right">
-                                    <p className="text-[#2D3E33]/30 text-[10px] font-black uppercase tracking-widest">Mobile No</p>
-                                    <p className="font-black text-[#2D3E33] text-lg leading-tight">{contactNumber}</p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div className="grid grid-cols-1 gap-6">
-                            <div className="relative group w-full">
-                                <div className="absolute -inset-1 bg-black rounded-[2rem] transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
-                                <button
-                                    onClick={() => window.open(`https://wa.me/91${contactNumber}?text=${encodeURIComponent(whatsappText)}`, '_blank')}
-                                    className="relative w-full bg-[#25D366] text-white py-5 rounded-[2rem] border-2 border-black text-xs font-black uppercase tracking-widest flex items-center justify-center gap-4"
-                                >
-                                    <MessageSquare size={18} />
-                                    WhatsApp Us
-                                </button>
-                            </div>
-                            <div className="relative group w-full">
-                                <div className="absolute -inset-1 bg-black rounded-[2rem] transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
-                                <button
-                                    onClick={() => window.location.href = `tel:${contactNumber}`}
-                                    className="relative w-full bg-gradient-to-r from-[#18189C] to-black text-white py-5 rounded-[2rem] border-2 border-black text-xs font-black uppercase tracking-widest flex items-center justify-center gap-4"
-                                >
-                                    <Phone size={18} />
-                                    Call Direct
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                )}
             </div>
         </div>
     );
@@ -504,13 +494,13 @@ export function ServiceModal({ isOpen, item, type, onClose }: { isOpen: boolean;
                         className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
                         onClick={onClose}
                     />
-                    <div className="fixed inset-0 flex items-center justify-center z-[100] p-4 sm:p-8 pointer-events-none">
+                    <div className="fixed inset-0 flex items-center justify-center z-[100] p-8 pointer-events-none">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
                             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                            className="w-full max-w-5xl bg-white/60 backdrop-blur-3xl rounded-[40px] overflow-hidden shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] pointer-events-auto max-h-[90vh] flex flex-col md:flex-row relative z-[100] border border-[#2D3E33]/5"
+                            className="w-full max-w-5xl bg-white/60 backdrop-blur-3xl rounded-[32px] md:rounded-[40px] overflow-hidden shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] pointer-events-auto max-h-[90vh] flex flex-col md:flex-row relative z-[100] border border-[#2D3E33]/5"
                         >
                             <ModalContent item={item} type={type} onClose={onClose} />
                         </motion.div>

@@ -41,17 +41,17 @@ export default function Footer() {
 
             <div className="container mx-auto px-6 relative z-10">
                 {/* TOP DIV: Split into 3 columns */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-x-2 lg:gap-x-12 mb-12 border-b border-white/10 pb-12 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 border-b border-white/10 pb-12 items-start">
                     
                     {/* COLUMN 1: Logo & Social */}
-                    <div className="flex flex-col items-center md:items-start gap-6">
-                        <Link href="/" className="block relative w-[300px] md:w-[350px] h-[80px] md:h-[90px]">
+                    <div className="flex flex-col items-center lg:items-start gap-6">
+                        <Link href="/" className="block relative w-full max-w-[350px] h-[70px] md:h-[90px]">
                                 <Image
-                                    src="/images/desktopnav2.png"
+                                    src="/images/kh-logo-white.png"
                                     alt="Khaleefa Holidays Logo"
                                     fill
-                                    className="object-contain object-center md:object-left filter brightness-0 invert"
-                                    sizes="(max-width: 768px) 300px, 350px"
+                                    className="object-contain object-center md:object-left"
+                                    sizes="350px"
                                     priority
                                 />
                         </Link>
@@ -73,10 +73,10 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className="flex flex-col items-center md:items-start lg:items-center">
-                        <h4 className="text-white/40 text-[13px] md:text-[10px] lg:text-[13px] font-black uppercase tracking-[0.3em] mb-8">Navigation</h4>
-                        <div className="flex flex-col items-center md:items-start lg:items-center gap-5 text-[15px] md:text-xs lg:text-[15px] font-black text-white/60 uppercase tracking-[0.2em]">
-                            <div className="flex flex-wrap justify-center md:justify-start lg:justify-center gap-x-10 gap-y-4">
+                    <div className="flex flex-col items-center">
+                        <h4 className="text-white/40 text-[13px] font-black uppercase tracking-[0.3em] mb-8">Navigation</h4>
+                        <div className="flex flex-col items-center gap-5 text-[15px] font-black text-white/60 uppercase tracking-[0.2em]">
+                            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
                                 {navLinks.slice(0, 3).map((link) => (
                                     <button
                                         key={link.id}
@@ -87,7 +87,7 @@ export default function Footer() {
                                     </button>
                                 ))}
                             </div>
-                            <div className="flex flex-wrap justify-center md:justify-start lg:justify-center gap-x-10 gap-y-4">
+                            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
                                 {navLinks.slice(3).map((link) => (
                                     <button
                                         key={link.id}
@@ -102,20 +102,20 @@ export default function Footer() {
                     </div>
 
                     {/* COLUMN 3: Address & Contact (Right) */}
-                    <div className="flex flex-col items-center md:items-start lg:items-end">
-                        <h4 className="text-white/40 text-[13px] md:text-[10px] lg:text-[13px] font-black uppercase tracking-[0.3em] mb-8">Connect</h4>
-                        <div className="flex flex-col items-center md:items-start lg:items-end gap-5 text-[15px] md:text-xs lg:text-[15px] font-black text-white/60 uppercase tracking-widest leading-relaxed">
-                            <div className="flex items-start md:items-center lg:items-center gap-3 md:gap-4 flex-row md:flex-row-reverse lg:flex-row w-full md:w-auto lg:w-full max-w-full">
-                                <span className="flex-1 min-w-0 text-center md:text-left lg:text-right break-words whitespace-normal leading-tight">123 Travel Lane, Metropolis</span>
-                                <MapPin size={16} className="text-white shrink-0 opacity-40 mt-1 md:mt-0" />
+                    <div className="flex flex-col items-center lg:items-end">
+                        <h4 className="text-white/40 text-[13px] font-black uppercase tracking-[0.3em] mb-8">Connect</h4>
+                        <div className="flex flex-col items-center lg:items-end gap-5 text-[15px] font-black text-white/60 uppercase tracking-widest leading-relaxed">
+                            <div className="flex items-center gap-4 flex-row w-full max-w-full justify-center lg:justify-end">
+                                <span className="flex-1 min-w-0 text-center lg:text-right break-words whitespace-normal leading-tight">123 Travel Lane, Metropolis</span>
+                                <MapPin size={16} className="text-white shrink-0 opacity-40 order-first lg:order-last" />
                             </div>
-                            <div className="flex items-start md:items-center lg:items-center gap-3 md:gap-4 flex-row md:flex-row-reverse lg:flex-row w-full md:w-auto lg:w-full max-w-full">
-                                <span className="flex-1 min-w-0 text-center md:text-left lg:text-right break-words whitespace-normal leading-tight">+91 98765 43210</span>
-                                <Phone size={16} className="text-white shrink-0 opacity-40 mt-1 md:mt-0" />
+                            <div className="flex items-center gap-4 flex-row w-full max-w-full justify-center lg:justify-end">
+                                <span className="flex-1 min-w-0 text-center lg:text-right break-words whitespace-normal leading-tight">+91 98765 43210</span>
+                                <Phone size={16} className="text-white shrink-0 opacity-40 order-first lg:order-last" />
                             </div>
-                            <div className="flex items-start md:items-center lg:items-center gap-3 md:gap-4 flex-row md:flex-row-reverse lg:flex-row w-full md:w-auto lg:w-full max-w-full">
-                                <span className="flex-1 min-w-0 text-center md:text-left lg:text-right break-words whitespace-normal leading-tight">contact@khaleefaholidays.com</span>
-                                <Mail size={16} className="text-white shrink-0 opacity-40 mt-1 md:mt-0" />
+                            <div className="flex items-center gap-4 flex-row w-full max-w-full justify-center lg:justify-end">
+                                <span className="flex-1 min-w-0 text-center lg:text-right break-words whitespace-normal leading-tight">contact@khaleefaholidays.com</span>
+                                <Mail size={16} className="text-white shrink-0 opacity-40 order-first lg:order-last" />
                             </div>
                         </div>
                     </div>

@@ -43,7 +43,7 @@ export default function FAQ() {
                     <h2 className="text-2xl md:text-3xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
                         Frequently Asked Questions
                     </h2>
-                    <p className="text-lg text-slate-600 ">
+                    <p className="text-base md:text-lg text-slate-600 ">
                         Got questions? We&apos;ve got answers.
                     </p>
                 </motion.div>

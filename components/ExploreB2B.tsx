@@ -69,10 +69,10 @@ export default function ExploreB2B() {
     }, [isModalOpen]);
 
     return (
-        <section id="b2b" className={`py-[80px] md:py-[120px] bg-[#F5F5F5] relative transition-colors duration-300 ${isModalOpen ? 'z-[100]' : 'z-10'}`}>
+        <section id="b2b" className={`py-[120px] bg-[#F5F5F5] relative transition-colors duration-300 ${isModalOpen ? 'z-[100]' : 'z-10'}`}>
             <SectionBackground />
 
-            <div className="container mx-auto px-6 md:pl-[34px] lg:pl-6 relative z-10">
+            <div className="container mx-auto px-6 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                     {/* Left Side: Image */}
                     <motion.div
@@ -80,7 +80,7 @@ export default function ExploreB2B() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="w-full lg:w-1/2 relative order-2 lg:order-1 md:hidden lg:block block"
+                        className="w-full lg:w-1/2 relative order-1"
                     >
                         <div className="relative aspect-square rounded-[40px] overflow-hidden">
                             <Image
@@ -98,24 +98,16 @@ export default function ExploreB2B() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="w-full lg:w-1/2 flex flex-col text-left md:text-center lg:text-left items-start md:items-center lg:items-start order-1 lg:order-2"
+                        className="w-full lg:w-1/2 flex flex-col text-center lg:text-left items-center lg:items-start order-2"
                     >
-                        <h2 className="text-3xl md:text-3xl lg:text-5xl font-black mb-6 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
-                            Let's join <br className="hidden md:block lg:hidden" />hand together
+                        <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
+                            Let's join hand together
                         </h2>
-                        <p className={`text-xl md:text-2xl lg:text-3xl text-black/60 leading-relaxed mb-10 normal-case ${dosis.className} font-medium italic`}>
-                            Explore B2B opportunity with Khaleefa Holiday.<br className="hidden md:block lg:hidden" /> Join our exclusive network of travel partners and <br className="hidden md:block lg:hidden" />grow your business with us.
+                        <p className={`text-xl md:text-3xl text-black/60 leading-relaxed mb-10 normal-case ${dosis.className} font-medium italic`}>
+                            Explore B2B opportunity with Khaleefa Holiday.<br className="hidden md:block" /> Join our exclusive network of travel partners and <br className="hidden md:block" />grow your business with us.
                         </p>
                         
-                        {/* Tablet Image (Hidden on Mobile & Desktop, reduced size, above button, no shadow) */}
-                        <div className="hidden md:block lg:hidden w-[60%] md:w-[50%] aspect-square relative rounded-[40px] overflow-hidden mb-10">
-                            <Image
-                                src="/images/b2b-2.png"
-                                alt="Khaleefa Holidays B2B Travel Partnership Opportunities"
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
+
                         
                         <div className="relative group/btn w-fit">
                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover/btn:translate-x-0 group-hover/btn:translate-y-0 transition-transform" />
@@ -150,7 +142,7 @@ export default function ExploreB2B() {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             transition={{ type: "spring", duration: 0.5 }}
-                            className="bg-[#F5F5F5] rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] w-full max-w-4xl relative z-10 overflow-hidden text-[#18189C] border-[10px] border-white flex flex-col md:flex-row min-h-[500px]"
+                            className="bg-[#F5F5F5] rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] w-full max-w-4xl relative z-10 overflow-y-auto md:overflow-hidden text-[#18189C] border-[10px] border-white flex flex-col md:flex-row min-h-[500px] max-h-[90vh] md:max-h-none"
                         >
                             {/* Visual Cutouts for Ticket Effect */}
                             <div className="hidden md:block absolute left-[33%] -top-[20px] w-10 h-10 bg-white rounded-full z-20 pointer-events-none shadow-[inset_0_-4px_10px_rgba(0,0,0,0.05)]" />
@@ -165,7 +157,7 @@ export default function ExploreB2B() {
                             </button>
 
                             {/* Left Section: Partnership Branding (Stub) */}
-                            <div className="w-full md:w-1/3 bg-[#18189C] p-8 md:p-10 flex flex-col justify-between text-white border-b-2 md:border-b-0 md:border-r-2 border-dashed border-white/20">
+                            <div className="w-full md:w-1/3 bg-[#18189C] p-10 flex flex-col justify-between text-white border-b-2 md:border-b-0 md:border-r-2 border-dashed border-white/20">
                                 <div>
                                     <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 shadow-inner transform -rotate-12">
                                         <Plane size={32} className="transform rotate-45" />
@@ -177,7 +169,7 @@ export default function ExploreB2B() {
                                 </div>
 
                                 {/* Visual Barcode for Stub Effect */}
-                                <div className="mt-12 pt-6 border-t border-white/10 hidden md:block">
+                                <div className="mt-12 pt-6 border-t border-white/10">
                                     <div className="flex justify-between items-center text-[10px] font-mono text-white/20 tracking-widest uppercase mb-4">
                                         <span>Partner ID</span>
                                         <span>B2B-KH-2024</span>
@@ -202,7 +194,7 @@ export default function ExploreB2B() {
                             </div>
 
                             {/* Right Section: Form Body */}
-                            <div className="w-full md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
+                            <div className="w-full md:w-2/3 p-12 flex flex-col justify-center">
                                 {submitted ? (
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.9 }}
