@@ -103,7 +103,7 @@ export default function AnimatedCapsuleBackground() {
                     100% { transform: scale(1) translateZ(0); opacity: 0.7; }
                 }
             `}} />
-            <div ref={containerRef} className="absolute inset-0 w-full h-full bg-[#18189C]" />
+            <div ref={containerRef} className="absolute inset-0 w-full h-full bg-[#0c39e0]" />
         </>
     );
 }

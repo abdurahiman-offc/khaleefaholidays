@@ -100,7 +100,7 @@ export default function ExploreB2B() {
                         transition={{ duration: 0.8 }}
                         className="w-full lg:w-1/2 flex flex-col text-center lg:text-left items-center lg:items-start order-2"
                     >
-                        <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
+                        <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
                             Let's join hand together
                         </h2>
                         <p className={`text-xl md:text-3xl text-black/60 leading-relaxed mb-10 normal-case ${dosis.className} font-medium italic`}>
@@ -113,7 +113,7 @@ export default function ExploreB2B() {
                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover/btn:translate-x-0 group-hover/btn:translate-y-0 transition-transform" />
                             <button
                                 onClick={() => setIsModalOpen(true)}
-                                className="relative bg-[#18189C] text-white px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest flex items-center gap-3"
+                                className="relative bg-[#0c39e0] text-white px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest flex items-center gap-3"
                             >
                                 Partner with Us
                                 <MoveRight className="w-5 h-5" />
@@ -142,7 +142,7 @@ export default function ExploreB2B() {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             transition={{ type: "spring", duration: 0.5 }}
-                            className="bg-[#F5F5F5] rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] w-full max-w-4xl relative z-10 overflow-y-auto md:overflow-hidden text-[#18189C] border-[10px] border-white flex flex-col md:flex-row min-h-[500px] max-h-[90vh] md:max-h-none"
+                            className="bg-[#F5F5F5] rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] w-full max-w-4xl relative z-10 overflow-y-auto md:overflow-hidden text-[#0c39e0] border-[10px] border-white flex flex-col md:flex-row min-h-[500px] max-h-[90vh] md:max-h-none"
                         >
                             {/* Visual Cutouts for Ticket Effect */}
                             <div className="hidden md:block absolute left-[33%] -top-[20px] w-10 h-10 bg-white rounded-full z-20 pointer-events-none shadow-[inset_0_-4px_10px_rgba(0,0,0,0.05)]" />
@@ -151,13 +151,13 @@ export default function ExploreB2B() {
                             {/* Sticky Close Button (Inside) */}
                             <button
                                 onClick={() => setIsModalOpen(false)}
-                                className="absolute top-6 right-6 w-10 h-10 bg-white shadow-xl rounded-full border border-[#18189C]/10 flex items-center justify-center text-[#18189C] hover:text-red-500 transition-all z-[110] group"
+                                className="absolute top-6 right-6 w-10 h-10 bg-white shadow-xl rounded-full border border-[#0c39e0]/10 flex items-center justify-center text-[#0c39e0] hover:text-red-500 transition-all z-[110] group"
                             >
                                 <X size={20} className="group-hover:rotate-90 transition-transform" />
                             </button>
 
                             {/* Left Section: Partnership Branding (Stub) */}
-                            <div className="w-full md:w-1/3 bg-[#18189C] p-10 flex flex-col justify-between text-white border-b-2 md:border-b-0 md:border-r-2 border-dashed border-white/20">
+                            <div className="w-full md:w-1/3 bg-[#0c39e0] p-10 flex flex-col justify-between text-white border-b-2 md:border-b-0 md:border-r-2 border-dashed border-white/20">
                                 <div>
                                     <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 shadow-inner transform -rotate-12">
                                         <Plane size={32} className="transform rotate-45" />
@@ -204,13 +204,13 @@ export default function ExploreB2B() {
                                         <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6 shadow-sm">
                                             <CheckCircle2 size={40} className="text-green-600" />
                                         </div>
-                                        <h4 className="text-2xl font-black uppercase tracking-tighter text-[#18189C] mb-3">Request Sent!</h4>
-                                        <p className="text-[#18189C]/60 text-sm font-black uppercase max-w-xs mx-auto">
+                                        <h4 className="text-2xl font-black uppercase tracking-tighter text-[#0c39e0] mb-3">Request Sent!</h4>
+                                        <p className="text-[#0c39e0]/60 text-sm font-black uppercase max-w-xs mx-auto">
                                             Thank you for your interest. Our B2B team will contact you shortly.
                                         </p>
                                         <button
                                             onClick={() => setIsModalOpen(false)}
-                                            className="mt-8 text-[#18189C] text-[10px] font-black uppercase tracking-[0.2em] border-b-2 border-[#18189C]/20 pb-1 hover:border-[#18189C] transition-all"
+                                            className="mt-8 text-[#0c39e0] text-[10px] font-black uppercase tracking-[0.2em] border-b-2 border-[#0c39e0]/20 pb-1 hover:border-[#0c39e0] transition-all"
                                         >
                                             Return to Site
                                         </button>
@@ -219,12 +219,12 @@ export default function ExploreB2B() {
                                     <div className="max-w-md mx-auto w-full">
                                         <div className="mb-10">
                                             <h4 className="text-2xl font-black uppercase tracking-tighter mb-2">Join the Elite</h4>
-                                            <p className="text-[#18189C]/40 text-xs font-black uppercase tracking-widest italic">Complete the enquiry to start your journey.</p>
+                                            <p className="text-[#0c39e0]/40 text-xs font-black uppercase tracking-widest italic">Complete the enquiry to start your journey.</p>
                                         </div>
 
                                         <form onSubmit={handleSubmit} className="space-y-6">
                                             <div className="space-y-1.5">
-                                                <label className="text-[10px] font-black text-[#18189C]/30 uppercase tracking-widest px-1 flex items-center gap-2">
+                                                <label className="text-[10px] font-black text-[#0c39e0]/30 uppercase tracking-widest px-1 flex items-center gap-2">
                                                     <User size={12} /> Full Name
                                                 </label>
                                                 <input
@@ -233,13 +233,13 @@ export default function ExploreB2B() {
                                                     name="name"
                                                     value={formData.name}
                                                     onChange={handleChange}
-                                                    className="w-full px-5 py-4 bg-white border border-[#18189C]/10 rounded-2xl focus:ring-2 focus:ring-[#18189C]/10 outline-none text-sm font-black uppercase transition-all text-[#18189C] tracking-tight"
+                                                    className="w-full px-5 py-4 bg-white border border-[#0c39e0]/10 rounded-2xl focus:ring-2 focus:ring-[#0c39e0]/10 outline-none text-sm font-black uppercase transition-all text-[#0c39e0] tracking-tight"
                                                     placeholder="NAME / COMPANY"
                                                 />
                                             </div>
 
                                             <div className="space-y-1.5">
-                                                <label className="text-[10px] font-black text-[#18189C]/30 uppercase tracking-widest px-1 flex items-center gap-2">
+                                                <label className="text-[10px] font-black text-[#0c39e0]/30 uppercase tracking-widest px-1 flex items-center gap-2">
                                                     <Phone size={12} /> Mobile Number
                                                 </label>
                                                 <input
@@ -248,14 +248,14 @@ export default function ExploreB2B() {
                                                     name="phone"
                                                     value={formData.phone}
                                                     onChange={handleChange}
-                                                    className={`w-full px-5 py-4 bg-white border rounded-2xl focus:ring-2 focus:ring-[#18189C]/10 outline-none text-sm font-black uppercase transition-all text-[#18189C] tracking-tight ${phoneError ? "border-red-400" : "border-[#18189C]/10"}`}
+                                                    className={`w-full px-5 py-4 bg-white border rounded-2xl focus:ring-2 focus:ring-[#0c39e0]/10 outline-none text-sm font-black uppercase transition-all text-[#0c39e0] tracking-tight ${phoneError ? "border-red-400" : "border-[#0c39e0]/10"}`}
                                                     placeholder="+91 0000 0000"
                                                 />
                                                 {phoneError && <p className="text-red-500 text-[10px] mt-1 font-black px-1">{phoneError}</p>}
                                             </div>
 
                                             <div className="space-y-1.5">
-                                                <label className="text-[10px] font-black text-[#18189C]/30 uppercase tracking-widest px-1 flex items-center gap-2">
+                                                <label className="text-[10px] font-black text-[#0c39e0]/30 uppercase tracking-widest px-1 flex items-center gap-2">
                                                     <MessageSquare size={12} /> Partnership Note
                                                 </label>
                                                 <textarea
@@ -264,7 +264,7 @@ export default function ExploreB2B() {
                                                     rows={3}
                                                     value={formData.message}
                                                     onChange={handleChange}
-                                                    className="w-full px-5 py-4 bg-white border border-[#18189C]/10 rounded-2xl focus:ring-2 focus:ring-[#18189C]/10 outline-none text-sm font-black uppercase resize-none transition-all text-[#18189C] tracking-tight"
+                                                    className="w-full px-5 py-4 bg-white border border-[#0c39e0]/10 rounded-2xl focus:ring-2 focus:ring-[#0c39e0]/10 outline-none text-sm font-black uppercase resize-none transition-all text-[#0c39e0] tracking-tight"
                                                     placeholder="Tell us about your business..."
                                                 />
                                             </div>
@@ -273,7 +273,7 @@ export default function ExploreB2B() {
                                                 <div className="absolute -inset-1 bg-black rounded-2xl transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                                 <button
                                                     type="submit"
-                                                    className="relative w-full bg-[#18189C] text-white px-8 py-4 rounded-2xl border-2 border-black text-sm font-black uppercase tracking-widest flex items-center justify-center gap-3 active:scale-[0.98] transition-all"
+                                                    className="relative w-full bg-[#0c39e0] text-white px-8 py-4 rounded-2xl border-2 border-black text-sm font-black uppercase tracking-widest flex items-center justify-center gap-3 active:scale-[0.98] transition-all"
                                                 >
                                                     Partner with us now
                                                 </button>

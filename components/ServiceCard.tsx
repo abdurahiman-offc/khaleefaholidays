@@ -89,11 +89,11 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                             <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">
                                 {item.name || item.country}
                             </h3>
-                            <div className="mt-2 bg-[#18189C]/5 px-4 py-1.5 rounded-full w-fit">
-                                <p className="text-[10px] font-black text-[#18189C] uppercase tracking-[0.2em]">{item.duration || "5 Days"}</p>
+                            <div className="mt-2 bg-[#0c39e0]/5 px-4 py-1.5 rounded-full w-fit">
+                                <p className="text-[10px] font-black text-[#0c39e0] uppercase tracking-[0.2em]">{item.duration || "5 Days"}</p>
                             </div>
                         </div>
-                        <p className="text-[#18189C]/60 text-sm font-black uppercase tracking-tight italic line-clamp-2 mb-6">
+                        <p className="text-[#0c39e0]/60 text-sm font-black uppercase tracking-tight italic line-clamp-2 mb-6">
                             {item.description}
                         </p>
                     </div>
@@ -101,13 +101,13 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                     <div className="flex items-center justify-between mt-4 pt-6 border-t border-slate-100">
                         <div>
                             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Starting From</p>
-                            <p className="text-2xl font-black text-[#18189C] leading-none">
+                            <p className="text-2xl font-black text-[#0c39e0] leading-none">
                                 {item.price || item.cost}
                             </p>
                         </div>
                         <button
                             onClick={(e) => { e.stopPropagation(); onClick(); }}
-                            className="bg-[#18189C] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:bg-black transition-colors flex items-center gap-2"
+                            className="bg-[#0c39e0] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:bg-black transition-colors flex items-center gap-2"
                         >
                             Explore Now
                             <Plane size={16} className="transform rotate-45" />
@@ -161,8 +161,8 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                             )}
                             {type === "destination" && (
                                 <div className="mt-2 flex items-center gap-1.5">
-                                    <div className="bg-[#18189C]/5 px-2.5 py-0.5 rounded-full">
-                                        <p className="text-[9px] font-black text-[#18189C] uppercase tracking-widest">
+                                    <div className="bg-[#0c39e0]/5 px-2.5 py-0.5 rounded-full">
+                                        <p className="text-[9px] font-black text-[#0c39e0] uppercase tracking-widest">
                                             {item.duration || "5 Days"}
                                         </p>
                                     </div>
@@ -175,8 +175,8 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                             )}
                         </div>
                         {type !== "destination" && (
-                            <div className="bg-[#18189C]/5 px-3 py-1 rounded-full whitespace-nowrap shrink-0">
-                                <p className={`${type === "visa" ? "text-xs" : "text-[9px]"} font-black text-[#18189C] uppercase tracking-widest`}>
+                            <div className="bg-[#0c39e0]/5 px-3 py-1 rounded-full whitespace-nowrap shrink-0">
+                                <p className={`${type === "visa" ? "text-xs" : "text-[9px]"} font-black text-[#0c39e0] uppercase tracking-widest`}>
                                     {item.category || (type === "visa" ? "Visa" : (type === "rooms" ? "Stay" : (type === "cab" ? "Cab" : "Service")))}
                                 </p>
                             </div>
@@ -185,10 +185,10 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                 </div>
 
                 <div className="flex items-end justify-between mt-auto pt-4 border-t border-slate-100">
-                    <p className="text-lg font-black text-[#18189C] leading-none">
+                    <p className="text-lg font-black text-[#0c39e0] leading-none">
                         {type === "visa" ? `₹ ${item.cost}` : (item.price || item.cost)}
                     </p>
-                    <button className="text-[10px] font-black uppercase tracking-[0.2em] text-[#18189C] border-b-2 border-[#18189C]/20 hover:border-[#18189C] transition-all pb-1 leading-none">
+                    <button className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0c39e0] border-b-2 border-[#0c39e0]/20 hover:border-[#0c39e0] transition-all pb-1 leading-none">
                         More Info
                     </button>
                 </div>
@@ -239,10 +239,10 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
     const priceText = isVisa ? `₹ ${item.cost}` : (item.price || item.cost);
 
     return (
-        <div className="flex flex-col md:flex-row w-full relative overflow-hidden bg-[#F5F5F5] rounded-3xl scrollbar-hide text-[#18189C]">
+        <div className="flex flex-col md:flex-row w-full relative overflow-hidden bg-[#F5F5F5] rounded-3xl scrollbar-hide text-[#0c39e0]">
             <button
                 onClick={onClose}
-                className="sticky top-4 right-4 ml-auto mr-4 -mt-10 md:absolute md:top-8 md:right-8 w-10 h-10 bg-white shadow-xl rounded-full border border-[#18189C]/10 flex items-center justify-center text-[#18189C] hover:text-red-500 transition-all z-[110] group"
+                className="sticky top-4 right-4 ml-auto mr-4 -mt-10 md:absolute md:top-8 md:right-8 w-10 h-10 bg-white shadow-xl rounded-full border border-[#0c39e0]/10 flex items-center justify-center text-[#0c39e0] hover:text-red-500 transition-all z-[110] group"
             >
                 <X size={20} className="group-hover:rotate-90 transition-transform" />
             </button>
@@ -251,23 +251,23 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
             <div className="hidden md:block absolute left-[66%] -bottom-[20px] w-10 h-10 bg-white rounded-full z-20 pointer-events-none" />
 
             {/* Left Section: Main Ticket Body */}
-            <div className="w-full md:w-2/3 p-6 md:p-10 flex flex-col border-b-2 md:border-b-0 md:border-r-2 border-dashed border-[#18189C]/10 overflow-y-auto scrollbar-hide h-auto">
+            <div className="w-full md:w-2/3 p-6 md:p-10 flex flex-col border-b-2 md:border-b-0 md:border-r-2 border-dashed border-[#0c39e0]/10 overflow-y-auto scrollbar-hide h-auto">
                 {/* Header */}
-                <div className="flex justify-between items-start mb-8 border-b-2 border-[#18189C]/5 pb-6 shrink-0">
+                <div className="flex justify-between items-start mb-8 border-b-2 border-[#0c39e0]/5 pb-6 shrink-0">
                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-[#18189C] text-white rounded-2xl flex items-center justify-center shadow-lg transform -rotate-12">
+                        <div className="w-12 h-12 bg-[#0c39e0] text-white rounded-2xl flex items-center justify-center shadow-lg transform -rotate-12">
                             {isVisa ? <FileCheck size={24} className="transform rotate-12" /> : <Plane size={24} className="transform rotate-45" />}
                         </div>
                         <div>
-                            <h3 className="text-xl font-black text-[#18189C] uppercase tracking-tighter">{title}</h3>
-                            <p className="text-[10px] font-black text-[#18189C]/40 tracking-[0.2em] uppercase">
+                            <h3 className="text-xl font-black text-[#0c39e0] uppercase tracking-tighter">{title}</h3>
+                            <p className="text-[10px] font-black text-[#0c39e0]/40 tracking-[0.2em] uppercase">
                                 {isVisa ? "Priority Visa Service" : (isRoom ? "Premium Stay" : (isCab ? "Premium Transport" : "Premium Destination"))}
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div className="relative rounded-[32px] overflow-hidden aspect-[16/9] mb-8 group shrink-0 border border-[#18189C]/5">
+                <div className="relative rounded-[32px] overflow-hidden aspect-[16/9] mb-8 group shrink-0 border border-[#0c39e0]/5">
                     <Image
                         src={item.image}
                         alt={`${title} - Service Gallery`}
@@ -275,14 +275,14 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                         sizes="(max-width: 768px) 100vw, 66vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#18189C]/20 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0c39e0]/20 via-transparent to-transparent" />
                 </div>
 
                 {/* Overview for Destinations, Rooms, Cabs */}
                 {(isDestination || isRoom || isCab) && (
-                    <div className="mb-8 bg-white/40 p-6 rounded-2xl border border-[#18189C]/5">
-                        <p className="text-[#18189C]/30 text-[10px] font-black uppercase tracking-widest mb-3">Overview</p>
-                        <p className="text-[#18189C]/60 leading-relaxed text-sm font-black uppercase tracking-tight italic whitespace-pre-wrap">
+                    <div className="mb-8 bg-white/40 p-6 rounded-2xl border border-[#0c39e0]/5">
+                        <p className="text-[#0c39e0]/30 text-[10px] font-black uppercase tracking-widest mb-3">Overview</p>
+                        <p className="text-[#0c39e0]/60 leading-relaxed text-sm font-black uppercase tracking-tight italic whitespace-pre-wrap">
                             {item.description || item.amenities || item.features}
                         </p>
                     </div>
@@ -292,15 +292,15 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                 {!isDestination && (
                     <div className="hidden md:block mb-8 space-y-4">
                         <div className="flex flex-row gap-4">
-                            <div className="flex-1 bg-[#18189C]/5 rounded-2xl border border-[#18189C]/5 p-4 flex justify-between items-center">
+                            <div className="flex-1 bg-[#0c39e0]/5 rounded-2xl border border-[#0c39e0]/5 p-4 flex justify-between items-center">
                                 <div>
-                                    <p className="text-[#18189C]/30 text-[9px] font-black uppercase tracking-widest">Support Agent</p>
-                                    <p className="font-black text-[#18189C] text-base uppercase">{contactPerson}</p>
+                                    <p className="text-[#0c39e0]/30 text-[9px] font-black uppercase tracking-widest">Support Agent</p>
+                                    <p className="font-black text-[#0c39e0] text-base uppercase">{contactPerson}</p>
                                 </div>
-                                <div className="w-[1px] h-8 bg-[#18189C]/10 mx-4" />
+                                <div className="w-[1px] h-8 bg-[#0c39e0]/10 mx-4" />
                                 <div className="text-right">
-                                    <p className="text-[#18189C]/30 text-[9px] font-black uppercase tracking-widest">Mobile No</p>
-                                    <p className="font-black text-[#18189C] text-base">{contactNumber}</p>
+                                    <p className="text-[#0c39e0]/30 text-[9px] font-black uppercase tracking-widest">Mobile No</p>
+                                    <p className="font-black text-[#0c39e0] text-base">{contactNumber}</p>
                                 </div>
                             </div>
                         </div>
@@ -322,14 +322,14 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                 {!isDestination && (
                     <div className="block md:hidden mt-10 space-y-6 pt-10 border-t-2 border-[#2D3E33]/10">
                         <div className="flex flex-col gap-4">
-                            <div className="bg-[#18189C]/5 rounded-2xl p-4 flex justify-between items-center">
+                            <div className="bg-[#0c39e0]/5 rounded-2xl p-4 flex justify-between items-center">
                                 <div>
-                                    <p className="text-[#18189C]/30 text-[9px] font-black uppercase tracking-widest">Support Agent</p>
-                                    <p className="font-black text-[#18189C] text-base uppercase">{contactPerson}</p>
+                                    <p className="text-[#0c39e0]/30 text-[9px] font-black uppercase tracking-widest">Support Agent</p>
+                                    <p className="font-black text-[#0c39e0] text-base uppercase">{contactPerson}</p>
                                 </div>
                                 <div className="text-right">
-                                    <p className="text-[#18189C]/30 text-[9px] font-black uppercase tracking-widest">Mobile No</p>
-                                    <p className="font-black text-[#18189C] text-base">{contactNumber}</p>
+                                    <p className="text-[#0c39e0]/30 text-[9px] font-black uppercase tracking-widest">Mobile No</p>
+                                    <p className="font-black text-[#0c39e0] text-base">{contactNumber}</p>
                                 </div>
                             </div>
                         </div>
@@ -344,7 +344,7 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                             </button>
                             <button
                                 onClick={() => window.open(`tel:+91${contactNumber}`)}
-                                className="w-full bg-[#18189C] text-white py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2"
+                                className="w-full bg-[#0c39e0] text-white py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2"
                             >
                                 <Phone size={14} />
                                 Call Now
@@ -355,50 +355,50 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
             </div>
 
             {/* Right Section: Ticket Stub / Enquiry or Contact Details */}
-            <div className="w-full md:w-1/3 bg-[#18189C]/5 p-6 md:p-10 flex flex-col overflow-y-auto scrollbar-hide h-auto text-[#18189C]">
+            <div className="w-full md:w-1/3 bg-[#0c39e0]/5 p-6 md:p-10 flex flex-col overflow-y-auto scrollbar-hide h-auto text-[#0c39e0]">
                 <div className="mb-6">
-                    <p className="text-[10px] font-black text-[#18189C]/30 tracking-[0.2em] uppercase mb-1">
+                    <p className="text-[10px] font-black text-[#0c39e0]/30 tracking-[0.2em] uppercase mb-1">
                         {isVisa ? "Service Type" : "Service Info"}
                     </p>
-                    <h4 className="font-black text-xl text-[#18189C] uppercase tracking-tighter break-words">
+                    <h4 className="font-black text-xl text-[#0c39e0] uppercase tracking-tighter break-words">
                         {isVisa ? item.visaType : (isRoom ? "Room/Stay" : (isCab ? "Cab/Taxi" : "Destination"))}
                     </h4>
                 </div>
 
                 {/* Ticket Details List */}
                 <div className="mb-8">
-                    <p className="text-[#18189C] text-[11px] font-black uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <p className="text-[#0c39e0] text-[11px] font-black uppercase tracking-widest mb-4 flex items-center gap-2">
                         {isVisa ? "Visa Details" : (isRoom ? "Stay Details" : (isCab ? "Cab Details" : "Journey Details"))}
                     </p>
                     <div className="space-y-4 px-1">
-                        <div className="flex justify-between items-center border-b border-[#18189C]/10 pb-2">
-                            <span className="text-[10px] font-black text-[#18189C]/30 uppercase tracking-widest">Price</span>
-                            <span className="font-black text-[#18189C] text-base">{priceText}</span>
+                        <div className="flex justify-between items-center border-b border-[#0c39e0]/10 pb-2">
+                            <span className="text-[10px] font-black text-[#0c39e0]/30 uppercase tracking-widest">Price</span>
+                            <span className="font-black text-[#0c39e0] text-base">{priceText}</span>
                         </div>
                         {isVisa ? (
                             <>
-                                <div className="flex justify-between items-center border-b border-[#18189C]/10 pb-2">
-                                    <span className="text-[10px] font-black text-[#18189C]/30 uppercase tracking-widest">Processing</span>
-                                    <span className="font-black text-[#18189C]/60 text-sm uppercase">{item.processingDays} Days</span>
+                                <div className="flex justify-between items-center border-b border-[#0c39e0]/10 pb-2">
+                                    <span className="text-[10px] font-black text-[#0c39e0]/30 uppercase tracking-widest">Processing</span>
+                                    <span className="font-black text-[#0c39e0]/60 text-sm uppercase">{item.processingDays} Days</span>
                                 </div>
-                                <div className="flex justify-between items-center border-b border-[#18189C]/10 pb-2">
-                                    <span className="text-[10px] font-black text-[#18189C]/30 uppercase tracking-widest">Validity</span>
-                                    <span className="font-black text-[#18189C]/60 text-sm uppercase">{item.validity} Days</span>
+                                <div className="flex justify-between items-center border-b border-[#0c39e0]/10 pb-2">
+                                    <span className="text-[10px] font-black text-[#0c39e0]/30 uppercase tracking-widest">Validity</span>
+                                    <span className="font-black text-[#0c39e0]/60 text-sm uppercase">{item.validity} Days</span>
                                 </div>
                             </>
                         ) : (
                             <>
-                                <div className="flex justify-between items-center border-b border-[#18189C]/10 pb-2">
-                                    <span className="text-[10px] font-black text-[#18189C]/30 uppercase tracking-widest">
+                                <div className="flex justify-between items-center border-b border-[#0c39e0]/10 pb-2">
+                                    <span className="text-[10px] font-black text-[#0c39e0]/30 uppercase tracking-widest">
                                         {isCab ? "Service" : "Duration"}
                                     </span>
-                                    <span className="font-black text-[#18189C]/60 text-sm uppercase">
+                                    <span className="font-black text-[#0c39e0]/60 text-sm uppercase">
                                         {isCab ? "Direct" : (item.duration || "Flexible")}
                                     </span>
                                 </div>
-                                <div className="flex justify-between items-center border-b border-[#18189C]/10 pb-2">
-                                    <span className="text-[10px] font-black text-[#18189C]/30 uppercase tracking-widest">Availability</span>
-                                    <span className="font-black text-[#18189C]/60 text-sm uppercase">Instant</span>
+                                <div className="flex justify-between items-center border-b border-[#0c39e0]/10 pb-2">
+                                    <span className="text-[10px] font-black text-[#0c39e0]/30 uppercase tracking-widest">Availability</span>
+                                    <span className="font-black text-[#0c39e0]/60 text-sm uppercase">Instant</span>
                                 </div>
                             </>
                         )}
@@ -408,23 +408,23 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                 {/* Details Section - MOVED FROM LEFT */}
                 {!isDestination && (
                     <div className="mb-8">
-                        <p className="text-[#18189C]/30 text-[10px] font-black uppercase tracking-widest mb-4">
+                        <p className="text-[#0c39e0]/30 text-[10px] font-black uppercase tracking-widest mb-4">
                             {isVisa ? "Visa Requirements" : "Overview"}
                         </p>
-                        <div className="bg-white/40 p-5 rounded-2xl border border-[#18189C]/5 relative overflow-hidden">
+                        <div className="bg-white/40 p-5 rounded-2xl border border-[#0c39e0]/5 relative overflow-hidden">
                             {isVisa ? (
                                 <ul className="space-y-2 relative z-10">
                                     {(item.requirements?.length > 0 ? item.requirements : ["Passport", "Photo"])
                                         .filter((req: string) => req.trim() !== "")
                                         .map((req: string, i: number) => (
-                                            <li key={i} className="flex items-start gap-2.5 text-[#18189C]/60 font-black text-[10px] uppercase tracking-tight">
-                                                <div className="mt-1.5 w-1 h-1 rounded-full bg-[#18189C] flex-shrink-0 opacity-40" />
+                                            <li key={i} className="flex items-start gap-2.5 text-[#0c39e0]/60 font-black text-[10px] uppercase tracking-tight">
+                                                <div className="mt-1.5 w-1 h-1 rounded-full bg-[#0c39e0] flex-shrink-0 opacity-40" />
                                                 <span className="leading-snug">{req}</span>
                                             </li>
                                         ))}
                                 </ul>
                             ) : (
-                                <p className="text-[#18189C]/60 leading-relaxed text-xs font-black uppercase tracking-tight italic whitespace-pre-wrap relative z-10">
+                                <p className="text-[#0c39e0]/60 leading-relaxed text-xs font-black uppercase tracking-tight italic whitespace-pre-wrap relative z-10">
                                     {item.description || (type === "rooms" ? item.amenities : item.features)}
                                 </p>
                             )}
@@ -464,7 +464,7 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
 
                                         <div className="relative group w-full mt-4">
                                             <div className="absolute -inset-1 bg-black rounded-2xl transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
-                                            <button type="submit" className="relative w-full bg-gradient-to-r from-[#18189C] to-black text-white px-8 py-4 rounded-2xl border-2 border-black text-xs font-black uppercase tracking-widest flex items-center justify-center gap-3 group">
+                                            <button type="submit" className="relative w-full bg-gradient-to-r from-[#0c39e0] to-black text-white px-8 py-4 rounded-2xl border-2 border-black text-xs font-black uppercase tracking-widest flex items-center justify-center gap-3 group">
                                                 Confirm Enquiry
                                                 <Plane size={18} className="transform group-hover:translate-x-1 transition-transform" />
                                             </button>

@@ -70,32 +70,32 @@ export default function ContactUs() {
                     className="max-w-5xl mx-auto"
                 >
                     <div className="text-center mb-12">
-                        <h2 className="text-4xl font-black tracking-[0.2em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">Contact Us</h2>
+                        <h2 className="text-4xl font-black tracking-[0.2em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">Contact Us</h2>
                     </div>
 
                     {/* Flight Ticket Container */}
-                    <div className="flex flex-col lg:flex-row bg-white/60 backdrop-blur-3xl rounded-[32px] md:rounded-[40px] shadow-xl relative border border-[#18189C]/5 overflow-hidden">
+                    <div className="flex flex-col lg:flex-row bg-white/60 backdrop-blur-3xl rounded-[32px] md:rounded-[40px] shadow-xl relative border border-[#0c39e0]/5 overflow-hidden">
 
                         {/* Cutouts for Desktop */}
                         <div className="hidden lg:block absolute left-[70%] -top-[20px] w-[40px] h-[40px] bg-white rounded-full z-20 transform -translate-x-1/2 pointer-events-none" />
                         <div className="hidden lg:block absolute left-[70%] -bottom-[20px] w-[40px] h-[40px] bg-white rounded-full z-20 transform -translate-x-1/2 pointer-events-none" />
 
                         {/* --- LEFT SECTION: MAIN TICKET --- */}
-                        <div className="w-full lg:w-[70%] p-6 md:p-10 border-b-2 lg:border-b-0 lg:border-r-2 border-dashed border-[#18189C]/10 relative bg-transparent rounded-t-[32px] md:rounded-t-[40px] lg:rounded-l-[40px] lg:rounded-tr-none">
+                        <div className="w-full lg:w-[70%] p-6 md:p-10 border-b-2 lg:border-b-0 lg:border-r-2 border-dashed border-[#0c39e0]/10 relative bg-transparent rounded-t-[32px] md:rounded-t-[40px] lg:rounded-l-[40px] lg:rounded-tr-none">
 
                             {/* Header */}
-                            <div className="flex justify-between items-center mb-8 border-b-2 border-[#18189C]/5 pb-6">
+                            <div className="flex justify-between items-center mb-8 border-b-2 border-[#0c39e0]/5 pb-6">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-12 h-12 bg-[#18189C] text-white rounded-2xl flex items-center justify-center shadow-lg transform -rotate-12">
+                                    <div className="w-12 h-12 bg-[#0c39e0] text-white rounded-2xl flex items-center justify-center shadow-lg transform -rotate-12">
                                         <Plane size={24} className="transform rotate-45" />
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-black text-[#18189C] tracking-tighter uppercase">Khaleefa Holidays</h3>
-                                        <p className="text-[10px] font-black text-[#18189C]/40 tracking-[0.2em] uppercase">First Class Travel</p>
+                                        <h3 className="text-2xl font-black text-[#0c39e0] tracking-tighter uppercase">Khaleefa Holidays</h3>
+                                        <p className="text-[10px] font-black text-[#0c39e0]/40 tracking-[0.2em] uppercase">First Class Travel</p>
                                     </div>
                                 </div>
                                 <div className="text-right">
-                                    <p className="text-[10px] font-black text-[#18189C]/30 tracking-widest uppercase mb-1">Boarding Status</p>
+                                    <p className="text-[10px] font-black text-[#0c39e0]/30 tracking-widest uppercase mb-1">Boarding Status</p>
                                     <span className="px-4 py-1.5 bg-[#FF85A1]/10 text-[#FF85A1] border border-[#FF85A1]/20 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm inline-block">
                                         On Time
                                     </span>
@@ -103,34 +103,34 @@ export default function ContactUs() {
                             </div>
 
                             {/* Flight Route Display */}
-                            <div className="flex items-center justify-between mb-8 bg-[#18189C]/5 rounded-[32px] p-6 border border-[#18189C]/5 relative overflow-hidden">
+                            <div className="flex items-center justify-between mb-8 bg-[#0c39e0]/5 rounded-[32px] p-6 border border-[#0c39e0]/5 relative overflow-hidden">
                                 {/* Decorative background pattern */}
-                                <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#18189C_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                                <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#0c39e0_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
                                 <div className="text-center relative z-10 w-20 md:w-24">
-                                    <p className="text-3xl md:text-5xl font-black text-[#18189C] tracking-tighter">HME</p>
-                                    <p className="text-[10px] md:text-[11px] text-[#18189C]/30 font-black tracking-widest uppercase mt-1">Origin</p>
+                                    <p className="text-3xl md:text-5xl font-black text-[#0c39e0] tracking-tighter">HME</p>
+                                    <p className="text-[10px] md:text-[11px] text-[#0c39e0]/30 font-black tracking-widest uppercase mt-1">Origin</p>
                                 </div>
 
                                 <div className="flex-1 px-4 md:px-8 flex flex-col items-center justify-center relative z-10">
-                                    <div className="flex items-center justify-between w-full text-[10px] text-[#18189C]/30 font-black tracking-widest uppercase mb-2">
+                                    <div className="flex items-center justify-between w-full text-[10px] text-[#0c39e0]/30 font-black tracking-widest uppercase mb-2">
                                         <span>Flight KH-786</span>
                                         <span>Direct</span>
                                     </div>
                                     <div className="w-full relative flex items-center">
-                                        <div className="w-3 h-3 rounded-full border-2 border-[#18189C] bg-white z-10"></div>
-                                        <div className="flex-1 h-[2px] border-b-2 border-dashed border-[#18189C]/20 relative">
-                                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#18189C] bg-white px-2 rounded-full">
+                                        <div className="w-3 h-3 rounded-full border-2 border-[#0c39e0] bg-white z-10"></div>
+                                        <div className="flex-1 h-[2px] border-b-2 border-dashed border-[#0c39e0]/20 relative">
+                                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#0c39e0] bg-white px-2 rounded-full">
                                                 <Plane size={20} className="transform rotate-90" />
                                             </div>
                                         </div>
-                                        <div className="w-3 h-3 rounded-full border-2 border-[#18189C] bg-[#18189C] z-10"></div>
+                                        <div className="w-3 h-3 rounded-full border-2 border-[#0c39e0] bg-[#0c39e0] z-10"></div>
                                     </div>
                                 </div>
 
                                 <div className="text-center relative z-10 w-20 md:w-24">
-                                    <p className="text-3xl md:text-5xl font-black text-[#18189C] tracking-tighter">KHL</p>
-                                    <p className="text-[10px] md:text-[11px] text-[#18189C]/30 font-black tracking-widest uppercase mt-1">Destination</p>
+                                    <p className="text-3xl md:text-5xl font-black text-[#0c39e0] tracking-tighter">KHL</p>
+                                    <p className="text-[10px] md:text-[11px] text-[#0c39e0]/30 font-black tracking-widest uppercase mt-1">Destination</p>
                                 </div>
                             </div>
 
@@ -140,14 +140,14 @@ export default function ContactUs() {
                                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
                                         <CheckCircle2 size={32} className="text-green-600" />
                                     </div>
-                                    <h4 className="text-2xl font-black text-[#18189C] uppercase tracking-tight mb-2">Thank You!</h4>
-                                    <p className="text-[#18189C]/60 font-black uppercase tracking-tight">We've received your message and will get back to you shortly.</p>
+                                    <h4 className="text-2xl font-black text-[#0c39e0] uppercase tracking-tight mb-2">Thank You!</h4>
+                                    <p className="text-[#0c39e0]/60 font-black uppercase tracking-tight">We've received your message and will get back to you shortly.</p>
                                 </div>
                             ) : (
                                 <form id="ticket-form" onSubmit={handleSubmit} className="space-y-4 relative z-10">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div className="bg-white/40 border-2 border-[#18189C]/10 rounded-2xl p-3 focus-within:ring-2 focus-within:ring-[#18189C]/10 transition-all shadow-sm group">
-                                            <label className="flex items-center gap-2 text-[10px] font-black text-[#18189C]/30 uppercase tracking-widest mb-1 group-focus-within:text-[#18189C]">
+                                        <div className="bg-white/40 border-2 border-[#0c39e0]/10 rounded-2xl p-3 focus-within:ring-2 focus-within:ring-[#0c39e0]/10 transition-all shadow-sm group">
+                                            <label className="flex items-center gap-2 text-[10px] font-black text-[#0c39e0]/30 uppercase tracking-widest mb-1 group-focus-within:text-[#0c39e0]">
                                                 <User size={14} /> Name
                                             </label>
                                             <input
@@ -156,12 +156,12 @@ export default function ContactUs() {
                                                 value={formData.name}
                                                 onChange={handleChange}
                                                 required
-                                                className="w-full text-lg font-black text-[#18189C] focus:outline-none bg-transparent placeholder-[#18189C]/20 uppercase tracking-tight"
+                                                className="w-full text-lg font-black text-[#0c39e0] focus:outline-none bg-transparent placeholder-[#0c39e0]/20 uppercase tracking-tight"
                                                 placeholder="JANE DOE"
                                             />
                                         </div>
-                                        <div className={`bg-white/40 border-2 rounded-2xl p-3 focus-within:ring-2 focus-within:ring-[#18189C]/10 transition-all shadow-sm group ${phoneError ? "border-red-400" : "border-[#18189C]/10"}`}>
-                                            <label className="flex items-center gap-2 text-[10px] font-black text-[#18189C]/30 uppercase tracking-widest mb-1 group-focus-within:text-[#18189C]">
+                                        <div className={`bg-white/40 border-2 rounded-2xl p-3 focus-within:ring-2 focus-within:ring-[#0c39e0]/10 transition-all shadow-sm group ${phoneError ? "border-red-400" : "border-[#0c39e0]/10"}`}>
+                                            <label className="flex items-center gap-2 text-[10px] font-black text-[#0c39e0]/30 uppercase tracking-widest mb-1 group-focus-within:text-[#0c39e0]">
                                                 <Phone size={14} /> Phone
                                             </label>
                                             <input
@@ -170,15 +170,15 @@ export default function ContactUs() {
                                                 value={formData.phone}
                                                 onChange={handleChange}
                                                 required
-                                                className="w-full text-lg font-black text-[#18189C] focus:outline-none bg-transparent placeholder-[#18189C]/20 uppercase tracking-tight"
+                                                className="w-full text-lg font-black text-[#0c39e0] focus:outline-none bg-transparent placeholder-[#0c39e0]/20 uppercase tracking-tight"
                                                 placeholder="+91 00000 00000"
                                             />
                                             {phoneError && <p className="text-red-500 text-[10px] mt-1 font-black">{phoneError}</p>}
                                         </div>
                                     </div>
 
-                                    <div className="bg-white/40 border-2 border-[#18189C]/10 rounded-2xl p-3 focus-within:ring-2 focus-within:ring-[#18189C]/10 transition-all shadow-sm group">
-                                        <label className="flex items-center gap-2 text-[10px] font-black text-[#18189C]/30 uppercase tracking-widest mb-1 group-focus-within:text-[#18189C]">
+                                    <div className="bg-white/40 border-2 border-[#0c39e0]/10 rounded-2xl p-3 focus-within:ring-2 focus-within:ring-[#0c39e0]/10 transition-all shadow-sm group">
+                                        <label className="flex items-center gap-2 text-[10px] font-black text-[#0c39e0]/30 uppercase tracking-widest mb-1 group-focus-within:text-[#0c39e0]">
                                             <MessageSquare size={14} /> Message
                                         </label>
                                         <textarea
@@ -187,7 +187,7 @@ export default function ContactUs() {
                                             onChange={handleChange}
                                             required
                                             rows={3}
-                                            className="w-full text-lg font-black text-[#18189C] focus:outline-none bg-transparent placeholder-[#18189C]/20 uppercase tracking-tight resize-none"
+                                            className="w-full text-lg font-black text-[#0c39e0] focus:outline-none bg-transparent placeholder-[#0c39e0]/20 uppercase tracking-tight resize-none"
                                             placeholder="ANY SPECIAL REQUESTS?"
                                         />
                                     </div>
@@ -198,18 +198,18 @@ export default function ContactUs() {
                         </div>
 
                         {/* --- RIGHT SECTION: TICKET STUB --- */}
-                        <div className="w-full lg:w-[30%] bg-[#18189C]/5 p-6 md:p-10 flex flex-col justify-between relative rounded-b-[32px] md:rounded-b-[40px] lg:rounded-r-[40px] lg:rounded-bl-none text-[#18189C]">
+                        <div className="w-full lg:w-[30%] bg-[#0c39e0]/5 p-6 md:p-10 flex flex-col justify-between relative rounded-b-[32px] md:rounded-b-[40px] lg:rounded-r-[40px] lg:rounded-bl-none text-[#0c39e0]">
 
                             <div className="space-y-6">
                                 {/* Stub Header */}
-                                <div className="border-b-2 border-[#18189C]/5 pb-4 flex justify-between items-start">
+                                <div className="border-b-2 border-[#0c39e0]/5 pb-4 flex justify-between items-start">
                                     <div>
-                                        <p className="text-[10px] font-black text-[#18189C]/30 tracking-widest uppercase mb-1">Boarding Pass</p>
-                                        <h4 className="font-black text-xl text-[#18189C] uppercase tracking-tighter truncate max-w-[150px]">
+                                        <p className="text-[10px] font-black text-[#0c39e0]/30 tracking-widest uppercase mb-1">Boarding Pass</p>
+                                        <h4 className="font-black text-xl text-[#0c39e0] uppercase tracking-tighter truncate max-w-[150px]">
                                             {formData.name || "PASSENGER"}
                                         </h4>
                                     </div>
-                                    <div className="w-10 h-10 rounded-full border-2 border-[#18189C]/10 flex items-center justify-center text-[#18189C]/20">
+                                    <div className="w-10 h-10 rounded-full border-2 border-[#0c39e0]/10 flex items-center justify-center text-[#0c39e0]/20">
                                         <User size={18} />
                                     </div>
                                 </div>
@@ -217,20 +217,20 @@ export default function ContactUs() {
                                 {/* Stub Details */}
                                 <div className="grid grid-cols-2 gap-y-6 gap-x-4">
                                     <div>
-                                        <p className="text-[9px] font-black text-[#18189C]/30 uppercase tracking-widest flex items-center gap-1 mb-1"><Calendar size={10} /> Date</p>
-                                        <p className="font-black text-[#18189C]/80 text-sm truncate uppercase tracking-tight">{today}</p>
+                                        <p className="text-[9px] font-black text-[#0c39e0]/30 uppercase tracking-widest flex items-center gap-1 mb-1"><Calendar size={10} /> Date</p>
+                                        <p className="font-black text-[#0c39e0]/80 text-sm truncate uppercase tracking-tight">{today}</p>
                                     </div>
                                     <div>
-                                        <p className="text-[9px] font-black text-[#18189C]/30 uppercase tracking-widest flex items-center gap-1 mb-1"><Clock size={10} /> Boarding</p>
+                                        <p className="text-[9px] font-black text-[#0c39e0]/30 uppercase tracking-widest flex items-center gap-1 mb-1"><Clock size={10} /> Boarding</p>
                                         <p className="font-black text-[#FF85A1] text-sm animate-pulse uppercase tracking-tight">NOW</p>
                                     </div>
                                     <div>
-                                        <p className="text-[9px] font-black text-[#18189C]/30 uppercase tracking-widest flex items-center gap-1 mb-1"><MapPin size={10} /> Gate</p>
-                                        <p className="font-black text-[#18189C]/80 text-xl uppercase tracking-tighter">A1</p>
+                                        <p className="text-[9px] font-black text-[#0c39e0]/30 uppercase tracking-widest flex items-center gap-1 mb-1"><MapPin size={10} /> Gate</p>
+                                        <p className="font-black text-[#0c39e0]/80 text-xl uppercase tracking-tighter">A1</p>
                                     </div>
                                     <div>
-                                        <p className="text-[9px] font-black text-[#18189C]/30 uppercase tracking-widest flex items-center gap-1 mb-1"><Hash size={10} /> Seat</p>
-                                        <p className="font-black text-[#18189C]/80 text-xl uppercase tracking-tighter">14A</p>
+                                        <p className="text-[9px] font-black text-[#0c39e0]/30 uppercase tracking-widest flex items-center gap-1 mb-1"><Hash size={10} /> Seat</p>
+                                        <p className="font-black text-[#0c39e0]/80 text-xl uppercase tracking-tighter">14A</p>
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +244,7 @@ export default function ContactUs() {
                                         return (
                                             <div
                                                 key={i}
-                                                className="bg-[#18189C] rounded-[1px]"
+                                                className="bg-[#0c39e0] rounded-[1px]"
                                                 style={{
                                                     width: `${width}px`,
                                                     height: height
@@ -254,7 +254,7 @@ export default function ContactUs() {
                                     })}
                                 </div>
 
-                                <div className="flex justify-between items-center text-[10px] font-mono text-[#18189C]/30 tracking-[0.2em] border-b-2 border-dashed border-[#18189C]/10 pb-4">
+                                <div className="flex justify-between items-center text-[10px] font-mono text-[#0c39e0]/30 tracking-[0.2em] border-b-2 border-dashed border-[#0c39e0]/10 pb-4">
                                     <span>PNR: {mounted ? pnr : "KH00000"}</span>
                                 </div>
 
@@ -262,7 +262,7 @@ export default function ContactUs() {
                                     <button
                                         type="submit"
                                         form="ticket-form"
-                                        className="w-full flex bg-[#18189C] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] hover:shadow-xl active:scale-95 transition-all duration-300 justify-center items-center gap-2 group shadow-lg"
+                                        className="w-full flex bg-[#0c39e0] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] hover:shadow-xl active:scale-95 transition-all duration-300 justify-center items-center gap-2 group shadow-lg"
                                     >
                                         Confirm <Plane size={16} className="transform group-hover:translate-x-1 transition-transform" />
                                     </button>

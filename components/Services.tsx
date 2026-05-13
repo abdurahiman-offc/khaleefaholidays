@@ -126,7 +126,7 @@ export default function Services() {
             <div className="container mx-auto px-6 relative z-10">
 
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">Our Services</h2>
+                    <h2 className="text-3xl md:text-4xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">Our Services</h2>
                 </div>
 
                 {/* Tabs */}
@@ -139,8 +139,8 @@ export default function Services() {
                                 whileTap={{ scale: 0.98 }}
                                 onClick={() => { setActiveTab(tab.id); setSelectedId(null); }}
                                 className={`relative flex items-center gap-3 px-8 py-4 rounded-full border-2 border-black text-[13px] font-black uppercase tracking-widest transition-all ${activeTab === tab.id
-                                    ? "bg-gradient-to-r from-[#18189C] to-black text-white"
-                                    : "bg-white text-[#18189C] hover:bg-white/90"
+                                    ? "bg-gradient-to-r from-[#0c39e0] to-black text-white"
+                                    : "bg-white text-[#0c39e0] hover:bg-white/90"
                                     }`}
                             >
                                 <tab.icon size={18} />
@@ -170,7 +170,7 @@ export default function Services() {
                                                 setSearchTerm(e.target.value);
                                                 setVisibleCards(6);
                                             }}
-                                            className="w-full bg-white/50 border-2 border-black/5 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest focus:ring-2 focus:ring-[#18189C]/20 focus:border-[#18189C] outline-none transition-all placeholder:text-slate-300"
+                                            className="w-full bg-white/50 border-2 border-black/5 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest focus:ring-2 focus:ring-[#0c39e0]/20 focus:border-[#0c39e0] outline-none transition-all placeholder:text-slate-300"
                                         />
                                         <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -189,8 +189,8 @@ export default function Services() {
                                                     setVisibleCards(6);
                                                 }}
                                                 className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activeVisaCategory === category
-                                                    ? "bg-[#18189C] text-white shadow-sm scale-105"
-                                                    : "text-[#18189C]/60 hover:text-[#18189C] hover:bg-black/5"
+                                                    ? "bg-[#0c39e0] text-white shadow-sm scale-105"
+                                                    : "text-[#0c39e0]/60 hover:text-[#0c39e0] hover:bg-black/5"
                                                     }`}
                                             >
                                                 {category}
@@ -206,7 +206,7 @@ export default function Services() {
                                                 setActiveVisaType(e.target.value);
                                                 setVisibleCards(6);
                                             }}
-                                            className="w-full bg-white/50 border-2 border-black/5 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-black/20 hover:bg-slate-50 transition-all text-[#18189C]"
+                                            className="w-full bg-white/50 border-2 border-black/5 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-black/20 hover:bg-slate-50 transition-all text-[#0c39e0]"
                                             style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2318189C'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '0.9rem' }}
                                         >
                                             <option value="All Types">All Types</option>
@@ -238,7 +238,7 @@ export default function Services() {
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
                                                 onClick={() => setVisibleCards(prev => prev + incrementBy)}
-                                                className="relative bg-white text-[#18189C] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                                className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show More Results
                                             </button>
@@ -249,7 +249,7 @@ export default function Services() {
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
                                                 onClick={() => setVisibleCards(incrementBy)}
-                                                className="relative bg-white text-[#18189C] px-8 py-3 md:px-10 md:py-4 rounded-full border-2 border-black text-xs md:text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                                className="relative bg-white text-[#0c39e0] px-8 py-3 md:px-10 md:py-4 rounded-full border-2 border-black text-xs md:text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show Less
                                             </button>
@@ -283,7 +283,7 @@ export default function Services() {
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
                                                 onClick={() => setVisibleCards(prev => prev + incrementBy)}
-                                                className="relative bg-white text-[#18189C] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                                className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show More Results
                                             </button>
@@ -294,7 +294,7 @@ export default function Services() {
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
                                                 onClick={() => setVisibleCards(incrementBy)}
-                                                className="relative bg-white text-[#18189C] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                                className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show Less
                                             </button>
@@ -327,7 +327,7 @@ export default function Services() {
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
                                                 onClick={() => setVisibleCards(prev => prev + incrementBy)}
-                                                className="relative bg-white text-[#18189C] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                                className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show More Results
                                             </button>
@@ -338,7 +338,7 @@ export default function Services() {
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
                                                 onClick={() => setVisibleCards(incrementBy)}
-                                                className="relative bg-white text-[#18189C] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                                className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show Less
                                             </button>
@@ -371,7 +371,7 @@ export default function Services() {
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
                                                 onClick={() => setVisibleCards(prev => prev + incrementBy)}
-                                                className="relative bg-white text-[#18189C] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                                className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show More Results
                                             </button>
@@ -382,7 +382,7 @@ export default function Services() {
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
                                                 onClick={() => setVisibleCards(incrementBy)}
-                                                className="relative bg-white text-[#18189C] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                                className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                             >
                                                 Show Less
                                             </button>

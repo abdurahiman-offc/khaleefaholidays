@@ -6,7 +6,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 
-import { Playfair_Display, Roboto, Yomogi } from "next/font/google";
+import { Playfair_Display, Roboto, Yomogi, Outfit } from "next/font/google";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -23,6 +23,12 @@ const roboto = Roboto({
 const yomogi = Yomogi({
   variable: "--font-yomogi",
   weight: ["400"],
+  subsets: ["latin"],
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  weight: ["400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
 });
 
@@ -89,7 +95,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${playfair.variable} ${roboto.variable} ${yomogi.variable} font-sans antialiased`}
+        className={`${playfair.variable} ${roboto.variable} ${yomogi.variable} ${outfit.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         <SmoothScroll>

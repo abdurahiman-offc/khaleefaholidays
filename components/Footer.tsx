@@ -20,7 +20,7 @@ export default function Footer() {
 
     return (
         <footer
-            className="bg-[#18189C] text-white/60 pb-8 relative overflow-hidden"
+            className="bg-[#0c39e0] text-white/60 pb-8 relative overflow-hidden"
             style={{
                 clipPath: 'url(#footer-wave-clip)',
                 marginTop: '-100px',
@@ -42,18 +42,18 @@ export default function Footer() {
             <div className="container mx-auto px-6 relative z-10">
                 {/* TOP DIV: Split into 3 columns */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 border-b border-white/10 pb-12 items-start">
-                    
+
                     {/* COLUMN 1: Logo & Social */}
                     <div className="flex flex-col items-center lg:items-start gap-6">
                         <Link href="/" className="block relative w-full max-w-[350px] h-[70px] md:h-[90px]">
-                                <Image
-                                    src="/images/kh-logo-white.png"
-                                    alt="Khaleefa Holidays Logo"
-                                    fill
-                                    className="object-contain object-center md:object-left"
-                                    sizes="350px"
-                                    priority
-                                />
+                            <Image
+                                src="/images/kh-logo-white.png"
+                                alt="Khaleefa Holidays Logo"
+                                fill
+                                className="object-contain object-center md:object-left"
+                                sizes="350px"
+                                priority
+                            />
                         </Link>
                         <div className="flex space-x-4">
                             {[
@@ -65,7 +65,7 @@ export default function Footer() {
                                 <Link
                                     key={idx}
                                     href={href}
-                                    className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full text-white/80 hover:text-[#18189C] hover:bg-white transition-all duration-300 shadow-sm border border-white/5"
+                                    className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full text-white/80 hover:text-[#0c39e0] hover:bg-white transition-all duration-300 shadow-sm border border-white/5"
                                 >
                                     <Icon className="w-4 h-4" />
                                 </Link>

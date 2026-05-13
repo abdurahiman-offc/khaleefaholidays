@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home, Plane, Map, Handshake, PhoneCall } from "lucide-react";
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -13,18 +13,17 @@ export default function Navbar() {
     const [activeSection, setActiveSection] = useState("hero");
 
     const navLinks = [
-        { name: "Home", id: "hero" },
-        { name: "Visa", id: "services" },
-        { name: "Popular destination", id: "destinations" },
-        { name: "Partner with Us", id: "b2b" },
-        { name: "Contact Us", id: "contact" },
+        { name: "Home", id: "hero", icon: Home },
+        { name: "Visa", id: "services", icon: Plane },
+        { name: "Destination", id: "destinations", icon: Map },
+        { name: "B2B", id: "b2b", icon: Handshake },
+        { name: "Contact", id: "contact", icon: PhoneCall },
     ];
 
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
 
-            // Detect active section
             const scrollPos = window.scrollY + 150;
             let current = "hero";
 
@@ -46,8 +45,6 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-
-
     const scrollToSection = (id: string) => {
         const el = document.getElementById(id);
         if (el) {
@@ -67,69 +64,76 @@ export default function Navbar() {
     };
 
     return (
-        <nav
-            className={`fixed top-0 left-0 right-0 z-50 ${isScrolled ? "bg-white/90 backdrop-blur-md py-4 shadow-sm" : "bg-transparent py-8"
-                }`}
-        >
-            <div className="container mx-auto px-6 flex items-center justify-between">
-                {/* Logo */}
-                <Link href="/" className="flex items-center gap-2">
-                    <div className="relative w-[180px] h-[50px]">
-                        <Image
-                            src="/images/kh-logo-blue.png"
-                            alt="Khaleefa Holidays Logo"
-                            fill
-                            sizes="(max-width: 768px) 180px, 180px"
-                            className="object-contain object-left"
-                            priority
-                        />
-                    </div>
-                </Link>
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "py-2" : "py-4"}`}>
+            <div className="container mx-auto px-6 flex justify-center items-center relative">
 
-                {/* Desktop Menu */}
-                <div className="hidden lg:flex items-center space-x-8 nav-menu-desktop">
-                    {navLinks.map((link) => (
-                        <button
-                            key={link.name}
-                            type="button"
-                            onClick={() => scrollToSection(link.id)}
-                            className={`transition-all text-[13px] font-black uppercase tracking-[0.2em] ${activeSection === link.id
-                                ? "text-[#18189C] underline underline-offset-8 decoration-2"
-                                : "text-[#2D3E33] hover:text-[#18189C] hover:underline underline-offset-8 decoration-2"
-                                }`}
-                        >
-                            {link.name}
-                        </button>
-                    ))}
+                {/* Modern Combined Capsule (No Glow/Shadow) */}
+                <div className="flex items-center bg-white/90 backdrop-blur-md rounded-full px-4 lg:px-8 py-1.5 lg:py-2.5 border border-black/10 relative overflow-hidden group transition-all duration-500">
+
+                    {/* Logo Section */}
+                    <Link href="/" className="flex items-center hover:opacity-80 transition-opacity duration-300">
+                        <div className="relative w-[130px] lg:w-[150px] h-[35px] lg:h-[45px]">
+                            <Image
+                                src="/images/kh-logo-blue.png"
+                                alt="Khaleefa Holidays Logo"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </div>
+                    </Link>
+
+                    {/* Minimalist Divider */}
+                    <div className="hidden lg:block h-6 w-[1px] bg-black/10 mx-10" />
+
+                    {/* Desktop Menu */}
+                    <div className="hidden lg:flex items-center space-x-10 relative z-10">
+                        {navLinks.map(({ name, id, icon: Icon }) => (
+                            <button
+                                key={name}
+                                type="button"
+                                onClick={() => scrollToSection(id)}
+                                className={`flex items-center gap-2.5 transition-all text-[11px] font-bold uppercase tracking-[0.25em] group/link ${activeSection === id
+                                        ? "text-[#1e1e89]"
+                                        : "text-[#4B5563] hover:text-[#1e1e89]"
+                                    }`}
+                            >
+                                <Icon size={14} className={`${activeSection === id ? "text-[#1e1e89]" : "text-[#9CA3AF] group-hover/link:text-[#1e1e89]"} transition-colors`} />
+                                <span>{name}</span>
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Mobile Toggle */}
+                    <button
+                        className="lg:hidden ml-4 text-[#1e1e89] p-2"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+                    </button>
                 </div>
 
-                {/* Mobile Menu Button */}
-                <button
-                    className="lg:hidden text-[#2D3E33] hover:text-[#18189C] transition-colors p-2"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    aria-label="Toggle mobile menu"
-                >
-                    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
             </div>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Menu */}
             <div
-                className={`fixed inset-0 bg-white z-40 lg:hidden transition-transform duration-500 ease-in-out ${isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
-                    }`}
-                style={{ top: "0" }}
+                className={`fixed inset-0 bg-white/95 backdrop-blur-2xl z-40 lg:hidden transition-all duration-500 ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
             >
-                <div className="flex flex-col items-center justify-center h-full space-y-8 px-6">
-                    {navLinks.map((link) => (
+                <div className="flex flex-col items-center justify-center h-full space-y-10 px-6">
+                    {navLinks.map(({ name, id, icon: Icon }) => (
                         <button
-                            key={link.name}
-                            onClick={() => scrollToSection(link.id)}
-                            className={`text-xl font-black uppercase tracking-[0.2em] transition-colors ${activeSection === link.id ? "text-[#18189C]" : "text-[#2D3E33]"
+                            key={name}
+                            onClick={() => scrollToSection(id)}
+                            className={`flex items-center gap-5 text-2xl font-bold uppercase tracking-[0.3em] transition-all ${activeSection === id ? "text-[#1e1e89] scale-110" : "text-[#4B5563]"
                                 }`}
                         >
-                            {link.name}
+                            <Icon size={28} />
+                            <span>{name}</span>
                         </button>
                     ))}
+                    <button onClick={() => setIsMobileMenuOpen(false)} className="mt-12 p-4 bg-[#1e1e89] text-white rounded-full">
+                        <X size={32} />
+                    </button>
                 </div>
             </div>
         </nav>

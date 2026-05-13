@@ -71,14 +71,14 @@ export default function Destinations() {
                     <h2 className="text-[10px] font-black text-[#2D3E33]/40 uppercase tracking-[0.2em] mb-4">
                         Discover
                     </h2>
-                    <h2 className="text-3xl md:text-4xl font-black uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
+                    <h2 className="text-3xl md:text-4xl font-black uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
                         Popular Destinations
                     </h2>
                 </div>
 
                 {loading ? (
                     <div className="flex justify-center py-20">
-                        <div className="w-12 h-12 border-4 border-[#18189C] border-t-transparent rounded-full animate-spin"></div>
+                        <div className="w-12 h-12 border-4 border-[#0c39e0] border-t-transparent rounded-full animate-spin"></div>
                     </div>
                 ) : (
                     <div className="flex flex-wrap justify-center gap-8 max-w-[1400px] mx-auto">
@@ -104,7 +104,7 @@ export default function Destinations() {
                                 <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                 <button
                                     onClick={() => setVisibleCards(prev => prev + incrementBy)}
-                                    className="relative bg-white text-[#18189C] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                    className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                 >
                                     Show More Results
                                 </button>
@@ -115,7 +115,7 @@ export default function Destinations() {
                                 <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                 <button
                                     onClick={() => setVisibleCards(incrementBy)}
-                                    className="relative bg-white text-[#18189C] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                    className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
                                 >
                                     Show Less
                                 </button>

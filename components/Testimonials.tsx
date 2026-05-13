@@ -95,7 +95,7 @@ export default function Testimonials() {
     if (loading) {
         return (
             <section className="py-24 bg-white flex items-center justify-center">
-                <Loader2 className="w-8 h-8 animate-spin text-[#18189C]" />
+                <Loader2 className="w-8 h-8 animate-spin text-[#0c39e0]" />
             </section>
         );
     }
@@ -113,7 +113,7 @@ export default function Testimonials() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12 px-6"
                 >
-                    <h2 className="text-4xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#18189C] to-black">
+                    <h2 className="text-4xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
                         Trusted Stories
                     </h2>
                 </motion.div>
@@ -162,7 +162,7 @@ export default function Testimonials() {
                             <button
                                 key={i}
                                 onClick={() => setActiveIndex(i)}
-                                className={`w-2 h-2 rounded-full transition-all ${activeIndex === i ? "w-8 bg-[#18189C]" : "bg-slate-300"
+                                className={`w-2 h-2 rounded-full transition-all ${activeIndex === i ? "w-8 bg-[#0c39e0]" : "bg-slate-300"
                                     }`}
                             />
                         ))}
@@ -180,7 +180,7 @@ function FeedbackCard({ item }: { item: Feedback }) {
             className="relative flex flex-col bg-[#F5F5F5] p-8 rounded-[32px] md:rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[8px] md:border-[10px] border-white h-full w-full sm:w-[380px] flex-shrink-0"
         >
             <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-[#F5F5F5] rounded-2xl flex items-center justify-center text-[#18189C] shrink-0 shadow-sm border border-slate-100">
+                <div className="w-14 h-14 bg-[#F5F5F5] rounded-2xl flex items-center justify-center text-[#0c39e0] shrink-0 shadow-sm border border-slate-100">
                     <User size={28} />
                 </div>
                 <div>

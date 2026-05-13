@@ -1,10 +1,18 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Satisfy';
+  src: url('/images/satisfy/Satisfy-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #F0F4FF;
   --foreground: #171717;
   /* Custom Colors for Khaleefa Holidays Theme - Dark Night */
-  --bookease-navy: #18189C;
+  --bookease-navy: #0c39e0;
   /* Primary Midnight Dark */
   --bookease-slate: #111827;
   /* Secondary Dark */
@@ -17,6 +25,8 @@
   --color-foreground: var(--foreground);
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-roboto);
+  --font-outfit: var(--font-outfit);
+  --font-satisfy-local: 'Satisfy', cursive;
 
   --color-bookease-navy: var(--bookease-navy);
   --color-bookease-slate: var(--bookease-slate);
@@ -37,6 +47,64 @@
 }
 
 
+
+@keyframes plane-float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  75% {
+    transform: translateY(10px) rotate(-1deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.animate-plane-float {
+  animation: plane-float 6s ease-in-out infinite;
+}
+
+@keyframes cloud-move {
+  0% {
+    transform: scale(1.4);
+  }
+
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+.animate-cloud-move {
+  animation: cloud-move 30s ease-in-out infinite alternate;
+}
+
+@keyframes blob-morph {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+.animate-blob-morph {
+  animation: blob-morph 8s ease-in-out infinite;
+}
 
 body {
   background: var(--background);
