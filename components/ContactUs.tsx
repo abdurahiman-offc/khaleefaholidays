@@ -58,7 +58,7 @@ export default function ContactUs() {
         : "--- --- ---";
 
     return (
-        <section id="contact" className="pt-[100px] pb-[200px] bg-[#F5F5F5] relative overflow-hidden contain-paint">
+        <section id="contact" className="pt-[100px] pb-[200px] bg-transparent relative overflow-hidden contain-paint">
             <SectionBackground />
 
             <div className="container mx-auto px-4 relative z-10">

@@ -69,7 +69,7 @@ export default function ExploreB2B() {
     }, [isModalOpen]);
 
     return (
-        <section id="b2b" className={`py-[120px] bg-[#F5F5F5] relative transition-colors duration-300 ${isModalOpen ? 'z-[100]' : 'z-10'}`}>
+        <section id="b2b" className={`py-[120px] bg-transparent relative transition-colors duration-300 ${isModalOpen ? 'z-[100]' : 'z-10'}`}>
             <SectionBackground />
 
             <div className="container mx-auto px-6 relative z-10">
@@ -109,16 +109,15 @@ export default function ExploreB2B() {
                         
 
                         
-                        <div className="relative group/btn w-fit">
-                            <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover/btn:translate-x-0 group-hover/btn:translate-y-0 transition-transform" />
-                            <button
-                                onClick={() => setIsModalOpen(true)}
-                                className="relative bg-[#0c39e0] text-white px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest flex items-center gap-3"
-                            >
-                                Partner with Us
-                                <MoveRight className="w-5 h-5" />
-                            </button>
-                        </div>
+                        <motion.button
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setIsModalOpen(true)}
+                            className="bg-[#1e1e89] text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest shadow-[0_15px_30px_rgba(30,30,137,0.25)] flex items-center gap-3 transition-all"
+                        >
+                            Partner with Us
+                            <MoveRight className="w-5 h-5" />
+                        </motion.button>
                     </motion.div>
                 </div>
             </div>
@@ -269,15 +268,14 @@ export default function ExploreB2B() {
                                                 />
                                             </div>
 
-                                            <div className="relative group w-full pt-4">
-                                                <div className="absolute -inset-1 bg-black rounded-2xl transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
-                                                <button
-                                                    type="submit"
-                                                    className="relative w-full bg-[#0c39e0] text-white px-8 py-4 rounded-2xl border-2 border-black text-sm font-black uppercase tracking-widest flex items-center justify-center gap-3 active:scale-[0.98] transition-all"
-                                                >
-                                                    Partner with us now
-                                                </button>
-                                            </div>
+                                            <motion.button
+                                                type="submit"
+                                                whileHover={{ scale: 1.02 }}
+                                                whileTap={{ scale: 0.98 }}
+                                                className="w-full bg-[#1e1e89] text-white px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-3 shadow-[0_10px_20px_rgba(30,30,137,0.2)] transition-all"
+                                            >
+                                                Partner with us now
+                                            </motion.button>
                                         </form>
                                     </div>
                                 )}

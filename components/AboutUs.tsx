@@ -5,7 +5,7 @@ import Image from "next/image";
 import SectionBackground from "./SectionBackground";
 export default function AboutUs() {
     return (
-        <section id="about-us" className="pt-[100px] pb-[100px] bg-[#F5F5F5] overflow-hidden relative contain-paint">
+        <section id="about-us" className="pt-[100px] pb-[100px] bg-transparent overflow-hidden relative contain-paint">
             <SectionBackground />
             {/* Scattered Small White Shapes */}
 

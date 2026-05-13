@@ -67,8 +67,8 @@ export default function Navbar() {
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "py-2" : "py-4"}`}>
             <div className="container mx-auto px-6 flex justify-center items-center relative">
 
-                {/* Modern Combined Capsule (No Glow/Shadow) */}
-                <div className="flex items-center bg-white/90 backdrop-blur-md rounded-full px-4 lg:px-8 py-1.5 lg:py-2.5 border border-black/10 relative overflow-hidden group transition-all duration-500">
+                {/* Modern Combined Capsule - Premium Glassbox Effect */}
+                <div className={`flex items-center bg-white/10 backdrop-blur-lg rounded-full px-4 lg:px-8 py-1.5 lg:py-2.5 border border-white/20 relative overflow-hidden group transition-all duration-500 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)]`}>
 
                     {/* Logo Section */}
                     <Link href="/" className="flex items-center hover:opacity-80 transition-opacity duration-300">
@@ -84,7 +84,7 @@ export default function Navbar() {
                     </Link>
 
                     {/* Minimalist Divider */}
-                    <div className="hidden lg:block h-6 w-[1px] bg-black/10 mx-10" />
+                    <div className="hidden lg:block h-6 w-[1px] bg-white/20 mx-10" />
 
                     {/* Desktop Menu */}
                     <div className="hidden lg:flex items-center space-x-10 relative z-10">
@@ -94,8 +94,8 @@ export default function Navbar() {
                                 type="button"
                                 onClick={() => scrollToSection(id)}
                                 className={`flex items-center gap-2.5 transition-all text-[11px] font-bold uppercase tracking-[0.25em] group/link ${activeSection === id
-                                        ? "text-[#1e1e89]"
-                                        : "text-[#4B5563] hover:text-[#1e1e89]"
+                                    ? "text-[#1e1e89]"
+                                    : "text-[#4B5563] hover:text-[#1e1e89]"
                                     }`}
                             >
                                 <Icon size={14} className={`${activeSection === id ? "text-[#1e1e89]" : "text-[#9CA3AF] group-hover/link:text-[#1e1e89]"} transition-colors`} />
@@ -117,7 +117,7 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             <div
-                className={`fixed inset-0 bg-white/95 backdrop-blur-2xl z-40 lg:hidden transition-all duration-500 ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
+                className={`fixed inset-0 bg-white/20 backdrop-blur-xl z-40 lg:hidden transition-all duration-500 ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
             >
                 <div className="flex flex-col items-center justify-center h-full space-y-10 px-6">
                     {navLinks.map(({ name, id, icon: Icon }) => (

@@ -63,7 +63,7 @@ export default function Destinations() {
     const activeItem = destinations.find(d => d._id === selectedId);
 
     return (
-        <section id="destinations" className={`pt-[100px] pb-[100px] bg-[#F5F5F5] relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
+        <section id="destinations" className={`pt-[100px] pb-[100px] bg-transparent relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
             <SectionBackground />
 
             <div className="container mx-auto px-6 relative z-10">
@@ -100,26 +100,24 @@ export default function Destinations() {
                 {!loading && destinations.length > 0 && (
                     <div className="flex justify-center items-center gap-6 mt-12">
                         {destinations.length > visibleCards && (
-                            <div className="relative group">
-                                <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
-                                <button
-                                    onClick={() => setVisibleCards(prev => prev + incrementBy)}
-                                    className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
-                                >
-                                    Show More Results
-                                </button>
-                            </div>
+                            <motion.button
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => setVisibleCards(prev => prev + incrementBy)}
+                                className="bg-[#1e1e89] text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest shadow-[0_15px_30px_rgba(30,30,137,0.25)] transition-all"
+                            >
+                                Show More Results
+                            </motion.button>
                         )}
                         {visibleCards > incrementBy && (
-                            <div className="relative group">
-                                <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
-                                <button
-                                    onClick={() => setVisibleCards(incrementBy)}
-                                    className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
-                                >
-                                    Show Less
-                                </button>
-                            </div>
+                            <motion.button
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => setVisibleCards(incrementBy)}
+                                className="bg-white text-[#1e1e89] px-10 py-4 rounded-full border border-[#1e1e89]/20 text-sm font-bold uppercase tracking-widest hover:border-[#1e1e89] transition-all"
+                            >
+                                Show Less
+                            </motion.button>
                         )}
                     </div>
                 )}

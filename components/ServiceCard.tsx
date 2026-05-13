@@ -105,13 +105,15 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                                 {item.price || item.cost}
                             </p>
                         </div>
-                        <button
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                             onClick={(e) => { e.stopPropagation(); onClick(); }}
-                            className="bg-[#0c39e0] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:bg-black transition-colors flex items-center gap-2"
+                            className="bg-[#1e1e89] text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-[0_10px_20px_rgba(30,30,137,0.2)] flex items-center gap-2 transition-all"
                         >
                             Explore Now
                             <Plane size={16} className="transform rotate-45" />
-                        </button>
+                        </motion.button>
                     </div>
                 </div>
             </motion.div>
@@ -305,14 +307,16 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-3">
-                            <button
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                                 onClick={() => window.open(`https://wa.me/91${contactNumber}?text=${encodeURIComponent(whatsappText)}`, '_blank')}
-                                className="w-full bg-[#25D366] text-white py-3.5 rounded-2xl text-xs font-black uppercase tracking-widest transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl active:scale-95 flex items-center justify-center gap-3"
+                                className="w-full bg-[#25D366] text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-[0_10px_20px_rgba(37,211,102,0.15)] flex items-center justify-center gap-3 transition-all"
                             >
                                 <MessageSquare size={16} />
                                 WhatsApp Us
-                            </button>
+                            </motion.button>
                         </div>
                     </div>
                 )}
@@ -335,20 +339,24 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                         </div>
 
                         <div className="grid grid-cols-2 gap-3">
-                            <button
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                                 onClick={() => window.open(`https://wa.me/91${contactNumber}?text=${encodeURIComponent(whatsappText)}`, '_blank')}
-                                className="w-full bg-[#25D366] text-white py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2"
+                                className="w-full bg-[#25D366] text-white py-3.5 rounded-full text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2"
                             >
                                 <MessageSquare size={14} />
                                 WhatsApp
-                            </button>
-                            <button
+                            </motion.button>
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                                 onClick={() => window.open(`tel:+91${contactNumber}`)}
-                                className="w-full bg-[#0c39e0] text-white py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2"
+                                className="w-full bg-[#1e1e89] text-white py-3.5 rounded-full text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2"
                             >
                                 <Phone size={14} />
                                 Call Now
-                            </button>
+                            </motion.button>
                         </div>
                     </div>
                 )}
@@ -462,13 +470,15 @@ export function ModalContent({ item, type, onClose }: { item: any, type: string,
                                             <textarea required rows={3} value={formData.enquiry} onChange={e => setFormData({ ...formData, enquiry: e.target.value })} className="w-full px-5 py-3.5 bg-white/40 border border-[#2D3E33]/10 rounded-2xl focus:ring-2 focus:ring-[#2D3E33]/10 outline-none text-sm font-black uppercase resize-none transition-all text-[#2D3E33] tracking-tight" placeholder="Tell us about your trip..." />
                                         </div>
 
-                                        <div className="relative group w-full mt-4">
-                                            <div className="absolute -inset-1 bg-black rounded-2xl transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
-                                            <button type="submit" className="relative w-full bg-gradient-to-r from-[#0c39e0] to-black text-white px-8 py-4 rounded-2xl border-2 border-black text-xs font-black uppercase tracking-widest flex items-center justify-center gap-3 group">
-                                                Confirm Enquiry
-                                                <Plane size={18} className="transform group-hover:translate-x-1 transition-transform" />
-                                            </button>
-                                        </div>
+                                        <motion.button
+                                            type="submit"
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            className="w-full bg-[#1e1e89] text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3 shadow-[0_15px_30px_rgba(30,30,137,0.2)]"
+                                        >
+                                            Confirm Enquiry
+                                            <Plane size={18} className="transform rotate-45" />
+                                        </motion.button>
                                     </form>
                                 </>
                             )}

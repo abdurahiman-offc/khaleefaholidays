@@ -101,7 +101,7 @@ export default function Testimonials() {
     }
 
     return (
-        <section id="reviews" className="pt-[100px] pb-[100px] bg-[#F5F5F5] relative overflow-hidden contain-paint">
+        <section id="reviews" className="pt-[100px] pb-[100px] bg-transparent relative overflow-hidden contain-paint">
             {/* Background Effect */}
             <SectionBackground />
 
@@ -120,8 +120,8 @@ export default function Testimonials() {
 
                 {/* Desktop: Free Moving Carousel (Marquee) */}
                 <div className="hidden lg:block relative overflow-hidden py-10 px-10">
-                    <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
-                    <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
+                    <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[#F0F7FF]/40 to-transparent z-20 pointer-events-none" />
+                    <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[#F0F7FF]/40 to-transparent z-20 pointer-events-none" />
 
                     <div className="flex justify-center">
                         <motion.div
