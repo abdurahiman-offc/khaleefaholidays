@@ -16,7 +16,7 @@ const VisaSchema = new Schema(
         category: {
             type: String,
             required: [true, "Please provide a category"],
-            enum: ["GCC", "Schengen", "Asia"],
+            enum: ["GCC", "Schengen", "Asia", "Africa"],
             default: "Asia",
         },
         requirements: {

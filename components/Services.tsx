@@ -12,7 +12,7 @@ const tabs = [
     { id: "cab", label: "Cab", icon: Car },
 ];
 
-const defaultVisaCategories = ["All Categories", "GCC", "Schengen", "Asia"];
+const defaultVisaCategories = ["All Categories", "GCC", "Schengen", "Asia", "Africa"];
 
 export default function Services() {
     const [activeTab, setActiveTab] = useState("visa");
