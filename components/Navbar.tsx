@@ -45,6 +45,18 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isMobileMenuOpen]);
+
     const scrollToSection = (id: string) => {
         const el = document.getElementById(id);
         if (el) {
@@ -64,66 +76,67 @@ export default function Navbar() {
     };
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "py-2" : "py-4"}`}>
-            <div className="container mx-auto px-6 flex lg:justify-center items-center relative">
-                {/* Modern Combined Capsule - Desktop: Pill, Tablet/Mobile: Transparent/Split */}
-                <div className={`flex items-center justify-between lg:justify-start w-full lg:w-auto bg-transparent lg:bg-white/10 lg:backdrop-blur-lg lg:rounded-full lg:px-8 lg:py-2.5 lg:border lg:border-white/20 relative transition-all duration-500 lg:shadow-[0_8px_32px_0_rgba(0,0,0,0.05)]`}>
+        <>
+            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "py-4 bg-white/95 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] lg:bg-transparent lg:backdrop-blur-none lg:shadow-none" : "py-6 bg-transparent"}`}>
+                <div className="container mx-auto px-6 flex lg:justify-center items-center relative">
+                    {/* Modern Combined Capsule - Desktop: Pill, Tablet/Mobile: Transparent/Split */}
+                    <div className={`flex items-center justify-between lg:justify-start w-full lg:w-auto bg-transparent lg:bg-white/10 lg:backdrop-blur-lg lg:rounded-full lg:px-8 lg:py-2.5 lg:border lg:border-white/20 relative transition-all duration-500 lg:shadow-[0_8px_32px_0_rgba(0,0,0,0.05)]`}>
 
-                    {/* Logo Section */}
-                    <Link href="/" className="flex items-center hover:opacity-80 transition-opacity duration-300">
-                        <div className="relative w-[130px] lg:w-[150px] h-[35px] lg:h-[45px]">
-                            <Image
-                                src="/images/kh-logo-blue.png"
-                                alt="Khaleefa Holidays Logo"
-                                fill
-                                className="object-contain"
-                                priority
-                            />
+                        {/* Logo Section */}
+                        <Link href="/" className="flex items-center hover:opacity-80 transition-opacity duration-300">
+                            <div className="relative w-[130px] lg:w-[150px] h-[35px] lg:h-[45px]">
+                                <Image
+                                    src="/images/kh-logo-blue.png"
+                                    alt="Khaleefa Holidays Logo"
+                                    fill
+                                    className="object-contain"
+                                    priority
+                                />
+                            </div>
+                        </Link>
+
+                        {/* Minimalist Divider */}
+                        <div className="hidden lg:block h-6 w-[1px] bg-white/20 mx-10" />
+
+                        {/* Desktop Menu */}
+                        <div className="hidden lg:flex items-center space-x-10 relative z-10">
+                            {navLinks.map(({ name, id, icon: Icon }) => (
+                                <button
+                                    key={name}
+                                    type="button"
+                                    onClick={() => scrollToSection(id)}
+                                    className={`flex items-center gap-2.5 transition-all text-[11px] font-bold uppercase tracking-[0.25em] group/link ${activeSection === id
+                                        ? "text-[#1D4ED8]"
+                                        : "text-[#4B5563] hover:text-[#1D4ED8]"
+                                        }`}
+                                >
+                                    <Icon size={14} className={`${activeSection === id ? "text-[#1D4ED8]" : "text-[#9CA3AF] group-hover/link:text-[#1D4ED8]"} transition-colors`} />
+                                    <span>{name}</span>
+                                </button>
+                            ))}
                         </div>
-                    </Link>
 
-                    {/* Minimalist Divider */}
-                    <div className="hidden lg:block h-6 w-[1px] bg-white/20 mx-10" />
-
-                    {/* Desktop Menu */}
-                    <div className="hidden lg:flex items-center space-x-10 relative z-10">
-                        {navLinks.map(({ name, id, icon: Icon }) => (
-                            <button
-                                key={name}
-                                type="button"
-                                onClick={() => scrollToSection(id)}
-                                className={`flex items-center gap-2.5 transition-all text-[11px] font-bold uppercase tracking-[0.25em] group/link ${activeSection === id
-                                    ? "text-[#1D4ED8]"
-                                    : "text-[#4B5563] hover:text-[#1D4ED8]"
-                                    }`}
-                            >
-                                <Icon size={14} className={`${activeSection === id ? "text-[#1D4ED8]" : "text-[#9CA3AF] group-hover/link:text-[#1D4ED8]"} transition-colors`} />
-                                <span>{name}</span>
-                            </button>
-                        ))}
+                        {/* Mobile Toggle */}
+                        <button
+                            className="lg:hidden text-[#1D4ED8] p-2"
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        >
+                            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+                        </button>
                     </div>
-
-                    {/* Mobile Toggle */}
-                    <button
-                        className="lg:hidden text-[#1D4ED8] p-2"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    >
-                        {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
-                    </button>
                 </div>
+            </nav>
 
-            </div>
-
-            {/* Mobile Sidebar Menu */}
+            {/* Mobile Sidebar Menu - Independent Layer */}
             <div
-                className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${isMobileMenuOpen ? "visible" : "invisible pointer-events-none"}`}
+                className={`fixed inset-0 z-[100] lg:hidden transition-all duration-500 ${isMobileMenuOpen ? "visible" : "invisible pointer-events-none"}`}
             >
                 {/* Backdrop */}
-                <div 
+                <div
                     className={`absolute inset-0 bg-black/20 backdrop-blur-sm transition-opacity duration-500 ${isMobileMenuOpen ? "opacity-100" : "opacity-0"}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                 />
-                
+
                 {/* Sidebar Drawer */}
                 <div
                     className={`absolute top-0 right-0 h-full w-[300px] bg-white/80 backdrop-blur-2xl shadow-[-10px_0_30px_rgba(0,0,0,0.05)] border-l border-white/20 transition-transform duration-500 ease-out p-8 flex flex-col ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
@@ -167,13 +180,13 @@ export default function Navbar() {
                                     href={href}
                                     className="w-12 h-12 flex items-center justify-center bg-slate-50 rounded-2xl text-slate-400 hover:text-white hover:bg-[#1D4ED8] hover:shadow-lg transition-all duration-300 border border-slate-100 hover:border-[#1D4ED8]"
                                 >
-                                    <Icon size={20} />
+                                    <Icon size={18} />
                                 </Link>
                             ))}
                         </div>
                     </div>
                 </div>
             </div>
-        </nav>
+        </>
     );
 }

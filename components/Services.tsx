@@ -117,7 +117,7 @@ export default function Services() {
     const activeItem = getActiveItem();
 
     return (
-        <section id="services" className={`pt-[100px] pb-[75px] bg-transparent relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
+        <section id="services" className={`pt-0 md:pt-[100px] pb-[75px] bg-transparent relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
             {/* Scattered Small White Shapes */}
 
 
@@ -144,14 +144,14 @@ export default function Services() {
                 </div>
 
                 {/* Tabs */}
-                <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-12 overflow-x-auto pb-4 py-[5px] scrollbar-hide">
+                <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-4 md:mb-12 overflow-x-auto pb-4 py-[5px] scrollbar-hide">
                     {tabs.map((tab) => (
                         <motion.button
                             key={tab.id}
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => { setActiveTab(tab.id); setSelectedId(null); }}
-                            className={`flex items-center gap-3 px-8 py-3.5 rounded-full text-[12px] font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === tab.id
+                            className={`flex items-center gap-2 md:gap-3 px-4 md:px-8 py-2.5 md:py-3.5 rounded-full text-[10px] md:text-[12px] font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === tab.id
                                 ? "bg-[#1e1e89] text-white"
                                 : "bg-white text-[#4B5563] border border-[#1e1e89]/10 hover:border-[#1e1e89] hover:text-[#1e1e89]"
                                 }`}
@@ -171,18 +171,18 @@ export default function Services() {
                         {/* Visa Content */}
                         {activeTab === "visa" && (
                             <>
-                                <div className="mb-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
+                                <div className="mb-10 flex flex-col items-center w-full">
                                     {/* Search Box */}
-                                    <div className="relative w-full md:w-[300px]">
+                                    <div className="relative w-full md:w-[450px] mb-8">
                                         <input
                                             type="text"
-                                            placeholder="SEARCH COUNTRY..."
+                                            placeholder="SEARCH VISAS..."
                                             value={searchTerm}
                                             onChange={(e) => {
                                                 setSearchTerm(e.target.value);
                                                 setVisibleCards(6);
                                             }}
-                                            className="w-full bg-white/50 border-2 border-black/5 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest focus:ring-2 focus:ring-[#0c39e0]/20 focus:border-[#0c39e0] outline-none transition-all placeholder:text-slate-300"
+                                            className="w-full bg-white/50 backdrop-blur-md border-2 border-white/20 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest focus:ring-2 focus:ring-[#0c39e0]/20 focus:border-[#0c39e0] outline-none transition-all placeholder:text-slate-300 shadow-sm"
                                         />
                                         <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -191,26 +191,49 @@ export default function Services() {
                                         </div>
                                     </div>
 
-                                    {/* Visa Categories (Subbuttons/Dropdown) */}
-                                    <div className="flex flex-wrap justify-center gap-3">
-                                        {/* Dropdown for Mobile/Tablet */}
-                                        <div className="md:hidden relative w-full min-w-[200px]">
-                                            <select
-                                                value={activeVisaCategory}
-                                                onChange={(e) => {
-                                                    setActiveVisaCategory(e.target.value);
-                                                    setVisibleCards(6);
-                                                }}
-                                                className="w-full bg-white/50 border-2 border-black/5 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-black/20 hover:bg-slate-50 transition-all text-[#1D4ED8]"
-                                                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231D4ED8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '0.9rem' }}
-                                            >
-                                                {visaCategories.map((category) => (
-                                                    <option key={category} value={category}>{category}</option>
-                                                ))}
-                                            </select>
+                                    {/* Filters Container for Mobile */}
+                                    <div className="flex flex-col md:flex-row items-center justify-center gap-3 w-full">
+                                        {/* Mobile: Category and Type on same line */}
+                                        <div className="flex flex-row md:flex-wrap items-center justify-center gap-2 w-full md:w-auto">
+                                            {/* Visa Categories (Dropdown for Mobile) */}
+                                            <div className="md:hidden relative flex-1 min-w-0">
+                                                <select
+                                                    value={activeVisaCategory}
+                                                    onChange={(e) => {
+                                                        setActiveVisaCategory(e.target.value);
+                                                        setVisibleCards(6);
+                                                    }}
+                                                    className="w-full bg-white/50 border-2 border-black/5 px-3 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-black/20 hover:bg-slate-50 transition-all text-[#1D4ED8]"
+                                                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231D4ED8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.5rem center', backgroundSize: '0.7rem' }}
+                                                >
+                                                    {visaCategories.map((category) => (
+                                                        <option key={category} value={category}>{category}</option>
+                                                    ))}
+                                                </select>
+                                            </div>
+
+                                            {/* Visa Type Filter */}
+                                            <div className="relative flex-1 md:w-[180px] min-w-0">
+                                                <select
+                                                    value={activeVisaType}
+                                                    onChange={(e) => {
+                                                        setActiveVisaType(e.target.value);
+                                                        setVisibleCards(6);
+                                                    }}
+                                                    className="w-full bg-white/50 border-2 border-black/5 px-3 py-2 rounded-xl text-[10px] md:text-[11px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-black/20 hover:bg-slate-50 transition-all text-[#0c39e0]"
+                                                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2318189C'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.5rem center', backgroundSize: '0.7rem' }}
+                                                >
+                                                    <option value="All Types">All Types</option>
+                                                    <option value="Tourist">Tourist</option>
+                                                    <option value="Business">Business</option>
+                                                    <option value="Job seeker">Job seeker</option>
+                                                    <option value="Umrah">Umrah</option>
+                                                    <option value="Family">Family</option>
+                                                </select>
+                                            </div>
                                         </div>
 
-                                        {/* Buttons for Desktop */}
+                                        {/* Desktop Categories Buttons */}
                                         <div className="hidden md:flex flex-wrap justify-center gap-3">
                                             {visaCategories.map((category) => (
                                                 <button
@@ -228,26 +251,6 @@ export default function Services() {
                                                 </button>
                                             ))}
                                         </div>
-                                    </div>
-
-                                    {/* Visa Type Filter */}
-                                    <div className="relative w-full md:w-[180px]">
-                                        <select
-                                            value={activeVisaType}
-                                            onChange={(e) => {
-                                                setActiveVisaType(e.target.value);
-                                                setVisibleCards(6);
-                                            }}
-                                            className="w-full bg-white/50 border-2 border-black/5 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-black/20 hover:bg-slate-50 transition-all text-[#0c39e0]"
-                                            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2318189C'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '0.9rem' }}
-                                        >
-                                            <option value="All Types">All Types</option>
-                                            <option value="Tourist">Tourist</option>
-                                            <option value="Business">Business</option>
-                                            <option value="Job seeker">Job seeker</option>
-                                            <option value="Umrah">Umrah</option>
-                                            <option value="Family">Family</option>
-                                        </select>
                                     </div>
                                 </div>
 

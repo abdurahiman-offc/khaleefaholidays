@@ -95,25 +95,21 @@ export default function Destinations() {
 
                 {/* Search Bar */}
                 <div className="flex justify-center mb-10 px-4">
-                    <div className="relative w-full max-w-lg group">
-                        <div className="absolute inset-0 bg-[#1D4ED8]/5 rounded-full blur-xl group-hover:bg-[#1D4ED8]/10 transition-all duration-500" />
-                        <div className="relative flex items-center bg-white/60 backdrop-blur-md border border-[#1D4ED8]/20 rounded-full px-6 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.04)] focus-within:border-[#1D4ED8] focus-within:shadow-[0_8px_32px_rgba(29,78,216,0.1)] transition-all duration-300">
-                            <Search className="text-[#1D4ED8] mr-4" size={22} />
-                            <input
-                                type="text"
-                                placeholder="Search your dream destination..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full bg-transparent border-none outline-none text-[#0F172A] font-outfit font-medium text-lg placeholder:text-[#0F172A]/40"
-                            />
-                            {searchQuery && (
-                                <button 
-                                    onClick={() => setSearchQuery("")}
-                                    className="ml-4 text-[#0F172A]/40 hover:text-[#1D4ED8] font-bold"
-                                >
-                                    Clear
-                                </button>
-                            )}
+                    <div className="relative w-full md:w-[450px]">
+                        <input
+                            type="text"
+                            placeholder="SEARCH POPULAR DESTINATIONS..."
+                            value={searchQuery}
+                            onChange={(e) => {
+                                setSearchQuery(e.target.value);
+                                setVisibleCards(incrementBy);
+                            }}
+                            className="w-full bg-white/50 backdrop-blur-md border-2 border-white/20 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest focus:ring-2 focus:ring-[#0c39e0]/20 focus:border-[#0c39e0] outline-none transition-all placeholder:text-slate-300 shadow-sm"
+                        />
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
                         </div>
                     </div>
                 </div>
