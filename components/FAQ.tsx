@@ -40,7 +40,7 @@ export default function FAQ() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-2xl md:text-3xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
+                    <h2 className="text-2xl md:text-2xl lg:text-3xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
                         Frequently Asked Questions
                     </h2>
                     <p className="text-base md:text-lg text-slate-600 ">

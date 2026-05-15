@@ -104,7 +104,7 @@ export default function ExploreB2B() {
                             transition={{ duration: 0.8 }}
                             className="w-full lg:w-1/2 flex flex-col text-center lg:text-left items-center lg:items-start order-2"
                         >
-                            <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
                                 Let's join hand together
                             </h2>
                             <p className={`text-xl md:text-2xl text-black/60 leading-relaxed mb-10 normal-case ${dosis.className} font-medium italic`}>

@@ -78,7 +78,7 @@ export default function Destinations() {
                     <div className="relative inline-block text-center">
                         {/* Background stretched text */}
                         <h2 
-                            className="font-oswald text-[40px] md:text-[90px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
+                            className="font-oswald text-[40px] md:text-[65px] lg:text-[90px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
                             style={{ transform: 'scaleY(1.6)', letterSpacing: '-5px' }}
                         >
                             Explore the world
@@ -86,7 +86,7 @@ export default function Destinations() {
                         
                         {/* Top cursive text */}
                         <div className="absolute inset-0 flex items-center justify-center">
-                            <h2 className="font-satisfy-local text-[42px] md:text-[80px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
+                            <h2 className="font-satisfy-local text-[42px] md:text-[55px] lg:text-[80px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
                                 Popular Destination
                             </h2>
                         </div>

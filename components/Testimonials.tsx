@@ -113,32 +113,32 @@ export default function Testimonials() {
             {/* Background Effect */}
             <SectionBackground />
 
-                <div className="flex items-center justify-center pt-10 pb-6 md:pt-20 md:pb-12">
-                    <div className="relative inline-block text-center">
-                        {/* Background stretched text */}
-                        <h2 
-                            className="font-oswald text-[40px] md:text-[85px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
-                            style={{ transform: 'scaleY(1.6)', letterSpacing: '-4px' }}
-                        >
-                            From Our Valued Clients
-                        </h2>
-                        
-                        {/* Top cursive text */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <h2 className="font-satisfy-local text-[42px] md:text-[80px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
-                                Trusted Stories
-                            </h2>
-                        </div>
-                    </div>
-                </div>
+            <div className="flex items-center justify-center pt-10 pb-6 md:pt-20 md:pb-12">
+                <div className="relative inline-block text-center">
+                    {/* Background stretched text */}
+                    <h2
+                        className="font-oswald text-[40px] md:text-[60px] lg:text-[85px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
+                        style={{ transform: 'scaleY(1.6)', letterSpacing: '-4px' }}
+                    >
+                        From Our Valued Clients
+                    </h2>
 
-                <div className="container mx-auto px-6 mt-10 md:mt-16">
-                    <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-                        {displayFeedbacks.map((item, index) => (
-                            <FeedbackCard key={index} item={item} />
-                        ))}
+                    {/* Top cursive text */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <h2 className="font-satisfy-local text-[42px] md:text-[55px] lg:text-[80px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
+                            Trusted Stories
+                        </h2>
                     </div>
                 </div>
+            </div>
+
+            <div className="container mx-auto px-6 mt-10 md:mt-16">
+                <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+                    {displayFeedbacks.map((item, index) => (
+                        <FeedbackCard key={index} item={item} />
+                    ))}
+                </div>
+            </div>
         </section>
     );
 }

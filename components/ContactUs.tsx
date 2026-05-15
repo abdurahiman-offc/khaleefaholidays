@@ -69,24 +69,24 @@ export default function ContactUs() {
                     transition={{ duration: 0.5 }}
                     className="max-w-5xl mx-auto"
                 >
-                <div className="flex items-center justify-center pt-10 pb-6 md:pt-20 md:pb-12">
-                    <div className="relative inline-block text-center">
-                        {/* Background stretched text */}
-                        <h2 
-                            className="font-oswald text-[30px] md:text-[80px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
-                            style={{ transform: 'scaleY(1.6)', letterSpacing: '-2px' }}
-                        >
-                            Let’s Plan Your Journey
-                        </h2>
-                        
-                        {/* Top cursive text */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <h2 className="font-satisfy-local text-[42px] md:text-[80px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
-                                Contact Us
+                    <div className="flex items-center justify-center pt-10 pb-6 md:pt-20 md:pb-12">
+                        <div className="relative inline-block text-center">
+                            {/* Background stretched text */}
+                            <h2
+                                className="font-oswald text-[30px] md:text-[55px] lg:text-[80px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
+                                style={{ transform: 'scaleY(1.6)', letterSpacing: '-2px' }}
+                            >
+                                Let’s Plan Your Journey
                             </h2>
+
+                            {/* Top cursive text */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <h2 className="font-satisfy-local text-[42px] md:text-[55px] lg:text-[80px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
+                                    Contact Us
+                                </h2>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                     {/* Flight Ticket Container */}
                     <div className="flex flex-col lg:flex-row bg-white/60 backdrop-blur-3xl rounded-[32px] md:rounded-[40px] relative border border-[#0c39e0]/5 overflow-hidden">
@@ -207,13 +207,24 @@ export default function ContactUs() {
                                         />
                                     </div>
 
+                                    <div className="mt-8 lg:hidden">
+                                        {!submitted && (
+                                            <button
+                                                type="submit"
+                                                form="ticket-form"
+                                                className="w-full flex bg-[#0c39e0] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] hover:shadow-xl active:scale-95 transition-all duration-300 justify-center items-center gap-2 group shadow-lg"
+                                            >
+                                                Confirm <Plane size={16} className="transform group-hover:translate-x-1 transition-transform" />
+                                            </button>
+                                        )}
+                                    </div>
                                 </form>
                             )}
 
                         </div>
 
                         {/* --- RIGHT SECTION: TICKET STUB --- */}
-                        <div className="w-full lg:w-[30%] bg-[#0c39e0]/5 p-6 md:p-10 flex flex-col justify-between relative rounded-b-[32px] md:rounded-b-[40px] lg:rounded-r-[40px] lg:rounded-bl-none text-[#0c39e0]">
+                        <div className="hidden lg:flex lg:w-[30%] bg-[#0c39e0]/5 p-6 md:p-10 flex-col justify-between relative rounded-b-[32px] md:rounded-b-[40px] lg:rounded-r-[40px] lg:rounded-bl-none text-[#0c39e0]">
 
                             <div className="space-y-6">
                                 {/* Stub Header */}

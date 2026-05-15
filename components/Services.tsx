@@ -124,24 +124,24 @@ export default function Services() {
 
             <div className="container mx-auto px-6 relative z-10">
 
-                    <div className="flex items-center justify-center pt-10 pb-6 md:pt-20 md:pb-12">
-                        <div className="relative inline-block">
-                            {/* Background stretched text */}
-                            <h2 
-                                className="font-oswald text-[50px] md:text-[100px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
-                                style={{ transform: 'scaleY(1.6)', letterSpacing: '-5px' }}
-                            >
-                                Your Journey
+                <div className="flex items-center justify-center pt-10 pb-6 md:pt-20 md:pb-12">
+                    <div className="relative inline-block">
+                        {/* Background stretched text */}
+                        <h2
+                            className="font-oswald text-[50px] md:text-[70px] lg:text-[100px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
+                            style={{ transform: 'scaleY(1.6)', letterSpacing: '-5px' }}
+                        >
+                            Your Journey
+                        </h2>
+
+                        {/* Top cursive text */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <h2 className="font-satisfy-local text-[54px] md:text-[70px] lg:text-[90px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
+                                Our Services
                             </h2>
-                            
-                            {/* Top cursive text */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <h2 className="font-satisfy-local text-[54px] md:text-[90px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
-                                    Our Services
-                                </h2>
-                            </div>
                         </div>
                     </div>
+                </div>
 
                 {/* Tabs */}
                 <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-12 overflow-x-auto pb-4 py-[5px] scrollbar-hide">
@@ -191,23 +191,43 @@ export default function Services() {
                                         </div>
                                     </div>
 
-                                    {/* Visa Categories (Subbuttons) */}
+                                    {/* Visa Categories (Subbuttons/Dropdown) */}
                                     <div className="flex flex-wrap justify-center gap-3">
-                                        {visaCategories.map((category) => (
-                                            <button
-                                                key={category}
-                                                onClick={() => {
-                                                    setActiveVisaCategory(category);
+                                        {/* Dropdown for Mobile/Tablet */}
+                                        <div className="md:hidden relative w-full min-w-[200px]">
+                                            <select
+                                                value={activeVisaCategory}
+                                                onChange={(e) => {
+                                                    setActiveVisaCategory(e.target.value);
                                                     setVisibleCards(6);
                                                 }}
-                                                className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all backdrop-blur-md border border-white/40 ${activeVisaCategory === category
-                                                    ? "bg-[#0c39e0] text-white shadow-lg scale-105"
-                                                    : "bg-white/30 text-[#0c39e0] hover:bg-white/50"
-                                                    }`}
+                                                className="w-full bg-white/50 border-2 border-black/5 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-black/20 hover:bg-slate-50 transition-all text-[#1D4ED8]"
+                                                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231D4ED8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '0.9rem' }}
                                             >
-                                                {category}
-                                            </button>
-                                        ))}
+                                                {visaCategories.map((category) => (
+                                                    <option key={category} value={category}>{category}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+
+                                        {/* Buttons for Desktop */}
+                                        <div className="hidden md:flex flex-wrap justify-center gap-3">
+                                            {visaCategories.map((category) => (
+                                                <button
+                                                    key={category}
+                                                    onClick={() => {
+                                                        setActiveVisaCategory(category);
+                                                        setVisibleCards(6);
+                                                    }}
+                                                    className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all backdrop-blur-md border border-white/40 ${activeVisaCategory === category
+                                                        ? "bg-[#1D4ED8] text-white shadow-lg scale-105"
+                                                        : "bg-white/30 text-[#1D4ED8] hover:bg-white/50"
+                                                        }`}
+                                                >
+                                                    {category}
+                                                </button>
+                                            ))}
+                                        </div>
                                     </div>
 
                                     {/* Visa Type Filter */}

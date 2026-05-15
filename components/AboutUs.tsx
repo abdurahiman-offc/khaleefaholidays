@@ -6,15 +6,15 @@ import SectionBackground from "./SectionBackground";
 
 export default function AboutUs() {
     return (
-        <section id="about-us" className="pt-[400px] pb-[75px] bg-transparent overflow-visible relative contain-paint">
+        <section id="about-us" className="pt-[220px] md:pt-[220px] lg:pt-[400px] pb-[75px] bg-transparent overflow-visible relative contain-paint">
             <SectionBackground />
 
-            {/* Destination Silhouette - Moved to section level for full visibility */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[75%] h-[400px] z-0 pointer-events-none select-none">
-                <Image 
-                    src="/images/destinationsilhoute2.png" 
-                    alt="Destinations Silhouette" 
-                    fill 
+            {/* Destination Silhouette - Isolated responsive sizing for perfect alignment */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full md:w-[80%] lg:w-[75%] px-6 h-auto aspect-[3/1] lg:h-[400px] z-0 pointer-events-none select-none">
+                <Image
+                    src="/images/destinationsilhoute2.png"
+                    alt="Destinations Silhouette"
+                    fill
                     className="object-cover object-bottom grayscale invert brightness-200 opacity-10"
                 />
             </div>
@@ -23,7 +23,7 @@ export default function AboutUs() {
                 <div className={`bg-white/10 backdrop-blur-lg rounded-[40px] md:rounded-[60px] border border-white/20 p-8 md:p-16 lg:p-20 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] overflow-hidden relative group transition-all duration-500 hover:shadow-[0_8px_48px_rgba(0,0,0,0.08)]`}>
                     {/* Subtle inner glow */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/5 pointer-events-none" />
-                    
+
                     <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 relative z-10">
                         {/* Big Title Content - Left column, Right-aligned internally */}
                         <motion.div
@@ -31,13 +31,22 @@ export default function AboutUs() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-end order-1"
+                            className="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-end order-1 relative"
                         >
-                            <h1 className="font-oswald text-[120px] md:text-[250px] font-black leading-[0.85] tracking-tighter text-[#1D4ED8] flex flex-col uppercase text-center lg:text-right">
+                            <h1 className="font-oswald text-[120px] md:text-[180px] lg:text-[250px] font-black leading-[0.85] tracking-tighter text-[#1D4ED8] flex flex-col uppercase text-center lg:text-right">
                                 <span className="block drop-shadow-2xl">Who</span>
-                                <span className="block drop-shadow-2xl">We</span>
-                                <span className="block drop-shadow-2xl">Are</span>
+                                <span className="block drop-shadow-2xl">
+                                    We <span className="lg:block">Are</span>
+                                </span>
                             </h1>
+
+                            {/* About Us layered text - Tablet/Mobile only */}
+                            <div className="absolute inset-0 lg:hidden flex items-center justify-center">
+                                <h2 className="font-oswald text-[50px] md:text-[80px] font-bold text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] uppercase leading-none"
+                                    style={{ transform: 'scaleY(1.6)', letterSpacing: '-4px' }}>
+                                    About Us
+                                </h2>
+                            </div>
                         </motion.div>
 
                         {/* Text Content - Right column */}
@@ -46,20 +55,20 @@ export default function AboutUs() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="w-full lg:w-1/2 text-center lg:text-left order-2"
+                            className="w-full lg:w-1/2 text-left lg:text-left order-2 flex flex-col items-start"
                         >
-                            <div className="mb-8">
-                                <h2 className="font-oswald text-[40px] md:text-[80px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] uppercase leading-none"
+                            <div className="mb-8 hidden lg:block">
+                                <h2 className="font-oswald text-[40px] md:text-[60px] lg:text-[80px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] uppercase leading-none"
                                     style={{ transform: 'scaleY(1.6)', letterSpacing: '-4px' }}>
                                     About Us
                                 </h2>
                             </div>
 
-                            <h2 className="text-2xl md:text-4xl font-black mb-8 leading-tight uppercase tracking-tight text-slate-900">
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-8 leading-tight uppercase tracking-tight text-slate-900 w-full text-center lg:text-left">
                                 Turning Dreams <br /> Into Reality Since 2024
                             </h2>
-                            
-                            <div className="text-lg text-slate-600 mb-8 leading-relaxed font-medium italic space-y-4">
+
+                            <div className="text-lg text-slate-600 mb-8 leading-relaxed font-medium space-y-4">
                                 <p>At Khaleefa Holidays, we make travel simple, smooth, and stress-free. We specialize in visa assistance and customized tour packages for travelers around the world.</p>
                                 <p>Our expert team provides support for Business Visas, Job Seeker Visas, Tourist Visas, Family Visas, and other travel documentation services with reliable guidance throughout the process.</p>
                                 <p>Whether you are planning a holiday, business trip, family visit, or international journey, we are committed to delivering trusted service and unforgettable travel experiences every step of the way.</p>
