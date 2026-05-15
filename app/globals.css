@@ -26,6 +26,11 @@
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-roboto);
   --font-outfit: var(--font-outfit);
+  --font-yomogi: var(--font-yomogi);
+  --font-bebas: var(--font-bebas);
+  --font-six-caps: var(--font-six-caps);
+  --font-oswald: var(--font-oswald);
+  --font-allura: var(--font-allura);
   --font-satisfy-local: 'Satisfy', cursive;
 
   --color-bookease-navy: var(--bookease-navy);

@@ -69,56 +69,59 @@ export default function ExploreB2B() {
     }, [isModalOpen]);
 
     return (
-        <section id="b2b" className={`py-[120px] bg-transparent relative transition-colors duration-300 ${isModalOpen ? 'z-[100]' : 'z-10'}`}>
+        <section id="b2b" className={`pt-[75px] pb-[75px] bg-transparent relative transition-colors duration-300 ${isModalOpen ? 'z-[100]' : 'z-10'}`}>
             <SectionBackground />
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-                    {/* Left Side: Image */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="w-full lg:w-1/2 relative order-1"
-                    >
-                        <div className="relative aspect-square rounded-[40px] overflow-hidden">
-                            <Image
-                                src="/images/b2b-2.png"
-                                alt="Khaleefa Holidays B2B Travel Partnership Opportunities"
-                                fill
-                                className="object-cover transition-transform duration-1000 hover:scale-105"
-                            />
-                        </div>
-                    </motion.div>
-
-                    {/* Right Side: Content */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="w-full lg:w-1/2 flex flex-col text-center lg:text-left items-center lg:items-start order-2"
-                    >
-                        <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
-                            Let's join hand together
-                        </h2>
-                        <p className={`text-xl md:text-3xl text-black/60 leading-relaxed mb-10 normal-case ${dosis.className} font-medium italic`}>
-                            Explore B2B opportunity with Khaleefa Holiday.<br className="hidden md:block" /> Join our exclusive network of travel partners and <br className="hidden md:block" />grow your business with us.
-                        </p>
-                        
-
-                        
-                        <motion.button
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => setIsModalOpen(true)}
-                            className="bg-[#1e1e89] text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest shadow-[0_15px_30px_rgba(30,30,137,0.25)] flex items-center gap-3 transition-all"
+                <div className={`bg-white/10 backdrop-blur-lg rounded-[40px] md:rounded-[60px] border border-white/20 p-8 md:p-16 lg:p-20 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] overflow-hidden relative group transition-all duration-500 hover:shadow-[0_8px_48px_rgba(0,0,0,0.08)]`}>
+                    {/* Subtle inner glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/5 pointer-events-none" />
+                    
+                    <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative z-10">
+                        {/* Left Side: Image */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="w-full lg:w-1/2 relative order-1"
                         >
-                            Partner with Us
-                            <MoveRight className="w-5 h-5" />
-                        </motion.button>
-                    </motion.div>
+                            <div className="relative aspect-square rounded-[32px] md:rounded-[40px] overflow-hidden">
+                                <Image
+                                    src="/images/b2b-2.png"
+                                    alt="Khaleefa Holidays B2B Travel Partnership Opportunities"
+                                    fill
+                                    className="object-cover transition-transform duration-1000 hover:scale-105"
+                                />
+                            </div>
+                        </motion.div>
+
+                        {/* Right Side: Content */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="w-full lg:w-1/2 flex flex-col text-center lg:text-left items-center lg:items-start order-2"
+                        >
+                            <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
+                                Let's join hand together
+                            </h2>
+                            <p className={`text-xl md:text-2xl text-black/60 leading-relaxed mb-10 normal-case ${dosis.className} font-medium italic`}>
+                                Explore B2B opportunity with Khaleefa Holiday.<br className="hidden md:block" /> Join our exclusive network of travel partners and <br className="hidden md:block" />grow your business with us.
+                            </p>
+                            
+                            <motion.button
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => setIsModalOpen(true)}
+                                className="bg-[#1e1e89] text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest shadow-[0_15px_30px_rgba(30,30,137,0.25)] flex items-center gap-3 transition-all"
+                            >
+                                Partner with Us
+                                <MoveRight className="w-5 h-5" />
+                            </motion.button>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
 

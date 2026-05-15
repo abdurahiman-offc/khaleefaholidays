@@ -2,16 +2,16 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Plane, Globe, ShieldCheck, ArrowRight, MapPin, Users, Briefcase } from "lucide-react";
+import { Plane, Globe, ShieldCheck, ArrowRight, MapPin, Users, Briefcase, Sailboat } from "lucide-react";
 
 export default function Hero() {
     return (
-        <section id="hero" className="relative min-h-screen w-full overflow-hidden flex flex-col items-center pt-48 pb-20 bg-transparent">
+        <section id="hero" className="relative min-h-screen w-full overflow-hidden flex flex-col items-center pt-48 pb-[50px] bg-transparent">
             <div className="container mx-auto px-6 relative z-10 flex-grow flex flex-col justify-center">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 mb-24">
-                    
+
                     {/* Left Column: Content */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
@@ -33,9 +33,9 @@ export default function Hero() {
                                 Your Journey <br />
                                 <span className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6">
                                     <span>Begins</span>
-                                    <span className="relative inline-block text-[#0047FF] font-satisfy-local font-normal italic pt-2 pb-6">
+                                    <span className="relative inline-block text-[#1D4ED8] font-satisfy-local font-normal italic pt-2 pb-6">
                                         With Us
-                                        <svg className="absolute bottom-0 left-0 w-full h-4 text-[#0047FF]" viewBox="0 0 100 20" preserveAspectRatio="none">
+                                        <svg className="absolute bottom-0 left-0 w-full h-4 text-[#1D4ED8]" viewBox="0 0 100 20" preserveAspectRatio="none">
                                             <path d="M5,15 Q40,10 95,18" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
                                         </svg>
                                     </span>
@@ -75,15 +75,15 @@ export default function Hero() {
                     </motion.div>
 
                     {/* Right Column: Visuals */}
-                    <motion.div 
-                        initial={{ opacity: 0, scale: 0.8 }} 
-                        animate={{ opacity: 1, scale: 1 }} 
-                        transition={{ duration: 1.2, ease: "easeOut" }} 
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
                         className="w-full lg:w-[50%] relative h-[450px] md:h-[600px] flex items-center justify-center lg:translate-x-12"
                     >
                         <div className="relative w-full h-full max-w-[460px] aspect-[3/4.2] flex items-center justify-center">
-                            <div className="absolute inset-0 rounded-[35%_35%_35%_35%/48%_48%_48%_48%] bg-white/40 backdrop-blur-md shadow-2xl p-5 md:p-7 flex items-center justify-center overflow-hidden border-2 border-white/60">
-                                <div className="absolute inset-0 shadow-[inset_0_30px_60px_rgba(0,0,0,0.1)] rounded-[35%_35%_35%_35%/48%_48%_48%_48%] pointer-events-none z-10" />
+                            <div className="absolute inset-0 rounded-[35%_35%_35%_35%/48%_48%_48%_48%] bg-white/40 backdrop-blur-md p-5 md:p-7 flex items-center justify-center overflow-hidden border-2 border-white/60">
+                                <div className="absolute inset-0 rounded-[35%_35%_35%_35%/48%_48%_48%_48%] pointer-events-none z-10" />
                                 <div className="relative w-full h-full rounded-[32%_32%_32%_32%/45%_45%_45%_45%] overflow-hidden border-2 border-white/5">
                                     <Image src="/images/skyimg6.jpg" alt="Khaleefa Holidays" fill className="object-cover scale-110" priority />
                                     <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-40" />
@@ -91,10 +91,10 @@ export default function Hero() {
                             </div>
                         </div>
 
-                        <motion.div 
-                            initial={{ opacity: 0, scale: 0.8 }} 
-                            animate={{ opacity: 1, scale: 1 }} 
-                            transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }} 
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
                             className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
                         >
                             <div className="relative w-[550%] md:w-[850%] h-[550%] md:h-[850%]">
@@ -106,6 +106,19 @@ export default function Hero() {
                         <motion.div animate={{ y: [0, 20, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute -bottom-10 -left-10 w-32 h-32 bg-blue-400/10 rounded-full blur-3xl" />
                     </motion.div>
                 </div>
+            </div>
+            {/* Wavy Bottom Line with Plane and Ship icons */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[55%] h-24 pointer-events-none flex items-center justify-center">
+                <svg width="100%" height="100%" viewBox="0 0 100 20" preserveAspectRatio="none">
+                    <path 
+                        d="M 0 10 L 100 10" 
+                        fill="none" 
+                        stroke="white" 
+                        strokeWidth="2" 
+                        strokeLinecap="round"
+                        className="blur-[1px] opacity-80"
+                    />
+                </svg>
             </div>
         </section>
     );

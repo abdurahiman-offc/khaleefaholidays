@@ -62,7 +62,7 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
                 whileHover={{ y: -5, transition: { duration: 0.3 } }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={onClick}
-                className="flex flex-col md:flex-row bg-white rounded-[32px] md:rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[10px] border-white cursor-pointer group w-full max-w-[1000px] overflow-hidden"
+                className="flex flex-col md:flex-row bg-white rounded-[32px] md:rounded-[40px] border-[10px] border-white cursor-pointer group w-full max-w-[1000px] overflow-hidden"
             >
                 {/* Image Section - Left */}
                 <div className="relative w-full md:w-2/5 h-[240px] md:h-auto rounded-[24px] md:rounded-[32px] overflow-hidden">
@@ -127,7 +127,7 @@ export function ServiceCard({ item, index, onClick, type, variant = "standard" }
             whileHover={{ y: -10, transition: { duration: 0.3, ease: "easeOut" } }}
             transition={{ duration: 0.5, delay: index * 0.05 }}
             onClick={onClick}
-            className="flex flex-col bg-[#F5F5F5] rounded-[32px] md:rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[8px] md:border-[10px] border-white cursor-pointer group w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] flex-shrink-0 overflow-hidden"
+            className="flex flex-col bg-[#F5F5F5]/60 backdrop-blur-xl rounded-[32px] md:rounded-[40px] border-[8px] md:border-[10px] border-white cursor-pointer group w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] flex-shrink-0 overflow-hidden"
         >
             <div className="relative aspect-[16/9] rounded-[32px] overflow-hidden">
                 <Image
@@ -510,7 +510,7 @@ export function ServiceModal({ isOpen, item, type, onClose }: { isOpen: boolean;
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
                             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                            className="w-full max-w-5xl bg-white/60 backdrop-blur-3xl rounded-[32px] md:rounded-[40px] overflow-hidden shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] pointer-events-auto max-h-[90vh] flex flex-col md:flex-row relative z-[100] border border-[#2D3E33]/5"
+                            className="w-full max-w-5xl bg-white/60 backdrop-blur-3xl rounded-[32px] md:rounded-[40px] overflow-hidden pointer-events-auto max-h-[90vh] flex flex-col md:flex-row relative z-[100] border border-[#2D3E33]/5"
                         >
                             <ModalContent item={item} type={type} onClose={onClose} />
                         </motion.div>

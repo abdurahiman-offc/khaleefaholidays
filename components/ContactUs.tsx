@@ -58,7 +58,7 @@ export default function ContactUs() {
         : "--- --- ---";
 
     return (
-        <section id="contact" className="pt-[100px] pb-[200px] bg-transparent relative overflow-hidden contain-paint">
+        <section id="contact" className="pt-[75px] pb-[175px] bg-transparent relative overflow-hidden contain-paint">
             <SectionBackground />
 
             <div className="container mx-auto px-4 relative z-10">
@@ -69,12 +69,27 @@ export default function ContactUs() {
                     transition={{ duration: 0.5 }}
                     className="max-w-5xl mx-auto"
                 >
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl font-black tracking-[0.2em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">Contact Us</h2>
+                <div className="flex items-center justify-center pt-10 pb-6 md:pt-20 md:pb-12">
+                    <div className="relative inline-block text-center">
+                        {/* Background stretched text */}
+                        <h2 
+                            className="font-oswald text-[30px] md:text-[80px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
+                            style={{ transform: 'scaleY(1.6)', letterSpacing: '-2px' }}
+                        >
+                            Let’s Plan Your Journey
+                        </h2>
+                        
+                        {/* Top cursive text */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <h2 className="font-satisfy-local text-[42px] md:text-[80px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
+                                Contact Us
+                            </h2>
+                        </div>
                     </div>
+                </div>
 
                     {/* Flight Ticket Container */}
-                    <div className="flex flex-col lg:flex-row bg-white/60 backdrop-blur-3xl rounded-[32px] md:rounded-[40px] shadow-xl relative border border-[#0c39e0]/5 overflow-hidden">
+                    <div className="flex flex-col lg:flex-row bg-white/60 backdrop-blur-3xl rounded-[32px] md:rounded-[40px] relative border border-[#0c39e0]/5 overflow-hidden">
 
                         {/* Cutouts for Desktop */}
                         <div className="hidden lg:block absolute left-[70%] -top-[20px] w-[40px] h-[40px] bg-white rounded-full z-20 transform -translate-x-1/2 pointer-events-none" />

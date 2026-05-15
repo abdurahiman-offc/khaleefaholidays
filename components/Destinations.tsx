@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import SectionBackground from "./SectionBackground";
 import { ServiceCard, ServiceModal } from "./ServiceCard";
 import type { Destination } from "./ServiceCard";
+import { Search } from "lucide-react";
 
 export default function Destinations() {
     const [destinations, setDestinations] = useState<Destination[]>([]);
@@ -12,6 +13,7 @@ export default function Destinations() {
     const [loading, setLoading] = useState(true);
     const [visibleCards, setVisibleCards] = useState(8);
     const [incrementBy, setIncrementBy] = useState(8);
+    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
         const handleResize = () => {
@@ -60,20 +62,60 @@ export default function Destinations() {
         return () => { document.body.style.overflow = 'unset'; };
     }, [selectedId]);
 
+    const filteredDestinations = destinations.filter(dest => 
+        dest.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        dest.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     const activeItem = destinations.find(d => d._id === selectedId);
 
     return (
-        <section id="destinations" className={`pt-[100px] pb-[100px] bg-transparent relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
+        <section id="destinations" className={`pt-[75px] pb-[75px] bg-transparent relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
             <SectionBackground />
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="text-center mb-16">
-                    <h2 className="text-[10px] font-black text-[#2D3E33]/40 uppercase tracking-[0.2em] mb-4">
-                        Discover
-                    </h2>
-                    <h2 className="text-3xl md:text-4xl font-black uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
-                        Popular Destinations
-                    </h2>
+                <div className="flex items-center justify-center pt-10 pb-[50px] md:pt-20">
+                    <div className="relative inline-block text-center">
+                        {/* Background stretched text */}
+                        <h2 
+                            className="font-oswald text-[40px] md:text-[90px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
+                            style={{ transform: 'scaleY(1.6)', letterSpacing: '-5px' }}
+                        >
+                            Explore the world
+                        </h2>
+                        
+                        {/* Top cursive text */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <h2 className="font-satisfy-local text-[42px] md:text-[80px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
+                                Popular Destination
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Search Bar */}
+                <div className="flex justify-center mb-10 px-4">
+                    <div className="relative w-full max-w-lg group">
+                        <div className="absolute inset-0 bg-[#1D4ED8]/5 rounded-full blur-xl group-hover:bg-[#1D4ED8]/10 transition-all duration-500" />
+                        <div className="relative flex items-center bg-white/60 backdrop-blur-md border border-[#1D4ED8]/20 rounded-full px-6 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.04)] focus-within:border-[#1D4ED8] focus-within:shadow-[0_8px_32px_rgba(29,78,216,0.1)] transition-all duration-300">
+                            <Search className="text-[#1D4ED8] mr-4" size={22} />
+                            <input
+                                type="text"
+                                placeholder="Search your dream destination..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full bg-transparent border-none outline-none text-[#0F172A] font-outfit font-medium text-lg placeholder:text-[#0F172A]/40"
+                            />
+                            {searchQuery && (
+                                <button 
+                                    onClick={() => setSearchQuery("")}
+                                    className="ml-4 text-[#0F172A]/40 hover:text-[#1D4ED8] font-bold"
+                                >
+                                    Clear
+                                </button>
+                            )}
+                        </div>
+                    </div>
                 </div>
 
                 {loading ? (
@@ -84,7 +126,7 @@ export default function Destinations() {
                     <div className="flex flex-wrap justify-center gap-8 max-w-[1400px] mx-auto">
                         {/* DO NOT CHANGE THIS LAYOUT. This is permanent and always fixed. Keep flex flex-wrap. */}
                         <AnimatePresence mode="popLayout">
-                            {destinations.slice(0, visibleCards).map((place, index) => (
+                            {filteredDestinations.slice(0, visibleCards).map((place, index) => (
                             <ServiceCard
                                 key={place._id}
                                 item={place}
@@ -128,6 +170,20 @@ export default function Destinations() {
                     type="destinations" 
                     onClose={() => setSelectedId(null)} 
                 />
+            </div>
+
+            {/* Decorative Bottom Line */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[55%] h-24 pointer-events-none flex items-center justify-center">
+                <svg width="100%" height="100%" viewBox="0 0 100 20" preserveAspectRatio="none">
+                    <path 
+                        d="M 0 10 L 100 10" 
+                        fill="none" 
+                        stroke="white" 
+                        strokeWidth="2" 
+                        strokeLinecap="round"
+                        className="blur-[1px] opacity-80"
+                    />
+                </svg>
             </div>
         </section>
     );

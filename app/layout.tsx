@@ -6,7 +6,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 
-import { Playfair_Display, Roboto, Yomogi, Outfit } from "next/font/google";
+import { Playfair_Display, Roboto, Yomogi, Outfit, Bebas_Neue, Six_Caps, Oswald, Allura } from "next/font/google";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -29,6 +29,30 @@ const yomogi = Yomogi({
 const outfit = Outfit({
   variable: "--font-outfit",
   weight: ["400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
+
+const bebas = Bebas_Neue({
+  variable: "--font-bebas",
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
+const sixCaps = Six_Caps({
+  variable: "--font-six-caps",
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
+const oswald = Oswald({
+  variable: "--font-oswald",
+  weight: ["700"],
+  subsets: ["latin"],
+});
+
+const allura = Allura({
+  variable: "--font-allura",
+  weight: ["400"],
   subsets: ["latin"],
 });
 
@@ -95,7 +119,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${playfair.variable} ${roboto.variable} ${yomogi.variable} ${outfit.variable} font-sans antialiased`}
+        className={`${playfair.variable} ${roboto.variable} ${yomogi.variable} ${outfit.variable} ${bebas.variable} ${sixCaps.variable} ${oswald.variable} ${allura.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         <SmoothScroll>

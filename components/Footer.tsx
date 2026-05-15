@@ -20,7 +20,7 @@ export default function Footer() {
 
     return (
         <footer
-            className="bg-[#0c39e0] text-white/60 pb-8 relative overflow-hidden"
+            className="bg-[#1D4ED8] text-white/60 pb-8 relative overflow-hidden"
             style={{
                 clipPath: 'url(#footer-wave-clip)',
                 marginTop: '-100px',
@@ -65,7 +65,7 @@ export default function Footer() {
                                 <Link
                                     key={idx}
                                     href={href}
-                                    className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full text-white/80 hover:text-[#0c39e0] hover:bg-white transition-all duration-300 shadow-sm border border-white/5"
+                                    className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full text-white/80 hover:text-[#1D4ED8] hover:bg-white transition-all duration-300 shadow-sm border border-white/5"
                                 >
                                     <Icon className="w-4 h-4" />
                                 </Link>

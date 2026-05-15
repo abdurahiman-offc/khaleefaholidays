@@ -31,7 +31,7 @@ export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <section id="faq" className="pt-[100px] pb-[100px] bg-[#F5F5F5]">
+        <section id="faq" className="pt-0 pb-[75px] bg-transparent relative">
             <div className="container mx-auto px-6 max-w-3xl">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -56,7 +56,7 @@ export default function FAQ() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className="bg-[#F5F5F5] rounded-[32px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[10px] border-white overflow-hidden"
+                            className="bg-[#F5F5F5]/60 backdrop-blur-xl rounded-[32px] border-[10px] border-white overflow-hidden"
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}

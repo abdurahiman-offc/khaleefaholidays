@@ -101,6 +101,11 @@ export default function Services() {
         return matchesCategory && matchesType && matchesSearch;
     });
 
+    const filteredDestinationData = destinationData.filter(item => {
+        return item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            item.country?.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+
     const getActiveItem = () => {
         if (activeTab === "visa") return visaData.find(v => v._id === selectedId);
         if (activeTab === "destinations") return destinationData.find(d => d._id === selectedId);
@@ -112,16 +117,31 @@ export default function Services() {
     const activeItem = getActiveItem();
 
     return (
-        <section id="services" className={`pt-[150px] pb-[100px] bg-transparent relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
+        <section id="services" className={`pt-[100px] pb-[75px] bg-transparent relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
             {/* Scattered Small White Shapes */}
 
 
 
             <div className="container mx-auto px-6 relative z-10">
 
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">Our Services</h2>
-                </div>
+                    <div className="flex items-center justify-center pt-10 pb-6 md:pt-20 md:pb-12">
+                        <div className="relative inline-block">
+                            {/* Background stretched text */}
+                            <h2 
+                                className="font-oswald text-[50px] md:text-[100px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
+                                style={{ transform: 'scaleY(1.6)', letterSpacing: '-5px' }}
+                            >
+                                Your Journey
+                            </h2>
+                            
+                            {/* Top cursive text */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <h2 className="font-satisfy-local text-[54px] md:text-[90px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
+                                    Our Services
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
 
                 {/* Tabs */}
                 <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-12 overflow-x-auto pb-4 py-[5px] scrollbar-hide">
@@ -180,9 +200,9 @@ export default function Services() {
                                                     setActiveVisaCategory(category);
                                                     setVisibleCards(6);
                                                 }}
-                                                className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activeVisaCategory === category
-                                                    ? "bg-[#0c39e0] text-white shadow-sm scale-105"
-                                                    : "text-[#0c39e0]/60 hover:text-[#0c39e0] hover:bg-black/5"
+                                                className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all backdrop-blur-md border border-white/40 ${activeVisaCategory === category
+                                                    ? "bg-[#0c39e0] text-white shadow-lg scale-105"
+                                                    : "bg-white/30 text-[#0c39e0] hover:bg-white/50"
                                                     }`}
                                             >
                                                 {category}
@@ -254,9 +274,30 @@ export default function Services() {
                         {/* Destinations Content */}
                         {activeTab === "destinations" && (
                             <div className="w-full">
+                                <div className="mb-10 flex justify-center">
+                                    {/* Search Box */}
+                                    <div className="relative w-full md:w-[400px]">
+                                        <input
+                                            type="text"
+                                            placeholder="SEARCH DESTINATIONS..."
+                                            value={searchTerm}
+                                            onChange={(e) => {
+                                                setSearchTerm(e.target.value);
+                                                setVisibleCards(6);
+                                            }}
+                                            className="w-full bg-white/50 backdrop-blur-md border-2 border-white/20 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest focus:ring-2 focus:ring-[#0c39e0]/20 focus:border-[#0c39e0] outline-none transition-all placeholder:text-slate-300 shadow-sm"
+                                        />
+                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div className="flex flex-wrap justify-center gap-8 max-w-[1400px] mx-auto">
                                     <AnimatePresence mode="popLayout">
-                                        {destinationData.slice(0, visibleCards).map((item, index) => (
+                                        {filteredDestinationData.slice(0, visibleCards).map((item, index) => (
                                             <ServiceCard
                                                 key={item._id}
                                                 item={item}
@@ -268,7 +309,7 @@ export default function Services() {
                                     </AnimatePresence>
                                 </div>
                                 <div className="flex justify-center items-center gap-6 mt-12">
-                                    {destinationData.length > visibleCards && (
+                                    {filteredDestinationData.length > visibleCards && (
                                         <motion.button
                                             whileHover={{ scale: 1.05, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
@@ -289,7 +330,7 @@ export default function Services() {
                                         </motion.button>
                                     )}
                                 </div>
-                                {destinationData.length === 0 && <EmptyState message="No destinations found." />}
+                                {filteredDestinationData.length === 0 && <EmptyState message="No destinations found." />}
                             </div>
                         )}
 
