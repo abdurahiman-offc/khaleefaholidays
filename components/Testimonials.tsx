@@ -109,11 +109,28 @@ export default function Testimonials() {
     }
 
     return (
-        <section id="reviews" className="pt-[75px] pb-[75px] bg-transparent relative overflow-hidden contain-paint">
+        <section id="reviews" className="pt-[75px] pb-0 md:pb-[75px] bg-transparent relative overflow-hidden contain-paint">
             {/* Background Effect */}
             <SectionBackground />
 
-            <div className="flex items-center justify-center pt-10 pb-6 md:pt-20 md:pb-12">
+            <div className="flex flex-col items-center justify-center pt-10 pb-6 md:pt-20 md:pb-12">
+                <div className="flex gap-2 md:gap-4 mb-2 md:mb-4">
+                    {[...Array(5)].map((_, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0.3, scale: 0.8 }}
+                            animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.15, 0.8] }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                delay: i * 0.3, // Sequential shine effect
+                                ease: "easeInOut"
+                            }}
+                        >
+                            <Star className="w-6 h-6 md:w-10 md:h-10 text-white/65 drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)]" fill="currentColor" />
+                        </motion.div>
+                    ))}
+                </div>
                 <div className="relative inline-block text-center">
                     {/* Background stretched text */}
                     <h2
@@ -148,29 +165,28 @@ function FeedbackCard({ item }: { item: Feedback }) {
 
     return (
         <div
-            className="relative flex flex-col bg-[#F5F5F5]/60 backdrop-blur-xl p-8 rounded-[32px] md:rounded-[40px] border-[8px] md:border-[10px] border-white h-full w-full sm:w-[380px]"
+            className="relative flex flex-col bg-[#F5F5F5]/60 backdrop-blur-xl p-6 md:p-8 rounded-[32px] md:rounded-[40px] border-4 md:border-[10px] border-white h-full w-full sm:w-[380px]"
         >
-            <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-[#F5F5F5] rounded-2xl flex items-center justify-center text-[#0c39e0] shrink-0 shadow-sm border border-slate-100">
-                    <User size={28} />
+            <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+                <div className="w-10 h-10 md:w-14 md:h-14 bg-[#F5F5F5] rounded-xl md:rounded-2xl flex items-center justify-center text-[#0c39e0] shrink-0 shadow-sm border border-slate-100">
+                    <User className="w-5 h-5 md:w-7 md:h-7" />
                 </div>
                 <div>
-                    <h4 className="font-bold text-slate-900 uppercase tracking-tight">{item.name || 'Anonymous'}</h4>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{item.place || 'Traveler'}</p>
+                    <h4 className="font-bold text-sm md:text-base text-slate-900 uppercase tracking-tight">{item.name || 'Anonymous'}</h4>
+                    <p className="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest">{item.place || 'Traveler'}</p>
                 </div>
             </div>
 
-            <div className="flex gap-1 mb-6">
+            <div className="flex gap-1 mb-3 md:mb-6">
                 {[...Array(5)].map((_, i) => (
                     <Star
                         key={i}
-                        size={14}
-                        className={i < (item.stars || 0) ? "fill-[#FFB800] text-[#FFB800]" : "text-slate-200"}
+                        className={`w-3 h-3 md:w-3.5 md:h-3.5 ${i < (item.stars || 0) ? "fill-[#FFB800] text-[#FFB800]" : "text-slate-200"}`}
                     />
                 ))}
             </div>
 
-            <p className="text-base text-slate-600 leading-relaxed font-medium italic">
+            <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium italic">
                 "{item.feedback || 'No feedback provided'}"
             </p>
         </div>

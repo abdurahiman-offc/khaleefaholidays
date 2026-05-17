@@ -70,7 +70,7 @@ export default function Destinations() {
     const activeItem = destinations.find(d => d._id === selectedId);
 
     return (
-        <section id="destinations" className={`pt-[75px] pb-[75px] bg-transparent relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
+        <section id="destinations" className={`pt-[75px] pb-[50px] md:pb-[75px] bg-transparent relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
             <SectionBackground />
 
             <div className="container mx-auto px-6 relative z-10">

@@ -170,7 +170,7 @@ export default function Navbar() {
                         <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6 text-center">Follow Us</p>
                         <div className="flex justify-center gap-4">
                             {[
-                                { Icon: Instagram, href: "#" },
+                                { Icon: Instagram, href: "https://www.instagram.com/khaleefaholidays?igsh=cnE1amZvcWp0ZTBr&utm_source=qr" },
                                 { Icon: Facebook, href: "#" },
                                 { Icon: Twitter, href: "#" },
                                 { Icon: Linkedin, href: "#" },

@@ -6,11 +6,11 @@ import SectionBackground from "./SectionBackground";
 
 export default function AboutUs() {
     return (
-        <section id="about-us" className="pt-[220px] md:pt-[220px] lg:pt-[400px] pb-[75px] bg-transparent overflow-visible relative contain-paint">
+        <section id="about-us" className="pt-[150px] md:pt-[220px] lg:pt-[400px] pb-[75px] bg-transparent overflow-visible relative contain-paint">
             <SectionBackground />
 
-            {/* Destination Silhouette - Isolated responsive sizing for perfect alignment */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full md:w-[80%] lg:w-[75%] px-6 h-auto aspect-[3/1] lg:h-[400px] z-0 pointer-events-none select-none">
+            {/* Desktop Destination Silhouette */}
+            <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[80%] lg:w-[75%] px-6 h-auto aspect-[3/1] lg:h-[400px] z-0 pointer-events-none select-none">
                 <Image
                     src="/images/destinationsilhoute2.png"
                     alt="Destinations Silhouette"
@@ -20,7 +20,18 @@ export default function AboutUs() {
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className={`bg-white/10 backdrop-blur-lg rounded-[40px] md:rounded-[60px] border border-white/20 p-8 md:p-16 lg:p-20 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] overflow-hidden relative group transition-all duration-500 hover:shadow-[0_8px_48px_rgba(0,0,0,0.08)]`}>
+                {/* Mobile Destination Silhouette - Resting on top edge */}
+                <div className="block md:hidden absolute left-1/2 -translate-x-1/2 bottom-full w-[90%] pointer-events-none select-none -mb-[1px]">
+                    <Image
+                        src="/images/destinationsilhoute2.png"
+                        alt="Destinations Silhouette"
+                        width={800}
+                        height={266}
+                        className="w-full h-auto object-bottom grayscale invert brightness-200 opacity-10"
+                    />
+                </div>
+
+                <div className={`bg-white/10 backdrop-blur-lg rounded-t-none rounded-b-[40px] md:rounded-[60px] border border-white/20 px-6 pt-8 pb-[75px] md:p-16 lg:p-20 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] overflow-hidden relative group transition-all duration-500 hover:shadow-[0_8px_48px_rgba(0,0,0,0.08)]`}>
                     {/* Subtle inner glow */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/5 pointer-events-none" />
 
@@ -64,11 +75,11 @@ export default function AboutUs() {
                                 </h2>
                             </div>
 
-                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-8 leading-tight uppercase tracking-tight text-slate-900 w-full text-center lg:text-left">
+                            <h2 className="text-xl md:text-3xl lg:text-4xl font-black mb-6 md:mb-8 leading-tight uppercase tracking-tight text-slate-900 w-full text-center lg:text-left">
                                 Turning Dreams <br /> Into Reality Since 2024
                             </h2>
 
-                            <div className="text-lg text-slate-600 mb-8 leading-relaxed font-medium space-y-4">
+                            <div className="text-sm md:text-lg text-slate-600 mb-6 md:mb-8 leading-relaxed font-medium space-y-3 md:space-y-4">
                                 <p>At Khaleefa Holidays, we make travel simple, smooth, and stress-free. We specialize in visa assistance and customized tour packages for travelers around the world.</p>
                                 <p>Our expert team provides support for Business Visas, Job Seeker Visas, Tourist Visas, Family Visas, and other travel documentation services with reliable guidance throughout the process.</p>
                                 <p>Whether you are planning a holiday, business trip, family visit, or international journey, we are committed to delivering trusted service and unforgettable travel experiences every step of the way.</p>
