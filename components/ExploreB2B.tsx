@@ -69,56 +69,59 @@ export default function ExploreB2B() {
     }, [isModalOpen]);
 
     return (
-        <section id="b2b" className={`py-[120px] bg-transparent relative transition-colors duration-300 ${isModalOpen ? 'z-[100]' : 'z-10'}`}>
+        <section id="b2b" className={`pt-[50px] md:pt-[75px] pb-[30px] md:pb-[75px] bg-transparent relative transition-colors duration-300 ${isModalOpen ? 'z-[100]' : 'z-10'}`}>
             <SectionBackground />
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-                    {/* Left Side: Image */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="w-full lg:w-1/2 relative order-1"
-                    >
-                        <div className="relative aspect-square rounded-[40px] overflow-hidden">
-                            <Image
-                                src="/images/b2b-2.png"
-                                alt="Khaleefa Holidays B2B Travel Partnership Opportunities"
-                                fill
-                                className="object-cover transition-transform duration-1000 hover:scale-105"
-                            />
-                        </div>
-                    </motion.div>
-
-                    {/* Right Side: Content */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="w-full lg:w-1/2 flex flex-col text-center lg:text-left items-center lg:items-start order-2"
-                    >
-                        <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
-                            Let's join hand together
-                        </h2>
-                        <p className={`text-xl md:text-3xl text-black/60 leading-relaxed mb-10 normal-case ${dosis.className} font-medium italic`}>
-                            Explore B2B opportunity with Khaleefa Holiday.<br className="hidden md:block" /> Join our exclusive network of travel partners and <br className="hidden md:block" />grow your business with us.
-                        </p>
-                        
-
-                        
-                        <motion.button
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => setIsModalOpen(true)}
-                            className="bg-[#1e1e89] text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest shadow-[0_15px_30px_rgba(30,30,137,0.25)] flex items-center gap-3 transition-all"
+                <div className={`bg-white/10 backdrop-blur-lg rounded-[40px] md:rounded-[60px] border border-white/20 p-8 md:p-16 lg:p-20 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] overflow-hidden relative group transition-all duration-500 hover:shadow-[0_8px_48px_rgba(0,0,0,0.08)]`}>
+                    {/* Subtle inner glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/5 pointer-events-none" />
+                    
+                    <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative z-10">
+                        {/* Left Side: Image */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="w-3/4 max-w-[250px] md:max-w-none md:w-full lg:w-1/2 relative order-1 mx-auto lg:mx-0"
                         >
-                            Partner with Us
-                            <MoveRight className="w-5 h-5" />
-                        </motion.button>
-                    </motion.div>
+                            <div className="relative aspect-square rounded-[32px] md:rounded-[40px] overflow-hidden">
+                                <Image
+                                    src="/images/b2b-2.png"
+                                    alt="Khaleefa Holidays B2B Travel Partnership Opportunities"
+                                    fill
+                                    className="object-cover transition-transform duration-1000 hover:scale-105"
+                                />
+                            </div>
+                        </motion.div>
+
+                        {/* Right Side: Content */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="w-full lg:w-1/2 flex flex-col text-center lg:text-left items-center lg:items-start order-2"
+                        >
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
+                                Let's join hand together
+                            </h2>
+                            <p className={`text-base md:text-2xl text-black/60 leading-relaxed mb-8 md:mb-10 normal-case ${dosis.className} font-medium italic`}>
+                                Explore B2B opportunity with Khaleefa Holiday.<br className="hidden md:block" /> Join our exclusive network of travel partners and <br className="hidden md:block" />grow your business with us.
+                            </p>
+                            
+                            <motion.button
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => setIsModalOpen(true)}
+                                className="bg-[#1e1e89] text-white px-8 py-3.5 md:px-10 md:py-4 rounded-full text-xs md:text-sm font-bold uppercase tracking-widest shadow-[0_15px_30px_rgba(30,30,137,0.25)] flex items-center gap-2 md:gap-3 transition-all"
+                            >
+                                Partner with Us
+                                <MoveRight className="w-5 h-5" />
+                            </motion.button>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
 
@@ -141,7 +144,7 @@ export default function ExploreB2B() {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             transition={{ type: "spring", duration: 0.5 }}
-                            className="bg-[#F5F5F5] rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] w-full max-w-4xl relative z-10 overflow-y-auto md:overflow-hidden text-[#0c39e0] border-[10px] border-white flex flex-col md:flex-row min-h-[500px] max-h-[90vh] md:max-h-none"
+                            className="bg-[#F5F5F5] rounded-3xl md:rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] w-full max-w-4xl relative z-10 overflow-y-auto md:overflow-hidden text-[#0c39e0] border-4 md:border-[10px] border-white flex flex-col md:flex-row min-h-[400px] md:min-h-[500px] max-h-[90vh] md:max-h-none"
                         >
                             {/* Visual Cutouts for Ticket Effect */}
                             <div className="hidden md:block absolute left-[33%] -top-[20px] w-10 h-10 bg-white rounded-full z-20 pointer-events-none shadow-[inset_0_-4px_10px_rgba(0,0,0,0.05)]" />
@@ -150,25 +153,25 @@ export default function ExploreB2B() {
                             {/* Sticky Close Button (Inside) */}
                             <button
                                 onClick={() => setIsModalOpen(false)}
-                                className="absolute top-6 right-6 w-10 h-10 bg-white shadow-xl rounded-full border border-[#0c39e0]/10 flex items-center justify-center text-[#0c39e0] hover:text-red-500 transition-all z-[110] group"
+                                className="absolute top-3 right-3 md:top-6 md:right-6 w-8 h-8 md:w-10 md:h-10 bg-white shadow-xl rounded-full border border-[#0c39e0]/10 flex items-center justify-center text-[#0c39e0] hover:text-red-500 transition-all z-[110] group"
                             >
                                 <X size={20} className="group-hover:rotate-90 transition-transform" />
                             </button>
 
                             {/* Left Section: Partnership Branding (Stub) */}
-                            <div className="w-full md:w-1/3 bg-[#0c39e0] p-10 flex flex-col justify-between text-white border-b-2 md:border-b-0 md:border-r-2 border-dashed border-white/20">
+                            <div className="w-full md:w-1/3 bg-[#0c39e0] p-6 md:p-10 flex flex-col justify-between text-white border-b-2 md:border-b-0 md:border-r-2 border-dashed border-white/20">
                                 <div>
-                                    <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 shadow-inner transform -rotate-12">
-                                        <Plane size={32} className="transform rotate-45" />
+                                    <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 md:mb-8 shadow-inner transform -rotate-12">
+                                        <Plane className="w-6 h-6 md:w-8 md:h-8 transform rotate-45" />
                                     </div>
-                                    <h3 className="text-3xl font-black uppercase tracking-tighter leading-none mb-4">B2B<br />Partner</h3>
-                                    <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.1em] leading-relaxed max-w-[150px]">
+                                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none mb-2 md:mb-4">B2B<br />Partner</h3>
+                                    <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.1em] leading-relaxed max-w-full md:max-w-[150px]">
                                         Please fill out the form, and our team will contact you soon.
                                     </p>
                                 </div>
 
                                 {/* Visual Barcode for Stub Effect */}
-                                <div className="mt-12 pt-6 border-t border-white/10">
+                                <div className="mt-6 md:mt-12 pt-6 border-t border-white/10 hidden md:block">
                                     <div className="flex justify-between items-center text-[10px] font-mono text-white/20 tracking-widest uppercase mb-4">
                                         <span>Partner ID</span>
                                         <span>B2B-KH-2024</span>
@@ -193,7 +196,7 @@ export default function ExploreB2B() {
                             </div>
 
                             {/* Right Section: Form Body */}
-                            <div className="w-full md:w-2/3 p-12 flex flex-col justify-center">
+                            <div className="w-full md:w-2/3 p-6 md:p-12 flex flex-col justify-center">
                                 {submitted ? (
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.9 }}
@@ -216,12 +219,12 @@ export default function ExploreB2B() {
                                     </motion.div>
                                 ) : (
                                     <div className="max-w-md mx-auto w-full">
-                                        <div className="mb-10">
+                                        <div className="mb-10 hidden md:block">
                                             <h4 className="text-2xl font-black uppercase tracking-tighter mb-2">Join the Elite</h4>
                                             <p className="text-[#0c39e0]/40 text-xs font-black uppercase tracking-widest italic">Complete the enquiry to start your journey.</p>
                                         </div>
 
-                                        <form onSubmit={handleSubmit} className="space-y-6">
+                                        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                                             <div className="space-y-1.5">
                                                 <label className="text-[10px] font-black text-[#0c39e0]/30 uppercase tracking-widest px-1 flex items-center gap-2">
                                                     <User size={12} /> Full Name
@@ -232,7 +235,7 @@ export default function ExploreB2B() {
                                                     name="name"
                                                     value={formData.name}
                                                     onChange={handleChange}
-                                                    className="w-full px-5 py-4 bg-white border border-[#0c39e0]/10 rounded-2xl focus:ring-2 focus:ring-[#0c39e0]/10 outline-none text-sm font-black uppercase transition-all text-[#0c39e0] tracking-tight"
+                                                    className="w-full px-4 py-3 md:px-5 md:py-4 bg-white border border-[#0c39e0]/10 rounded-2xl focus:ring-2 focus:ring-[#0c39e0]/10 outline-none text-xs md:text-sm font-black uppercase transition-all text-[#0c39e0] tracking-tight"
                                                     placeholder="NAME / COMPANY"
                                                 />
                                             </div>
@@ -247,7 +250,7 @@ export default function ExploreB2B() {
                                                     name="phone"
                                                     value={formData.phone}
                                                     onChange={handleChange}
-                                                    className={`w-full px-5 py-4 bg-white border rounded-2xl focus:ring-2 focus:ring-[#0c39e0]/10 outline-none text-sm font-black uppercase transition-all text-[#0c39e0] tracking-tight ${phoneError ? "border-red-400" : "border-[#0c39e0]/10"}`}
+                                                    className={`w-full px-4 py-3 md:px-5 md:py-4 bg-white border rounded-2xl focus:ring-2 focus:ring-[#0c39e0]/10 outline-none text-xs md:text-sm font-black uppercase transition-all text-[#0c39e0] tracking-tight ${phoneError ? "border-red-400" : "border-[#0c39e0]/10"}`}
                                                     placeholder="+91 0000 0000"
                                                 />
                                                 {phoneError && <p className="text-red-500 text-[10px] mt-1 font-black px-1">{phoneError}</p>}
@@ -263,7 +266,7 @@ export default function ExploreB2B() {
                                                     rows={3}
                                                     value={formData.message}
                                                     onChange={handleChange}
-                                                    className="w-full px-5 py-4 bg-white border border-[#0c39e0]/10 rounded-2xl focus:ring-2 focus:ring-[#0c39e0]/10 outline-none text-sm font-black uppercase resize-none transition-all text-[#0c39e0] tracking-tight"
+                                                    className="w-full px-4 py-3 md:px-5 md:py-4 bg-white border border-[#0c39e0]/10 rounded-2xl focus:ring-2 focus:ring-[#0c39e0]/10 outline-none text-xs md:text-sm font-black uppercase resize-none transition-all text-[#0c39e0] tracking-tight"
                                                     placeholder="Tell us about your business..."
                                                 />
                                             </div>
@@ -272,7 +275,7 @@ export default function ExploreB2B() {
                                                 type="submit"
                                                 whileHover={{ scale: 1.02 }}
                                                 whileTap={{ scale: 0.98 }}
-                                                className="w-full bg-[#1e1e89] text-white px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-3 shadow-[0_10px_20px_rgba(30,30,137,0.2)] transition-all"
+                                                className="w-full bg-[#1e1e89] text-white px-6 py-3.5 md:px-8 md:py-4 rounded-full text-xs md:text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-2 md:gap-3 shadow-[0_10px_20px_rgba(30,30,137,0.2)] transition-all"
                                             >
                                                 Partner with us now
                                             </motion.button>

@@ -20,7 +20,7 @@ export default function Footer() {
 
     return (
         <footer
-            className="bg-[#0c39e0] text-white/60 pb-8 relative overflow-hidden"
+            className="bg-[#1D4ED8] text-white/60 pb-8 relative overflow-hidden"
             style={{
                 clipPath: 'url(#footer-wave-clip)',
                 marginTop: '-100px',
@@ -40,24 +40,24 @@ export default function Footer() {
             </svg>
 
             <div className="container mx-auto px-6 relative z-10">
-                {/* TOP DIV: Split into 3 columns */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 border-b border-white/10 pb-12 items-start">
-
-                    {/* COLUMN 1: Logo & Social */}
-                    <div className="flex flex-col items-center lg:items-start gap-6">
-                        <Link href="/" className="block relative w-full max-w-[350px] h-[70px] md:h-[90px]">
+                {/* Main Footer Content */}
+                <div className="flex flex-col lg:grid lg:grid-cols-3 gap-12 mb-12 border-b border-white/10 pb-12 items-start">
+                    
+                    {/* TOP SECTION: Logo & Social (Centered on Tablet/Mobile) */}
+                    <div className="w-full lg:col-span-1 flex flex-col items-center lg:items-start gap-4 md:gap-6">
+                        <Link href="/" className="block relative w-full max-w-[280px] md:max-w-[350px] h-[50px] md:h-[90px]">
                             <Image
                                 src="/images/kh-logo-white.png"
                                 alt="Khaleefa Holidays Logo"
                                 fill
-                                className="object-contain object-center md:object-left"
-                                sizes="350px"
+                                className="object-contain object-center lg:object-left"
+                                sizes="(max-width: 768px) 280px, 350px"
                                 priority
                             />
                         </Link>
-                        <div className="flex space-x-4">
+                        <div className="flex space-x-3 md:space-x-4">
                             {[
-                                { Icon: Instagram, href: "#" },
+                                { Icon: Instagram, href: "https://www.instagram.com/khaleefaholidays?igsh=cnE1amZvcWp0ZTBr&utm_source=qr" },
                                 { Icon: Facebook, href: "#" },
                                 { Icon: Twitter, href: "#" },
                                 { Icon: Linkedin, href: "#" },
@@ -65,67 +65,61 @@ export default function Footer() {
                                 <Link
                                     key={idx}
                                     href={href}
-                                    className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full text-white/80 hover:text-[#0c39e0] hover:bg-white transition-all duration-300 shadow-sm border border-white/5"
+                                    className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-white/10 rounded-full text-white/80 hover:text-[#1D4ED8] hover:bg-white transition-all duration-300 shadow-sm border border-white/5"
                                 >
-                                    <Icon className="w-4 h-4" />
+                                    <Icon className="w-3.5 h-3.5 md:w-4 md:h-4" />
                                 </Link>
                             ))}
                         </div>
                     </div>
 
-                    <div className="flex flex-col items-center">
-                        <h4 className="text-white/40 text-[13px] font-black uppercase tracking-[0.3em] mb-8">Navigation</h4>
-                        <div className="flex flex-col items-center gap-5 text-[15px] font-black text-white/60 uppercase tracking-[0.2em]">
-                            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
-                                {navLinks.slice(0, 3).map((link) => (
-                                    <button
-                                        key={link.id}
-                                        onClick={() => scrollToSection(link.id)}
-                                        className="hover:text-white transition-colors whitespace-nowrap"
-                                    >
-                                        {link.name}
-                                    </button>
+                    {/* BOTTOM SECTION: Split Navigation & Address (Tablet Layout) */}
+                    <div className="w-full lg:contents flex flex-col md:flex-row gap-12 md:gap-0 lg:gap-12">
+                        {/* COLUMN 2: Navigation (Left on Tablet) */}
+                        <div className="w-full md:w-1/2 lg:w-auto flex flex-col items-start lg:items-start">
+                            <h4 className="text-white/40 text-[11px] md:text-[13px] font-black uppercase tracking-[0.3em] mb-4 md:mb-8">Navigation</h4>
+                            <ul className="flex flex-col items-start gap-3 md:gap-5 text-[12px] md:text-[15px] font-black text-white/60 uppercase tracking-[0.2em]">
+                                {navLinks.map((link) => (
+                                    <li key={link.id}>
+                                        <button
+                                            onClick={() => scrollToSection(link.id)}
+                                            className="hover:text-white transition-colors whitespace-nowrap text-left"
+                                        >
+                                            {link.name}
+                                        </button>
+                                    </li>
                                 ))}
-                            </div>
-                            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
-                                {navLinks.slice(3).map((link) => (
-                                    <button
-                                        key={link.id}
-                                        onClick={() => scrollToSection(link.id)}
-                                        className="hover:text-white transition-colors whitespace-nowrap"
-                                    >
-                                        {link.name}
-                                    </button>
-                                ))}
-                            </div>
+                            </ul>
                         </div>
-                    </div>
 
-                    {/* COLUMN 3: Address & Contact (Right) */}
-                    <div className="flex flex-col items-center lg:items-end">
-                        <h4 className="text-white/40 text-[13px] font-black uppercase tracking-[0.3em] mb-8">Connect</h4>
-                        <div className="flex flex-col items-center lg:items-end gap-5 text-[15px] font-black text-white/60 uppercase tracking-widest leading-relaxed">
-                            <div className="flex items-center gap-4 flex-row w-full max-w-full justify-center lg:justify-end">
-                                <span className="flex-1 min-w-0 text-center lg:text-right break-words whitespace-normal leading-tight">123 Travel Lane, Metropolis</span>
-                                <MapPin size={16} className="text-white shrink-0 opacity-40 order-first lg:order-last" />
-                            </div>
-                            <div className="flex items-center gap-4 flex-row w-full max-w-full justify-center lg:justify-end">
-                                <span className="flex-1 min-w-0 text-center lg:text-right break-words whitespace-normal leading-tight">+91 98765 43210</span>
-                                <Phone size={16} className="text-white shrink-0 opacity-40 order-first lg:order-last" />
-                            </div>
-                            <div className="flex items-center gap-4 flex-row w-full max-w-full justify-center lg:justify-end">
-                                <span className="flex-1 min-w-0 text-center lg:text-right break-words whitespace-normal leading-tight">contact@khaleefaholidays.com</span>
-                                <Mail size={16} className="text-white shrink-0 opacity-40 order-first lg:order-last" />
+                        {/* COLUMN 3: Address & Contact (Right on Tablet) */}
+                        <div className="w-full md:w-1/2 lg:w-auto flex flex-col items-start lg:items-start">
+                            <h4 className="text-white/40 text-[11px] md:text-[13px] font-black uppercase tracking-[0.3em] mb-4 md:mb-8">Connect</h4>
+                            <div className="flex flex-col items-start lg:items-start gap-3 md:gap-5 text-[12px] md:text-[15px] font-black text-white/60 uppercase tracking-widest leading-relaxed">
+                                <div className="flex items-center gap-3 md:gap-4 flex-row w-full max-w-full justify-start">
+                                    <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-white shrink-0 opacity-40 order-first" />
+                                    <a href="https://maps.app.goo.gl/97qePRPpddCfkvEW9" target="_blank" rel="noopener noreferrer" className="flex-1 min-w-0 text-left break-words whitespace-normal leading-tight hover:text-white transition-colors">
+                                        2nd Floor, Mecheri Tower, Pattambi Road, Koppam, Pin 679307
+                                    </a>
+                                </div>
+                                <div className="flex items-center gap-3 md:gap-4 flex-row w-full max-w-full justify-start">
+                                    <Phone className="w-3.5 h-3.5 md:w-4 md:h-4 text-white shrink-0 opacity-40 order-first" />
+                                    <span className="flex-1 min-w-0 text-left break-words whitespace-normal leading-tight">+91 70121 66 800</span>
+                                </div>
+                                <div className="flex items-center gap-3 md:gap-4 flex-row w-full max-w-full justify-start">
+                                    <Mail className="w-3.5 h-3.5 md:w-4 md:h-4 text-white shrink-0 opacity-40 order-first" />
+                                    <span className="flex-1 min-w-0 text-left break-words whitespace-normal leading-tight">info@khaleefaholidays.com</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* BOTTOM DIV: Centered Details */}
-                <div className="flex flex-col items-center text-center gap-6">
-                    <div className="flex flex-col items-center gap-3 text-[10px] font-black text-white/30 uppercase tracking-[0.1em]">
+                <div className="flex flex-col items-center text-center gap-4 md:gap-6">
+                    <div className="flex flex-col items-center gap-2 md:gap-3 text-[8px] md:text-[10px] font-black text-white/30 uppercase tracking-[0.1em]">
                         <p className="">&copy; {new Date().getFullYear()} Khaleefa Holidays. All Rights Reserved.</p>
-                        <div className="flex items-center space-x-6">
+                        <div className="flex items-center space-x-4 md:space-x-6">
                             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
                             <div className="w-1 h-1 bg-white/10 rounded-full opacity-20" />
                             <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>

@@ -101,6 +101,10 @@ export default function Services() {
         return matchesCategory && matchesType && matchesSearch;
     });
 
+    const filteredDestinationData = destinationData.filter(item => {
+        return item.name.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+
     const getActiveItem = () => {
         if (activeTab === "visa") return visaData.find(v => v._id === selectedId);
         if (activeTab === "destinations") return destinationData.find(d => d._id === selectedId);
@@ -112,26 +116,41 @@ export default function Services() {
     const activeItem = getActiveItem();
 
     return (
-        <section id="services" className={`pt-[150px] pb-[100px] bg-transparent relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
+        <section id="services" className={`pt-0 md:pt-[100px] pb-0 md:pb-[75px] bg-transparent relative transition-colors duration-300 ${selectedId ? 'z-[100]' : 'z-10'}`}>
             {/* Scattered Small White Shapes */}
 
 
 
             <div className="container mx-auto px-6 relative z-10">
 
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">Our Services</h2>
+                <div className="flex items-center justify-center pt-10 pb-6 md:pt-20 md:pb-12">
+                    <div className="relative inline-block">
+                        {/* Background stretched text */}
+                        <h2
+                            className="font-oswald text-[50px] md:text-[70px] lg:text-[100px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
+                            style={{ transform: 'scaleY(1.6)', letterSpacing: '-5px' }}
+                        >
+                            Your Journey
+                        </h2>
+
+                        {/* Top cursive text */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <h2 className="font-satisfy-local text-[54px] md:text-[70px] lg:text-[90px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
+                                Our Services
+                            </h2>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Tabs */}
-                <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-12 overflow-x-auto pb-4 py-[5px] scrollbar-hide">
+                <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-4 md:mb-12 overflow-x-auto pb-4 py-[5px] scrollbar-hide">
                     {tabs.map((tab) => (
                         <motion.button
                             key={tab.id}
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => { setActiveTab(tab.id); setSelectedId(null); }}
-                            className={`flex items-center gap-3 px-8 py-3.5 rounded-full text-[12px] font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === tab.id
+                            className={`flex items-center gap-2 md:gap-3 px-4 md:px-8 py-2.5 md:py-3.5 rounded-full text-[10px] md:text-[12px] font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === tab.id
                                 ? "bg-[#1e1e89] text-white"
                                 : "bg-white text-[#4B5563] border border-[#1e1e89]/10 hover:border-[#1e1e89] hover:text-[#1e1e89]"
                                 }`}
@@ -151,18 +170,18 @@ export default function Services() {
                         {/* Visa Content */}
                         {activeTab === "visa" && (
                             <>
-                                <div className="mb-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
+                                <div className="mb-10 flex flex-col items-center w-full">
                                     {/* Search Box */}
-                                    <div className="relative w-full md:w-[300px]">
+                                    <div className="relative w-full md:w-[450px] mb-8">
                                         <input
                                             type="text"
-                                            placeholder="SEARCH COUNTRY..."
+                                            placeholder="SEARCH VISAS..."
                                             value={searchTerm}
                                             onChange={(e) => {
                                                 setSearchTerm(e.target.value);
                                                 setVisibleCards(6);
                                             }}
-                                            className="w-full bg-white/50 border-2 border-black/5 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest focus:ring-2 focus:ring-[#0c39e0]/20 focus:border-[#0c39e0] outline-none transition-all placeholder:text-slate-300"
+                                            className="w-full bg-white/50 backdrop-blur-md border-2 border-white/20 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest focus:ring-2 focus:ring-[#0c39e0]/20 focus:border-[#0c39e0] outline-none transition-all placeholder:text-slate-300 shadow-sm"
                                         />
                                         <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -171,76 +190,105 @@ export default function Services() {
                                         </div>
                                     </div>
 
-                                    {/* Visa Categories (Subbuttons) */}
-                                    <div className="flex flex-wrap justify-center gap-3">
-                                        {visaCategories.map((category) => (
-                                            <button
-                                                key={category}
-                                                onClick={() => {
-                                                    setActiveVisaCategory(category);
-                                                    setVisibleCards(6);
-                                                }}
-                                                className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activeVisaCategory === category
-                                                    ? "bg-[#0c39e0] text-white shadow-sm scale-105"
-                                                    : "text-[#0c39e0]/60 hover:text-[#0c39e0] hover:bg-black/5"
-                                                    }`}
-                                            >
-                                                {category}
-                                            </button>
-                                        ))}
-                                    </div>
+                                    {/* Filters Container for Mobile */}
+                                    <div className="flex flex-col md:flex-row items-center justify-center gap-3 w-full">
+                                        {/* Mobile: Category and Type on same line */}
+                                        <div className="flex flex-row md:flex-wrap items-center justify-center gap-2 w-full md:w-auto">
+                                            {/* Visa Categories (Dropdown for Mobile) */}
+                                            <div className="md:hidden relative flex-1 min-w-0">
+                                                <select
+                                                    value={activeVisaCategory}
+                                                    onChange={(e) => {
+                                                        setActiveVisaCategory(e.target.value);
+                                                        setVisibleCards(6);
+                                                    }}
+                                                    className="w-full bg-white/50 border-2 border-black/5 px-3 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-black/20 hover:bg-slate-50 transition-all text-[#1D4ED8]"
+                                                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231D4ED8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.5rem center', backgroundSize: '0.7rem' }}
+                                                >
+                                                    {visaCategories.map((category) => (
+                                                        <option key={category} value={category}>{category}</option>
+                                                    ))}
+                                                </select>
+                                            </div>
 
-                                    {/* Visa Type Filter */}
-                                    <div className="relative w-full md:w-[180px]">
-                                        <select
-                                            value={activeVisaType}
-                                            onChange={(e) => {
-                                                setActiveVisaType(e.target.value);
-                                                setVisibleCards(6);
-                                            }}
-                                            className="w-full bg-white/50 border-2 border-black/5 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-black/20 hover:bg-slate-50 transition-all text-[#0c39e0]"
-                                            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2318189C'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '0.9rem' }}
-                                        >
-                                            <option value="All Types">All Types</option>
-                                            <option value="Tourist">Tourist</option>
-                                            <option value="Business">Business</option>
-                                            <option value="Job seeker">Job seeker</option>
-                                            <option value="Umrah">Umrah</option>
-                                            <option value="Family">Family</option>
-                                        </select>
+                                            {/* Visa Type Filter */}
+                                            <div className="relative flex-1 md:w-[180px] min-w-0">
+                                                <select
+                                                    value={activeVisaType}
+                                                    onChange={(e) => {
+                                                        setActiveVisaType(e.target.value);
+                                                        setVisibleCards(6);
+                                                    }}
+                                                    className="w-full bg-white/50 border-2 border-black/5 px-3 py-2 rounded-xl text-[10px] md:text-[11px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-black/20 hover:bg-slate-50 transition-all text-[#0c39e0]"
+                                                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2318189C'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.5rem center', backgroundSize: '0.7rem' }}
+                                                >
+                                                    <option value="All Types">All Types</option>
+                                                    <option value="Tourist">Tourist</option>
+                                                    <option value="Business">Business</option>
+                                                    <option value="Job seeker">Job seeker</option>
+                                                    <option value="Umrah">Umrah</option>
+                                                    <option value="Family">Family</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        {/* Desktop Categories Buttons */}
+                                        <div className="hidden md:flex flex-wrap justify-center gap-3">
+                                            {visaCategories.map((category) => (
+                                                <button
+                                                    key={category}
+                                                    onClick={() => {
+                                                        setActiveVisaCategory(category);
+                                                        setVisibleCards(6);
+                                                    }}
+                                                    className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all backdrop-blur-md border border-white/40 ${activeVisaCategory === category
+                                                        ? "bg-[#1D4ED8] text-white shadow-lg scale-105"
+                                                        : "bg-white/30 text-[#1D4ED8] hover:bg-white/50"
+                                                        }`}
+                                                >
+                                                    {category}
+                                                </button>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div className="flex flex-wrap justify-center gap-8 max-w-[1400px] mx-auto">
+                                <div className="grid grid-cols-2 md:flex md:flex-wrap justify-start md:justify-center gap-4 md:gap-8 max-w-[1400px] mx-auto px-4 md:px-0 pb-20 md:pb-0 w-full max-h-[480px] overflow-y-auto md:max-h-none md:overflow-visible scrollbar-hide [-webkit-mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] md:[-webkit-mask-image:none] md:[mask-image:none]">
                                     <AnimatePresence mode="popLayout">
-                                        {filteredVisaData.slice(0, visibleCards).map((item, index) => (
+                                        {filteredVisaData.map((item, index) => (
                                             <ServiceCard
                                                 key={item._id}
                                                 item={item}
                                                 index={index}
                                                 onClick={() => setSelectedId(item._id)}
                                                 type="visa"
+                                                className={index >= visibleCards ? "md:hidden" : ""}
                                             />
                                         ))}
                                     </AnimatePresence>
                                 </div>
-                                <div className="flex justify-center items-center gap-6 mt-12">
+                                <div className={`hidden md:flex ${filteredVisaData.length > visibleCards && visibleCards > incrementBy ? 'flex-row gap-2 px-4' : 'flex-col gap-4'} md:flex-row md:justify-center items-center md:gap-6 mt-12 w-full md:px-0`}>
                                     {filteredVisaData.length > visibleCards && (
                                         <motion.button
                                             whileHover={{ scale: 1.05, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
                                             onClick={() => setVisibleCards(prev => prev + incrementBy)}
-                                            className="bg-[#1e1e89] text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest shadow-[0_15px_30px_rgba(30,30,137,0.25)] transition-all"
+                                            className={`bg-[#1e1e89] text-white rounded-full font-bold uppercase tracking-widest shadow-[0_15px_30px_rgba(30,30,137,0.25)] transition-all flex-1 md:flex-none w-full md:w-auto text-center whitespace-nowrap ${filteredVisaData.length > visibleCards && visibleCards > incrementBy ? 'px-2 py-3.5 text-[10px]' : 'px-10 py-4 text-sm'} md:px-10 md:py-4 md:text-sm`}
                                         >
-                                            Show More Results
+                                            Show More
                                         </motion.button>
                                     )}
                                     {visibleCards > incrementBy && (
                                         <motion.button
                                             whileHover={{ scale: 1.05, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
-                                            onClick={() => setVisibleCards(incrementBy)}
-                                            className="bg-white text-[#1e1e89] px-10 py-4 rounded-full border border-[#1e1e89]/20 text-sm font-bold uppercase tracking-widest hover:border-[#1e1e89] transition-all"
+                                            onClick={() => {
+                                                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                                                setTimeout(() => {
+                                                    setVisibleCards(incrementBy);
+                                                }, 800);
+                                            }}
+                                            className={`bg-white text-[#1e1e89] border border-[#1e1e89]/20 hover:border-[#1e1e89] rounded-full font-bold uppercase tracking-widest transition-all flex-1 md:flex-none w-full md:w-auto text-center whitespace-nowrap ${filteredVisaData.length > visibleCards && visibleCards > incrementBy ? 'px-2 py-3.5 text-[10px]' : 'px-10 py-4 text-sm'} md:px-10 md:py-4 md:text-sm`}
                                         >
                                             Show Less
                                         </motion.button>
@@ -254,79 +302,112 @@ export default function Services() {
                         {/* Destinations Content */}
                         {activeTab === "destinations" && (
                             <div className="w-full">
-                                <div className="flex flex-wrap justify-center gap-8 max-w-[1400px] mx-auto">
+                                <div className="mb-10 flex justify-center">
+                                    {/* Search Box */}
+                                    <div className="relative w-full md:w-[400px]">
+                                        <input
+                                            type="text"
+                                            placeholder="SEARCH DESTINATIONS..."
+                                            value={searchTerm}
+                                            onChange={(e) => {
+                                                setSearchTerm(e.target.value);
+                                                setVisibleCards(6);
+                                            }}
+                                            className="w-full bg-white/50 backdrop-blur-md border-2 border-white/20 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest focus:ring-2 focus:ring-[#0c39e0]/20 focus:border-[#0c39e0] outline-none transition-all placeholder:text-slate-300 shadow-sm"
+                                        />
+                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-2 md:flex md:flex-wrap justify-start md:justify-center gap-4 md:gap-8 max-w-[1400px] mx-auto px-4 md:px-0 pb-20 md:pb-0 w-full max-h-[480px] overflow-y-auto md:max-h-none md:overflow-visible scrollbar-hide [-webkit-mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] md:[-webkit-mask-image:none] md:[mask-image:none]">
                                     <AnimatePresence mode="popLayout">
-                                        {destinationData.slice(0, visibleCards).map((item, index) => (
+                                        {filteredDestinationData.map((item, index) => (
                                             <ServiceCard
                                                 key={item._id}
                                                 item={item}
                                                 index={index}
                                                 onClick={() => setSelectedId(item._id)}
                                                 type="destination"
+                                                className={index >= visibleCards ? "md:hidden" : ""}
                                             />
                                         ))}
                                     </AnimatePresence>
                                 </div>
-                                <div className="flex justify-center items-center gap-6 mt-12">
-                                    {destinationData.length > visibleCards && (
+                                <div className={`hidden md:flex ${filteredDestinationData.length > visibleCards && visibleCards > incrementBy ? 'flex-row gap-2 px-4' : 'flex-col gap-4'} md:flex-row md:justify-center items-center md:gap-6 mt-12 w-full md:px-0`}>
+                                    {filteredDestinationData.length > visibleCards && (
                                         <motion.button
                                             whileHover={{ scale: 1.05, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
                                             onClick={() => setVisibleCards(prev => prev + incrementBy)}
-                                            className="bg-[#1e1e89] text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest shadow-[0_15px_30px_rgba(30,30,137,0.25)] transition-all"
+                                            className={`bg-[#1e1e89] text-white rounded-full font-bold uppercase tracking-widest shadow-[0_15px_30px_rgba(30,30,137,0.25)] transition-all flex-1 md:flex-none w-full md:w-auto text-center whitespace-nowrap ${filteredDestinationData.length > visibleCards && visibleCards > incrementBy ? 'px-2 py-3.5 text-[10px]' : 'px-10 py-4 text-sm'} md:px-10 md:py-4 md:text-sm`}
                                         >
-                                            Show More Results
+                                            Show More
                                         </motion.button>
                                     )}
                                     {visibleCards > incrementBy && (
                                         <motion.button
                                             whileHover={{ scale: 1.05, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
-                                            onClick={() => setVisibleCards(incrementBy)}
-                                            className="bg-white text-[#1e1e89] px-10 py-4 rounded-full border border-[#1e1e89]/20 text-sm font-bold uppercase tracking-widest hover:border-[#1e1e89] transition-all"
+                                            onClick={() => {
+                                                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                                                setTimeout(() => {
+                                                    setVisibleCards(incrementBy);
+                                                }, 800);
+                                            }}
+                                            className={`bg-white text-[#1e1e89] border border-[#1e1e89]/20 hover:border-[#1e1e89] rounded-full font-bold uppercase tracking-widest transition-all flex-1 md:flex-none w-full md:w-auto text-center whitespace-nowrap ${filteredDestinationData.length > visibleCards && visibleCards > incrementBy ? 'px-2 py-3.5 text-[10px]' : 'px-10 py-4 text-sm'} md:px-10 md:py-4 md:text-sm`}
                                         >
                                             Show Less
                                         </motion.button>
                                     )}
                                 </div>
-                                {destinationData.length === 0 && <EmptyState message="No destinations found." />}
+                                {filteredDestinationData.length === 0 && <EmptyState message="No destinations found." />}
                             </div>
                         )}
 
                         {/* Rooms Content */}
                         {activeTab === "rooms" && (
                             <div className="w-full">
-                                <div className="flex flex-wrap justify-center gap-8 max-w-[1400px] mx-auto">
+                                <div className="grid grid-cols-2 md:flex md:flex-wrap justify-start md:justify-center gap-4 md:gap-8 max-w-[1400px] mx-auto px-4 md:px-0 pb-20 md:pb-0 w-full max-h-[480px] overflow-y-auto md:max-h-none md:overflow-visible scrollbar-hide [-webkit-mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] md:[-webkit-mask-image:none] md:[mask-image:none]">
                                     <AnimatePresence mode="popLayout">
-                                        {roomData.slice(0, visibleCards).map((item, index) => (
+                                        {roomData.map((item, index) => (
                                             <ServiceCard
                                                 key={item._id}
                                                 item={item}
                                                 index={index}
                                                 onClick={() => setSelectedId(item._id)}
                                                 type="rooms"
+                                                className={index >= visibleCards ? "md:hidden" : ""}
                                             />
                                         ))}
                                     </AnimatePresence>
                                 </div>
-                                <div className="flex justify-center items-center gap-6 mt-12">
+                                <div className={`hidden md:flex ${roomData.length > visibleCards && visibleCards > incrementBy ? 'flex-row gap-2 px-4' : 'flex-col gap-4'} md:flex-row md:justify-center items-center md:gap-6 mt-12 w-full md:px-0`}>
                                     {roomData.length > visibleCards && (
-                                        <div className="relative group">
+                                        <div className="relative group flex-1 md:flex-none w-full md:w-auto">
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
                                                 onClick={() => setVisibleCards(prev => prev + incrementBy)}
-                                                className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                                className={`relative bg-white text-[#0c39e0] rounded-full border-2 border-black font-black uppercase tracking-widest hover:bg-slate-50 w-full md:w-auto ${roomData.length > visibleCards && visibleCards > incrementBy ? 'px-2 py-3 text-[10px]' : 'px-10 py-4 text-sm'} md:px-10 md:py-4 md:text-sm whitespace-nowrap`}
                                             >
-                                                Show More Results
+                                                Show More
                                             </button>
                                         </div>
                                     )}
                                     {visibleCards > incrementBy && (
-                                        <div className="relative group">
+                                        <div className="relative group flex-1 md:flex-none w-full md:w-auto">
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
-                                                onClick={() => setVisibleCards(incrementBy)}
-                                                className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                                onClick={() => {
+                                                    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                                                    setTimeout(() => {
+                                                        setVisibleCards(incrementBy);
+                                                    }, 800);
+                                                }}
+                                                className={`relative bg-white text-[#0c39e0] rounded-full border-2 border-black font-black uppercase tracking-widest hover:bg-slate-50 w-full md:w-auto ${roomData.length > visibleCards && visibleCards > incrementBy ? 'px-2 py-3 text-[10px]' : 'px-10 py-4 text-sm'} md:px-10 md:py-4 md:text-sm whitespace-nowrap`}
                                             >
                                                 Show Less
                                             </button>
@@ -340,37 +421,43 @@ export default function Services() {
                         {/* Cabs Content */}
                         {activeTab === "cab" && (
                             <div className="w-full">
-                                <div className="flex flex-wrap justify-center gap-8 max-w-[1400px] mx-auto">
+                                <div className="grid grid-cols-2 md:flex md:flex-wrap justify-start md:justify-center gap-4 md:gap-8 max-w-[1400px] mx-auto px-4 md:px-0 pb-20 md:pb-0 w-full max-h-[480px] overflow-y-auto md:max-h-none md:overflow-visible scrollbar-hide [-webkit-mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] md:[-webkit-mask-image:none] md:[mask-image:none]">
                                     <AnimatePresence mode="popLayout">
-                                        {cabData.slice(0, visibleCards).map((item, index) => (
+                                        {cabData.map((item, index) => (
                                             <ServiceCard
                                                 key={item._id}
                                                 item={item}
                                                 index={index}
                                                 onClick={() => setSelectedId(item._id)}
                                                 type="cab"
+                                                className={index >= visibleCards ? "md:hidden" : ""}
                                             />
                                         ))}
                                     </AnimatePresence>
                                 </div>
-                                <div className="flex justify-center items-center gap-6 mt-12">
+                                <div className={`hidden md:flex ${cabData.length > visibleCards && visibleCards > incrementBy ? 'flex-row gap-2 px-4' : 'flex-col gap-4'} md:flex-row md:justify-center items-center md:gap-6 mt-12 w-full md:px-0`}>
                                     {cabData.length > visibleCards && (
-                                        <div className="relative group">
+                                        <div className="relative group flex-1 md:flex-none w-full md:w-auto">
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
                                                 onClick={() => setVisibleCards(prev => prev + incrementBy)}
-                                                className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                                className={`relative bg-white text-[#0c39e0] rounded-full border-2 border-black font-black uppercase tracking-widest hover:bg-slate-50 w-full md:w-auto ${cabData.length > visibleCards && visibleCards > incrementBy ? 'px-2 py-3 text-[10px]' : 'px-10 py-4 text-sm'} md:px-10 md:py-4 md:text-sm whitespace-nowrap`}
                                             >
-                                                Show More Results
+                                                Show More
                                             </button>
                                         </div>
                                     )}
                                     {visibleCards > incrementBy && (
-                                        <div className="relative group">
+                                        <div className="relative group flex-1 md:flex-none w-full md:w-auto">
                                             <div className="absolute -inset-1 bg-black rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
                                             <button
-                                                onClick={() => setVisibleCards(incrementBy)}
-                                                className="relative bg-white text-[#0c39e0] px-10 py-4 rounded-full border-2 border-black text-sm font-black uppercase tracking-widest hover:bg-slate-50"
+                                                onClick={() => {
+                                                    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                                                    setTimeout(() => {
+                                                        setVisibleCards(incrementBy);
+                                                    }, 800);
+                                                }}
+                                                className={`relative bg-white text-[#0c39e0] rounded-full border-2 border-black font-black uppercase tracking-widest hover:bg-slate-50 w-full md:w-auto ${cabData.length > visibleCards && visibleCards > incrementBy ? 'px-2 py-3 text-[10px]' : 'px-10 py-4 text-sm'} md:px-10 md:py-4 md:text-sm whitespace-nowrap`}
                                             >
                                                 Show Less
                                             </button>

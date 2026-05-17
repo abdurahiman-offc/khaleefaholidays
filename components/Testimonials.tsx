@@ -84,8 +84,16 @@ export default function Testimonials() {
     const displayFeedbacks = feedbacks.length > 0 ? feedbacks : fallbackTestimonials;
     const doubledFeedbacks = [...displayFeedbacks, ...displayFeedbacks];
 
+    // Reset index if out of bounds when data changes
+    useEffect(() => {
+        if (activeIndex >= displayFeedbacks.length) {
+            setActiveIndex(0);
+        }
+    }, [displayFeedbacks.length, activeIndex]);
+
     // Auto-swipe logic for mobile/tablet
     useEffect(() => {
+        if (displayFeedbacks.length === 0) return;
         const interval = setInterval(() => {
             setActiveIndex((current) => (current + 1) % displayFeedbacks.length);
         }, 5000);
@@ -101,72 +109,51 @@ export default function Testimonials() {
     }
 
     return (
-        <section id="reviews" className="pt-[100px] pb-[100px] bg-transparent relative overflow-hidden contain-paint">
+        <section id="reviews" className="pt-[75px] pb-0 md:pb-[75px] bg-transparent relative overflow-hidden contain-paint">
             {/* Background Effect */}
             <SectionBackground />
 
-            <div className="relative z-10 pt-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-12 px-6"
-                >
-                    <h2 className="text-4xl font-black mb-4 uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-[#0c39e0] to-black">
-                        Trusted Stories
-                    </h2>
-                </motion.div>
-
-                {/* Desktop: Free Moving Carousel (Marquee) */}
-                <div className="hidden lg:block relative overflow-hidden py-10 px-10">
-                    <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[#F0F7FF]/40 to-transparent z-20 pointer-events-none" />
-                    <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[#F0F7FF]/40 to-transparent z-20 pointer-events-none" />
-
-                    <div className="flex justify-center">
+            <div className="flex flex-col items-center justify-center pt-10 pb-6 md:pt-20 md:pb-12">
+                <div className="flex gap-2 md:gap-4 mb-2 md:mb-4">
+                    {[...Array(5)].map((_, i) => (
                         <motion.div
-                            className="flex gap-10 w-fit"
-                            animate={displayFeedbacks.length > 3 ? {
-                                x: [0, -2500],
-                            } : {}}
+                            key={i}
+                            initial={{ opacity: 0.3, scale: 0.8 }}
+                            animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.15, 0.8] }}
                             transition={{
-                                duration: 50,
+                                duration: 2,
                                 repeat: Infinity,
-                                ease: "linear",
+                                delay: i * 0.3, // Sequential shine effect
+                                ease: "easeInOut"
                             }}
-                            whileHover={{ animationPlayState: 'paused' }}
                         >
-                            {(displayFeedbacks.length > 3 ? doubledFeedbacks : displayFeedbacks).map((item, index) => (
-                                <FeedbackCard key={index} item={item} />
-                            ))}
+                            <Star className="w-6 h-6 md:w-10 md:h-10 text-white/65 drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)]" fill="currentColor" />
                         </motion.div>
+                    ))}
+                </div>
+                <div className="relative inline-block text-center">
+                    {/* Background stretched text */}
+                    <h2
+                        className="font-oswald text-[40px] md:text-[60px] lg:text-[85px] font-bold text-white/65 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] drop-shadow-[0_8px_32px_rgba(255,255,255,0.2)] uppercase select-none pointer-events-none leading-none whitespace-nowrap"
+                        style={{ transform: 'scaleY(1.6)', letterSpacing: '-4px' }}
+                    >
+                        From Our Valued Clients
+                    </h2>
+
+                    {/* Top cursive text */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <h2 className="font-satisfy-local text-[42px] md:text-[55px] lg:text-[80px] text-[#1D4ED8] whitespace-nowrap leading-none mt-4 md:mt-8">
+                            Trusted Stories
+                        </h2>
                     </div>
                 </div>
+            </div>
 
-                {/* Mobile/Tablet: Single Card Swipe */}
-                <div className="lg:hidden px-6 pb-20">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeIndex}
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -50 }}
-                            transition={{ duration: 0.5 }}
-                            className="w-full flex justify-center"
-                        >
-                            <FeedbackCard item={displayFeedbacks[activeIndex]} />
-                        </motion.div>
-                    </AnimatePresence>
-                    <div className="flex justify-center gap-2 mt-8">
-                        {displayFeedbacks.map((_, i) => (
-                            <button
-                                key={i}
-                                onClick={() => setActiveIndex(i)}
-                                className={`w-2 h-2 rounded-full transition-all ${activeIndex === i ? "w-8 bg-[#0c39e0]" : "bg-slate-300"
-                                    }`}
-                            />
-                        ))}
-                    </div>
+            <div className="container mx-auto px-6 mt-10 md:mt-16">
+                <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+                    {displayFeedbacks.map((item, index) => (
+                        <FeedbackCard key={index} item={item} />
+                    ))}
                 </div>
             </div>
         </section>
@@ -174,34 +161,34 @@ export default function Testimonials() {
 }
 
 function FeedbackCard({ item }: { item: Feedback }) {
+    if (!item) return null;
+
     return (
-        <motion.div
-            whileHover={{ y: -8 }}
-            className="relative flex flex-col bg-[#F5F5F5] p-8 rounded-[32px] md:rounded-[40px] shadow-[0_10px_25px_rgba(0,0,0,0.08),_0_4px_10px_rgba(0,0,0,0.05)] border-[8px] md:border-[10px] border-white h-full w-full sm:w-[380px] flex-shrink-0"
+        <div
+            className="relative flex flex-col bg-[#F5F5F5]/60 backdrop-blur-xl p-6 md:p-8 rounded-[32px] md:rounded-[40px] border-4 md:border-[10px] border-white h-full w-full sm:w-[380px]"
         >
-            <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-[#F5F5F5] rounded-2xl flex items-center justify-center text-[#0c39e0] shrink-0 shadow-sm border border-slate-100">
-                    <User size={28} />
+            <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+                <div className="w-10 h-10 md:w-14 md:h-14 bg-[#F5F5F5] rounded-xl md:rounded-2xl flex items-center justify-center text-[#0c39e0] shrink-0 shadow-sm border border-slate-100">
+                    <User className="w-5 h-5 md:w-7 md:h-7" />
                 </div>
                 <div>
-                    <h4 className="font-bold text-slate-900 uppercase tracking-tight">{item.name}</h4>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{item.place}</p>
+                    <h4 className="font-bold text-sm md:text-base text-slate-900 uppercase tracking-tight">{item.name || 'Anonymous'}</h4>
+                    <p className="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest">{item.place || 'Traveler'}</p>
                 </div>
             </div>
 
-            <div className="flex gap-1 mb-6">
+            <div className="flex gap-1 mb-3 md:mb-6">
                 {[...Array(5)].map((_, i) => (
                     <Star
                         key={i}
-                        size={14}
-                        className={i < item.stars ? "fill-[#FFB800] text-[#FFB800]" : "text-slate-200"}
+                        className={`w-3 h-3 md:w-3.5 md:h-3.5 ${i < (item.stars || 0) ? "fill-[#FFB800] text-[#FFB800]" : "text-slate-200"}`}
                     />
                 ))}
             </div>
 
-            <p className="text-base text-slate-600 leading-relaxed font-medium italic">
-                "{item.feedback}"
+            <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium italic">
+                "{item.feedback || 'No feedback provided'}"
             </p>
-        </motion.div>
+        </div>
     );
 }

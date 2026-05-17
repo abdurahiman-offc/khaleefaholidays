@@ -33,13 +33,12 @@ export default function WhatsAppWidget() {
             animate={{ scale: isVisible ? 1 : 0, opacity: isVisible ? 1 : 0 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-green-500/30 transition-shadow flex items-center justify-center pointer-events-none"
+            className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 bg-[#25D366] text-white p-3 md:p-4 rounded-full shadow-lg hover:shadow-green-500/30 transition-shadow flex items-center justify-center pointer-events-none"
             aria-hidden
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
+                className="w-6 h-6 md:w-8 md:h-8"
                 fill="currentColor"
                 viewBox="0 0 16 16"
             >
