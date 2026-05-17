@@ -102,8 +102,7 @@ export default function Services() {
     });
 
     const filteredDestinationData = destinationData.filter(item => {
-        return item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.country?.toLowerCase().includes(searchTerm.toLowerCase());
+        return item.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
     const getActiveItem = () => {
