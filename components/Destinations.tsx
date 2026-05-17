@@ -119,40 +119,46 @@ export default function Destinations() {
                         <div className="w-12 h-12 border-4 border-[#0c39e0] border-t-transparent rounded-full animate-spin"></div>
                     </div>
                 ) : (
-                    <div className="flex flex-wrap justify-center gap-8 max-w-[1400px] mx-auto">
+                    <div className="grid grid-cols-2 md:flex md:flex-wrap justify-start md:justify-center gap-4 md:gap-8 max-w-[1400px] mx-auto px-4 md:px-0 pb-20 md:pb-0 w-full max-h-[480px] overflow-y-auto md:max-h-none md:overflow-visible scrollbar-hide [-webkit-mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] md:[-webkit-mask-image:none] md:[mask-image:none]">
                         {/* DO NOT CHANGE THIS LAYOUT. This is permanent and always fixed. Keep flex flex-wrap. */}
                         <AnimatePresence mode="popLayout">
-                            {filteredDestinations.slice(0, visibleCards).map((place, index) => (
-                            <ServiceCard
-                                key={place._id}
-                                item={place}
-                                index={index}
-                                onClick={() => setSelectedId(place._id)}
-                                type="destination"
-                            />
-                        ))}
+                            {filteredDestinations.map((place, index) => (
+                                <ServiceCard
+                                    key={place._id}
+                                    item={place}
+                                    index={index}
+                                    onClick={() => setSelectedId(place._id)}
+                                    type="destination"
+                                    className={index >= visibleCards ? "md:hidden" : ""}
+                                />
+                            ))}
                         </AnimatePresence>
                     </div>
                 )}
 
                 {!loading && destinations.length > 0 && (
-                    <div className="flex justify-center items-center gap-6 mt-12">
+                    <div className={`hidden md:flex ${destinations.length > visibleCards && visibleCards > incrementBy ? 'flex-row gap-2 px-4' : 'flex-col gap-4'} md:flex-row md:justify-center items-center md:gap-6 mt-12 w-full md:px-0`}>
                         {destinations.length > visibleCards && (
                             <motion.button
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => setVisibleCards(prev => prev + incrementBy)}
-                                className="bg-[#1e1e89] text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest shadow-[0_15px_30px_rgba(30,30,137,0.25)] transition-all"
+                                className={`bg-[#1e1e89] text-white rounded-full font-bold uppercase tracking-widest shadow-[0_15px_30px_rgba(30,30,137,0.25)] transition-all flex-1 md:flex-none w-full md:w-auto text-center whitespace-nowrap ${destinations.length > visibleCards && visibleCards > incrementBy ? 'px-2 py-3.5 text-[10px]' : 'px-10 py-4 text-sm'} md:px-10 md:py-4 md:text-sm`}
                             >
-                                Show More Results
+                                Show More
                             </motion.button>
                         )}
                         {visibleCards > incrementBy && (
                             <motion.button
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={() => setVisibleCards(incrementBy)}
-                                className="bg-white text-[#1e1e89] px-10 py-4 rounded-full border border-[#1e1e89]/20 text-sm font-bold uppercase tracking-widest hover:border-[#1e1e89] transition-all"
+                                onClick={() => {
+                                    document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' });
+                                    setTimeout(() => {
+                                        setVisibleCards(incrementBy);
+                                    }, 800);
+                                }}
+                                className={`bg-white text-[#1e1e89] border border-[#1e1e89]/20 hover:border-[#1e1e89] rounded-full font-bold uppercase tracking-widest transition-all flex-1 md:flex-none w-full md:w-auto text-center whitespace-nowrap ${destinations.length > visibleCards && visibleCards > incrementBy ? 'px-2 py-3.5 text-[10px]' : 'px-10 py-4 text-sm'} md:px-10 md:py-4 md:text-sm`}
                             >
                                 Show Less
                             </motion.button>
