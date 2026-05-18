@@ -55,9 +55,9 @@ const fallbackTestimonials: Feedback[] = [
 
 export default function Testimonials() {
     const scrollRef = useRef<HTMLDivElement>(null);
+    const isInteracting = useRef(false);
     const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
     const [loading, setLoading] = useState(true);
-    const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {
         const fetchFeedbacks = async () => {
@@ -82,23 +82,49 @@ export default function Testimonials() {
 
     // Duplicate feedbacks for seamless loop on desktop
     const displayFeedbacks = feedbacks.length > 0 ? feedbacks : fallbackTestimonials;
-    const doubledFeedbacks = [...displayFeedbacks, ...displayFeedbacks];
 
-    // Reset index if out of bounds when data changes
-    useEffect(() => {
-        if (activeIndex >= displayFeedbacks.length) {
-            setActiveIndex(0);
-        }
-    }, [displayFeedbacks.length, activeIndex]);
-
-    // Auto-swipe logic for mobile/tablet
+    // Smooth continuous auto-scroll logic for mobile
     useEffect(() => {
         if (displayFeedbacks.length === 0) return;
-        const interval = setInterval(() => {
-            setActiveIndex((current) => (current + 1) % displayFeedbacks.length);
-        }, 5000);
-        return () => clearInterval(interval);
+        
+        let animationId: number;
+        let exactScrollLeft = scrollRef.current ? scrollRef.current.scrollLeft : 0;
+        let lastTime = performance.now();
+        
+        const smoothScroll = (time: number) => {
+            const deltaTime = time - lastTime;
+            lastTime = time;
+
+            if (scrollRef.current && !isInteracting.current) {
+                const container = scrollRef.current;
+                const isMobile = window.innerWidth < 768;
+                
+                if (isMobile) {
+                    // If user manually swiped, resync the exactScrollLeft
+                    if (Math.abs(container.scrollLeft - exactScrollLeft) > 2) {
+                        exactScrollLeft = container.scrollLeft;
+                    }
+                    
+                    exactScrollLeft += deltaTime * 0.05; // ~50px per second for a smooth readable flow
+                    container.scrollLeft = exactScrollLeft;
+                    
+                    const maxScroll = container.scrollWidth - container.clientWidth;
+                    if (container.scrollLeft >= maxScroll - 10) {
+                        // Silently jump back to the middle of the track
+                        exactScrollLeft = container.scrollWidth / 2;
+                        container.scrollLeft = exactScrollLeft;
+                    }
+                }
+            }
+            animationId = requestAnimationFrame(smoothScroll);
+        };
+        
+        animationId = requestAnimationFrame(smoothScroll);
+        return () => cancelAnimationFrame(animationId);
     }, [displayFeedbacks.length]);
+
+    // Create a multiplied array for infinite mobile scrolling
+    const infiniteFeedbacks = Array(12).fill(displayFeedbacks).flat();
 
     if (loading) {
         return (
@@ -109,7 +135,7 @@ export default function Testimonials() {
     }
 
     return (
-        <section id="reviews" className="pt-[75px] pb-0 md:pb-[75px] bg-transparent relative overflow-hidden contain-paint">
+        <section id="reviews" className="pt-[50px] md:pt-[75px] pb-0 md:pb-[75px] bg-transparent relative overflow-hidden contain-paint">
             {/* Background Effect */}
             <SectionBackground />
 
@@ -149,11 +175,27 @@ export default function Testimonials() {
                 </div>
             </div>
 
-            <div className="container mx-auto px-6 mt-10 md:mt-16">
-                <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-                    {displayFeedbacks.map((item, index) => (
-                        <FeedbackCard key={index} item={item} />
-                    ))}
+            <div className="container mx-auto px-0 md:px-6 mt-8 md:mt-16">
+                <div 
+                    ref={scrollRef}
+                    onTouchStart={() => { isInteracting.current = true; }}
+                    onTouchEnd={() => { setTimeout(() => { isInteracting.current = false; }, 800); }}
+                    onMouseEnter={() => { isInteracting.current = true; }}
+                    onMouseLeave={() => { isInteracting.current = false; }}
+                    className="flex overflow-x-auto gap-4 md:gap-12 px-6 md:px-0 pb-8 md:pb-0 md:flex-wrap md:justify-center md:overflow-visible w-full [&::-webkit-scrollbar]:hidden"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                    {infiniteFeedbacks.map((item, index) => {
+                        const isDuplicate = index >= displayFeedbacks.length;
+                        return (
+                            <div 
+                                key={index} 
+                                className={`shrink-0 flex w-[250px] sm:w-[280px] md:w-[380px] md:shrink h-auto ${isDuplicate ? 'md:hidden' : ''}`}
+                            >
+                                <FeedbackCard item={item} />
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>
@@ -165,19 +207,22 @@ function FeedbackCard({ item }: { item: Feedback }) {
 
     return (
         <div
-            className="relative flex flex-col bg-[#F5F5F5]/60 backdrop-blur-xl p-6 md:p-8 rounded-[32px] md:rounded-[40px] border-4 md:border-[10px] border-white h-full w-full sm:w-[380px]"
+            className="relative flex flex-col bg-white/10 backdrop-blur-lg p-5 md:p-8 rounded-[24px] md:rounded-[40px] border border-white/20 h-full w-full shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] overflow-hidden group transition-all duration-500 hover:shadow-[0_8px_48px_rgba(0,0,0,0.08)]"
         >
-            <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
-                <div className="w-10 h-10 md:w-14 md:h-14 bg-[#F5F5F5] rounded-xl md:rounded-2xl flex items-center justify-center text-[#0c39e0] shrink-0 shadow-sm border border-slate-100">
+            {/* Subtle inner glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/5 pointer-events-none" />
+
+            <div className="relative z-10 flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+                <div className="w-10 h-10 md:w-14 md:h-14 bg-white/40 backdrop-blur-md rounded-xl md:rounded-2xl flex items-center justify-center text-[#0c39e0] shrink-0 shadow-sm border border-white/50">
                     <User className="w-5 h-5 md:w-7 md:h-7" />
                 </div>
                 <div>
-                    <h4 className="font-bold text-sm md:text-base text-slate-900 uppercase tracking-tight">{item.name || 'Anonymous'}</h4>
+                    <h4 className="font-bold text-[13px] md:text-base text-slate-900 uppercase tracking-tight">{item.name || 'Anonymous'}</h4>
                     <p className="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest">{item.place || 'Traveler'}</p>
                 </div>
             </div>
 
-            <div className="flex gap-1 mb-3 md:mb-6">
+            <div className="relative z-10 flex gap-1 mb-3 md:mb-6">
                 {[...Array(5)].map((_, i) => (
                     <Star
                         key={i}
@@ -186,7 +231,7 @@ function FeedbackCard({ item }: { item: Feedback }) {
                 ))}
             </div>
 
-            <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium italic">
+            <p className="relative z-10 text-[13px] md:text-base text-slate-600 leading-relaxed font-medium italic">
                 "{item.feedback || 'No feedback provided'}"
             </p>
         </div>
