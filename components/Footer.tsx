@@ -1,8 +1,14 @@
 "use client";
 
-import { Instagram, Facebook, Twitter, Linkedin, MapPin, Phone, Mail } from "lucide-react";
+import { Instagram, Facebook, Linkedin, MapPin, Phone, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
+const XTwitterIcon = ({ size = 24, className = "" }: { size?: number | string, className?: string }) => (
+    <svg viewBox="0 0 24 24" fill="currentColor" width={size} height={size} className={className}>
+        <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+    </svg>
+);
 
 export default function Footer() {
     const navLinks = [
@@ -58,9 +64,9 @@ export default function Footer() {
                         <div className="flex space-x-3 md:space-x-4">
                             {[
                                 { Icon: Instagram, href: "https://www.instagram.com/khaleefaholidays?igsh=cnE1amZvcWp0ZTBr&utm_source=qr" },
-                                { Icon: Facebook, href: "#" },
-                                { Icon: Twitter, href: "#" },
-                                { Icon: Linkedin, href: "#" },
+                                { Icon: Facebook, href: "https://www.facebook.com/profile.php?id=61583083937988&mibextid=wwXIfr" },
+                                { Icon: XTwitterIcon, href: "#" },
+                                { Icon: Linkedin, href: "https://www.linkedin.com/company/khaleefa-holidays/about/" },
                             ].map(({ Icon, href }, idx) => (
                                 <Link
                                     key={idx}
